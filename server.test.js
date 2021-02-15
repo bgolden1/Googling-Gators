@@ -47,7 +47,7 @@ describe('UF Directory Server Unit Tests', function() {
           In the second, assert what we should  see.
           Finally, call "done();" to move on to the next test.
         */
-        assert.ok(response != null);
+        assert.notStrictEqual(response, null);
         assert.ok(response);
         done();
       });
@@ -75,11 +75,11 @@ describe('UF Directory Server Unit Tests', function() {
     it('responds with a 404 error to other GET requests', function(done) {
       request.get('http://localhost:8080/pizza', function(error, response, body) {
         // First, assert that the status code is what it's supposed to be (exactly 404) if the listing were missing.
-        assert.ok(response.statusCode == 404, 'status is not 404')
+        assert.strictEqual(response.statusCode, 404, 'status is not 404')
         
         // For the last assertion, check that the string output is the same message server.js outputs when a listing is missing:
         // Finally, call "done();" to finish!
-        assert.ok(response.body == '404, Page Not Found', 'string output is not the same message server.js outputs when a listing is missing')
+        assert.strictEqual(response.body, '404, Page Not Found', 'string output is not the same message server.js outputs when a listing is missing')
         done();
       });
     });
