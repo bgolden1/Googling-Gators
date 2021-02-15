@@ -3,25 +3,20 @@ version: 2.1
 # Use a package of configuration called an orb.
 orbs:
   node: circleci/node@1.1.0
-# Orchestrate or schedule a set of jobs
-workflows:
-  # Name the workflow "welcome"
-  tdd_assignment:
-    # Run the welcome/run job in its own container
-    jobs:
-      build:
-        executor:
-          name: node/default
-          tag: '10.4'
-        steps:
-          - checkout
-          - node/with-cache:
-            steps:
-              - run: npm install mocha
-              - run: alias mocha='./node_modules/.bin/_mocha'
-              - run: npm install
-          - run:
-            command: npm start
-            background: true
-          - run: sleep 5
-        - run: npm run test
+jobs:
+  build:
+    executor:
+      name: node/default
+      tag: '10.4'
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install mocha
+            - run: alias mocha='./node_modules/.bin/_mocha'
+            - run: npm install
+      - run:
+          command: npm start
+          background: true
+      - run: sleep 5
+      - run: npm run test
