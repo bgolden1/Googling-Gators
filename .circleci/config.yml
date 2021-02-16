@@ -8,11 +8,12 @@ jobs:
     executor:
       name: node/default
       tag: '10.4'
+    working_directory: ~/TDD_Assignment
     steps:
       - checkout
       - node/with-cache:
           steps:
-            - run: ./TDD_Assignment/npm install mocha
+            - run: npm install mocha
             - run: alias mocha='./node_modules/.bin/_mocha'
             - run: npm install
       - run:
