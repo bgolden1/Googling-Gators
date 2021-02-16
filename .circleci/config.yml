@@ -13,6 +13,7 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - run: ls
             - run: npm install mocha
             - run: alias mocha='./node_modules/.bin/_mocha'
             - run: npm install
