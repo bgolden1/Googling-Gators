@@ -12,9 +12,6 @@ jobs:
           app-dir: /home/circleci/project/TDD_Assignment
           cache-path: /home/circleci/project/TDD_Assignment
           override-ci-command: npm install mocha && alias mocha='./node_modules/.bin/_mocha' && npm install
-  run:
-    executor: node/default
-    steps:
       - run:
           command: cd TDD_Assignment && npm start
           background: true
