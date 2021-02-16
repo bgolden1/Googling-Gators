@@ -7,17 +7,13 @@ jobs:
   build:
     executor: node/default
     steps:
-      - checkout
+      - checkout:
+          path: ~/TDD_Assignment
       - node/install-packages:
-          app-dir: /home/circleci/project/TDD_Assignment
-          cache-path: /home/circleci/project/TDD_Assignment
           override-ci-command: npm install mocha && alias mocha='./node_modules/.bin/_mocha' && npm install
-      - run: echo 'export PATH=/home/circleci/project/TDD_Assignment:$PATH' >> $BASH_ENV
       - run:
           command: npm start
           background: true
-          working_dir: /home/circleci/project/TDD_Assignment
       - run: sleep 5
       - run: 
           command: npm run test
-          working_dir: /home/circleci/project/TDD_Assignment
