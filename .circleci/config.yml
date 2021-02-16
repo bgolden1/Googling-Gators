@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          cache-path: ~/project/TDD_Assignment
+          cache-path: /home/circleci/project/TDD_Assignment
           override-ci-command: npm install
       - run:
           command: npm start
