@@ -1,1 +1,1 @@
-Gatorloop IMS Frontend
+# Gatorloop Inventory Management System Frontend
