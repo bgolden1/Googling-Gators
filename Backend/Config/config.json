@@ -1,6 +1,6 @@
 {
 	"port": 8080,
 	"database": {
-		"url": "mongodb+srv://glAdmin:YLlD3dHeRTIpIo5d@cluster0.xbffp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+		"url": "mongodb+srv://glAdmin:<ENTER PASSWORD HERE>@cluster0.xbffp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 	}
 }
