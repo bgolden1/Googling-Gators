@@ -7,6 +7,8 @@ const passport = require("passport");
 
 const config = require("./Config/config.json");
 const database = require("./Database/Database.js");
+const apiRoutes = require("./Routes/ApiRoutes.js");
+
 
 //main express app
 let app = express();
@@ -36,6 +38,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use("/api", apiRoutes);
+
 app.get("/", function (req, res) {
-    res.json({message: "Welcome to the Gatorloop IMS backend."});
+    res.json({message: "Hello World"});
 });
