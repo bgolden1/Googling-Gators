@@ -19,4 +19,4 @@ const Schema = new mongoose.Schema({
     }
 });
 
-exports.Model = mongoose.model("inventory.parts", Schema);
+exports.Model = mongoose.model("parts", Schema);
