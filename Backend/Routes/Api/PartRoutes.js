@@ -1,4 +1,4 @@
-const partsController = require("../Controllers/PartsController.js");
+const partsController = require("../../Controllers/PartsController.js");
 const express = require("express");
 
 let router = express.Router();
