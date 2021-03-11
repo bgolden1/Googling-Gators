@@ -38,6 +38,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Passport config
+require("./Config/passport")(passport);
+
 app.use("/api", apiRoutes);
 
 app.get("/", function (req, res) {
