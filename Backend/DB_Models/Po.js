@@ -10,13 +10,12 @@ const Schema = new mongoose.Schema({
     quantity: {
         type: Number
     },
-    Total_price: {
+    price: {
         type: Number
     },
-    URL_link: {
+    url_link: {
         type: String
-       
     }
 });
 
-exports.Model = mongoose.model("po", Schema);
+exports.Model = mongoose.model("po", Schema, "po");
