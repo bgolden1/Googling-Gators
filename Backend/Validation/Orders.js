@@ -6,10 +6,9 @@ module.exports = function validatePOInput(data) {
   // Convert empty fields to an empty string so we can use validator functions
     data.name = !isEmpty(data.name) ? data.name : "";
     data.description = !isEmpty(data.description) ? data.description : "";
-    data.URL_Link = !isEmpty(data.URL_Link) ? data.URL_Link : "";
     data.quantity = !isEmpty(data.quantity) ? data.quantity : "";
     data.price = !isEmpty(data.price) ? data.price : "";
-
+    data.URL_Link = !isEmpty(data.URL_Link) ? data.URL_Link : "";
 
   // Name checks
     if (Validator.isEmpty(data.name)) {
@@ -18,24 +17,22 @@ module.exports = function validatePOInput(data) {
 
   // Description checks
     if (Validator.isEmpty(data.description)) {
-      errors.email = "Item description is required";
+      errors.description = "Item description is required";
     } 
 
+     //Quantity check
+  if (Validator.isEmpty(data.quantity)) {
+    errors.quantity= "Quantity field is required";
+  }
+
+    //Price check
+if (Validator.isEmpty(data.price)) {
+  errors.price = "Total Price field is required";
+}
   // URL link checks
     if (Validator.isEmpty(data.URL_Link)) {
       errors.URL_Link = "URL Link field is required";
     }
-
-    //Quantity check
-  if (Validator.isEmpty(data.quantity)) {
-      errors.quantity= "Quantity field is required";
-    }
-
-      //Price check
-  if (Validator.isEmpty(data.price)) {
-    errors.price = "Total Price field is required";
-  }
-
 
   return {
       errors,
