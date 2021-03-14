@@ -10,7 +10,7 @@ class Login_Page extends Component {
     render() {
         return (
             <div>
-                <h>HI</h>
+                <h>This site does absoultely nothing right now</h>
 
             </div>
         );
