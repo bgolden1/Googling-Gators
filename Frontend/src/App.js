@@ -5,6 +5,7 @@ import './App.css';
 // Add additional routes here
 import Homepage from './components/Homepage';
 import Login_Page from './components/Login_Page';
+import Register_Page from './components/Register_Page';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                 // Add additional routes here
                 <Route exact path="/" component={Homepage} />
                 <Route path="/login" component={Login_Page} />
+                <Route path="/register" component={Register_Page} />
             </Switch>
         </Router>
     );

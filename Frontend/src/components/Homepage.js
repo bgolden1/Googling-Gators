@@ -12,21 +12,24 @@ class Homepage extends Component {
           <img src={logo} className='App-logo'/>
           <h1>Welcome to the GatorLoop Inventory Management System!</h1>
         </header>
-            <>
-                <div class="text-center">
-                <Link to="/login">
-                <Button
-                    variant='outline-secondary'
-                    size='lg'
-                    className='App-button'>
-                    Login</Button>{' '}
-                </Link>
-                <Button
-                    variant='outline-secondary'
-                    size='lg'
-                    className='App-button'>
-                    Register</Button>{' '}
-                 </div>
+        <>
+          <div class="text-center">
+            <Link to="/login">
+            <Button
+                variant='outline-secondary'
+                size='lg'
+                className='App-button'>
+                Login</Button>{' '}
+            </Link>
+
+            <Link to="/register">
+            <Button
+                variant='outline-secondary'
+                size='lg'
+                className='App-button'>
+                Register</Button>{' '}
+            </Link>
+          </div>
         </>
       </div>
     );

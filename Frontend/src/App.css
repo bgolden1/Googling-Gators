@@ -19,5 +19,10 @@
   color: black;
 }
 
-.App-button {
+.App-login {
+  text-align: center;
+}
+
+.App-register {
+  text-align: center;
 }
