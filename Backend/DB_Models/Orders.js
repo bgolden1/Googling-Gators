@@ -3,21 +3,40 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // Create Schema
 const PoSchema = new Schema({
-    name: {
+    company: {
+        name: {
+            type: String
+        },
+        url: {
+            type: String
+        }
+    },
+    parts: [{
+        name: {
+            type: String
+        },
+        description: {
+            type: String
+        },
+        url: {
+            type: String
+        },
+        quantity: {
+            type: Number
+        },
+        cost_per: {
+            type: Number
+        }
+    }],
+    purpose: {
         type: String
     },
-    description: {
-        type: String
-    },
-    quantity: {
+    total_cost: {
         type: Number
     },
-    price: {
-        type: Number
-    },
-    url_link: {
+    owner: {
         type: String
     }
 });
 
-module.exports = POrder = mongoose.model("orders", PoSchema, "orders");
+exports.Model = mongoose.model("orders", PoSchema, "orders");

@@ -4,35 +4,28 @@ module.exports = function validatePOInput(data) {
     let errors = {};
 
   // Convert empty fields to an empty string so we can use validator functions
-    data.name = !isEmpty(data.name) ? data.name : "";
-    data.description = !isEmpty(data.description) ? data.description : "";
-    data.quantity = !isEmpty(data.quantity) ? data.quantity : "";
-    data.price = !isEmpty(data.price) ? data.price : "";
-    data.URL_Link = !isEmpty(data.URL_Link) ? data.URL_Link : "";
+    data.company.name = !isEmpty(data.company.name) ? data.company.name : "";
+    data.company.url = !isEmpty(data.company.url) ? data.company.url: "";
+    data.purpose = !isEmpty(data.purpose) ? data.purpose : "";
+    data.owner = !isEmpty(data.owner) ? data.owner : "";
 
-  // Name checks
-    if (Validator.isEmpty(data.name)) {
-      errors.name = "Name field is required";
+  // Company checks
+    if (Validator.isEmpty(data.company.name)) {
+      errors.company_name = "Company name field is required";
+    }
+    if (Validator.isEmpty(data.company.url)) {
+      errors.company_url = "Company url field is required";
     }
 
-  // Description checks
-    if (Validator.isEmpty(data.description)) {
-      errors.description = "Item description is required";
-    } 
-
-     //Quantity check
-  if (Validator.isEmpty(data.quantity)) {
-    errors.quantity= "Quantity field is required";
+     //Purpose check
+  if (Validator.isEmpty(data.purpose)) {
+    errors.purpose= "Purpose field is required";
   }
 
     //Price check
-if (Validator.isEmpty(data.price)) {
-  errors.price = "Total Price field is required";
+if (Validator.isEmpty(data.owner)) {
+  errors.owner = "Owner field is required";
 }
-  // URL link checks
-    if (Validator.isEmpty(data.URL_Link)) {
-      errors.URL_Link = "URL Link field is required";
-    }
 
   return {
       errors,
