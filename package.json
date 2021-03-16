@@ -4,10 +4,14 @@
     "author": {
         "name": "Brody Golden"
     },
-    "scripts": {
-        "start": "node Backend/server.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
+  "scripts": {
+    "start": "node Backend/server.js",
+    "client-install": "npm install --prefix Frontend",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix Frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
     "main": "Backend/server.js",
     "dependencies": {
         "@sendgrid/mail": "^6.5.5",
