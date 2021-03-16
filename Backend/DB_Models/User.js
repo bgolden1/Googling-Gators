@@ -6,6 +6,11 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  subteam: {
+    type: String,
+    enum: ["Business", "ECE", "Mech", "unassigned"],
+    default: "unassigned"
+  },
   email: {
     type: String,
     required: true
@@ -17,6 +22,11 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  role: {
+    type: String,
+    default: "user", //instantialize as default user
+    enum: ["user", "admin", "member"]
   }
 });
 module.exports = User = mongoose.model("users", UserSchema);
