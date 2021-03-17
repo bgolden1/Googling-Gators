@@ -14,7 +14,8 @@ class Homepage extends Component {
                 <img src={logo} className='App-logo'/>
                 <h1>Welcome to the GatorLoop Inventory Management System!</h1>
             </header>
-        <>
+            <>
+          
           <div class="text-center">
             <Link to="/login">
             <Button
@@ -23,7 +24,7 @@ class Homepage extends Component {
                 className='App-button'>
                             <b>Login</b></Button>{' '}
 
-            // This is the other button style
+            
             <Button
                  style={{
                              width: "150px",
@@ -36,7 +37,7 @@ class Homepage extends Component {
                   >
                         <b>Login</b>
                         </Button>
-            // Delete this section if you don't like the button
+            
 
             </Link>
 
