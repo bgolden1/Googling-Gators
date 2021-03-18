@@ -5,6 +5,7 @@ let router = express.Router();
 
 router.get("/parts", partsController.getAll);
 router.get("/parts:name", partsController.getByName);
-router.post("/edit/parts", partsController.changePartByID);
+router.post("/parts/edit", partsController.changePartByID);
+router.post("/parts/checkout", partsController.checkoutPartByID);
 
 module.exports = router;

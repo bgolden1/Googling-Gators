@@ -8,6 +8,10 @@ exports.getPartByName = (__name__) => {
     return Parts.findOne({name: __name__}).exec();
 }
 
+exports.getPartByID = (__id__) => {
+    return Parts.findById(__id__).exec();
+}
+
 exports.changePartByID = (id, part) => {
-    return Parts.findByIdAndUpdate(id, {$set: part}, { new: true }).exec();
+    return Parts.findByIdAndUpdate(id, {$set: part}, { new: true , }).exec();
 }

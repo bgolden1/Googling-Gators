@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button'
 
 
-
 const Part = props => (
     <tr>
       <td>{props.part.name}</td>
@@ -13,17 +12,7 @@ const Part = props => (
       <td>{props.part.quantity_available}</td>
       <td>{props.part.total_quantity}</td>
       <td>{props.part.last_checked_out}</td>
-      <td><Button 
-            style={{
-                width: "150px",
-                borderRadius: "1px",
-                letterSpacing: "1.5px",
-                marginTop: "0rem"
-            }}
-            type="button"
-            className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            onClick={Inventory_Page.onClick}
-            >Checkout</Button></td>
+      <td><Link to={"/checkout" + props.part.name}>Checkout</Link></td>
     </tr>
   )
 
@@ -36,12 +25,8 @@ class Inventory_Page extends Component {
         };
     }
 
-    onClick(id) {
-        axios.post("http://localhost:8080/api/parts");
-    }
-
     componentDidMount() {
-        axios.get("http://localhost:8080/api/parts")
+        axios.get("/api/parts")
             .then(response => {
                 this.setState({parts: response.data.data});
             })
