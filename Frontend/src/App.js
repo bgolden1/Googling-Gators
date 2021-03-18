@@ -7,6 +7,7 @@ import Homepage from './components/Homepage';
 import Login_Page from './components/Login_Page';
 import Register_Page from './components/Register_Page';
 import Dashboard from './components/Dashboard';
+import Inventory_Page from './components/Inventory_Page';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/login" component={Login_Page} />
                 <Route path="/register" component={Register_Page} />
                 <Route path="/dashboard" component={Dashboard} />
+                <Route path="/inventory_page" component={Inventory_Page} />
             </Switch>
         </Router>
     );
