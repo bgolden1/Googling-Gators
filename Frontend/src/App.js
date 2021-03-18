@@ -9,6 +9,7 @@ import Register_Page from './components/Register_Page';
 import Dashboard from './components/Dashboard';
 import Inventory_Page from './components/Inventory_Page';
 import Checkout from "./components/Checkout";
+import Checkin from "./components/Checkin";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/inventory_page" component={Inventory_Page} />
                 <Route path="/checkout:name" component={Checkout} />
+                <Route path="/checkin:name" component={Checkin} />
             </Switch>
         </Router>
     );

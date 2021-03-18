@@ -12,7 +12,10 @@ const Part = props => (
       <td>{props.part.quantity_available}</td>
       <td>{props.part.total_quantity}</td>
       <td>{props.part.last_checked_out}</td>
-      <td><Link to={"/checkout" + props.part.name}>Checkout</Link></td>
+      <td>
+          <div><Link to={"/checkout" + props.part.name}>Check-out</Link></div>
+          <div><Link to={"/checkin" + props.part.name}>Check-in</Link></div>
+      </td>
     </tr>
   )
 
