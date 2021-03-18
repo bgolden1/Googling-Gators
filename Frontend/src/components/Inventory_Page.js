@@ -2,15 +2,28 @@ import React, { Component } from 'react';
 import axios from "axios"
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button'
+
+
 
 const Part = props => (
     <tr>
       <td>{props.part.name}</td>
-      <td>{props.part.Description}</td>
+      <td>{props.part.description}</td>
       <td>{props.part.quantity_available}</td>
       <td>{props.part.total_quantity}</td>
       <td>{props.part.last_checked_out}</td>
-      <td><Link to={"/edit/" + props.part._id}>Edit</Link></td>
+      <td><Button 
+            style={{
+                width: "150px",
+                borderRadius: "1px",
+                letterSpacing: "1.5px",
+                marginTop: "0rem"
+            }}
+            type="button"
+            className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+            onClick={Inventory_Page.onClick}
+            >Checkout</Button></td>
     </tr>
   )
 
@@ -21,6 +34,10 @@ class Inventory_Page extends Component {
             parts: [],
             errors: {}
         };
+    }
+
+    onClick(id) {
+        axios.post("http://localhost:8080/api/parts");
     }
 
     componentDidMount() {
