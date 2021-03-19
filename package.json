@@ -15,8 +15,10 @@
     "main": "Backend/server.js",
     "dependencies": {
         "@sendgrid/mail": "^6.5.5",
+        "axios": "^0.21.1",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
+        "bootstrap": "^4.6.0",
         "connect-ensure-login": "^0.1.1",
         "connect-flash": "^0.1.1",
         "connect-mongo": "^3.2.0",
@@ -31,6 +33,23 @@
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",
         "passport-local-mongoose": "^5.0.1",
+        "react": "^17.0.1",
+        "react-bootstrap-validation": "^0.1.11",
+        "react-dom": "^17.0.1",
+        "react-router-dom": "^5.2.0",
         "validator": "^13.5.2"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.0.0",
+        "@typescript-eslint/parser": "^4.0.0",
+        "babel-eslint": "^10.0.0",
+        "eslint": "^7.5.0",
+        "eslint-config-react-app": "^6.0.0",
+        "eslint-plugin-flowtype": "^5.2.0",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-jsx-a11y": "^6.3.1",
+        "eslint-plugin-react": "^7.20.3",
+        "eslint-plugin-react-hooks": "^4.0.8",
+        "web-vitals": "^1.1.1"
     }
 }
