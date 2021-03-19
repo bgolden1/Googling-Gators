@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import logo from './gatorlooplogo.jpg'
@@ -18,35 +17,15 @@ class Homepage extends Component {
           
           <div class="text-center">
             <Link to="/login">
-            <Button
-                variant='outline-secondary'
-                size='lg'
-                className='App-button'>
-                            <b>Login</b></Button>{' '}
-
-            
-            <Button
-                 style={{
-                             width: "150px",
-                             borderRadius: "3px",
-                             letterSpacing: "1.5px",
-                             marginTop: "1rem"
-                        }}
-                        type="submit"
-                        className="btn waves-effect waves-light"
-                  >
-                        <b>Login</b>
-                        </Button>
-            
-
+            <button
+                class='btn btn-primary btn-lg'>
+                     Login</button>{' '}
             </Link>
 
             <Link to="/register">
-            <Button
-                variant='outline-secondary'
-                size='lg'
-                className='App-button'>
-                Register</Button>{' '}
+            <button
+                class='btn btn-primary btn-lg'>
+                Register</button>{' '}
             </Link>
           </div>
         </>
