@@ -26,7 +26,8 @@ router.post("/po", (req, res) => {
         parts: req.body.parts,
         purpose: req.body.purpose,
         total_cost: cost,
-        owner: req.body.owner
+        owner: req.body.owner,
+        subteam: req.body.subteam
     });
     //save it and set response
     newPo

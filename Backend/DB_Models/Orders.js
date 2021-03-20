@@ -36,6 +36,9 @@ const PoSchema = new Schema({
     },
     owner: {
         type: String
+    },
+    subteam: {
+        type: String
     }
 });
 

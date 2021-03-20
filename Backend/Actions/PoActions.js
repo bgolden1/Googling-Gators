@@ -7,3 +7,7 @@ exports.getAllPO = () => {
 exports.getPoByName = (__name__) => {
     return PO.findOne({owner: __name__}).exec();
 }
+
+exports.getPOByID = (__id__) => {
+    return PO.findOne({_id: __id__}).exec();
+}
