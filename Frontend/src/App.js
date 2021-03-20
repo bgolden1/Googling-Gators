@@ -11,6 +11,7 @@ import Inventory_Page from './components/Inventory_Page';
 import Checkout from "./components/Checkout";
 import Checkin from "./components/Checkin";
 import Order from "./components/Order";
+import PO_Info from "./components/PO_Info";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/checkout:name" component={Checkout} />
                 <Route path="/checkin:name" component={Checkin} />
                 <Route path="/order" component={Order} />
+                <Route path="/po_info:id" component={PO_Info} />
             </Switch>
         </Router>
     );
