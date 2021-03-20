@@ -3,6 +3,7 @@ import axios from "axios"
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button'
+import Navbar from "./layout/Navbar";
 
 
 const Part = props => (
@@ -47,6 +48,7 @@ class Inventory_Page extends Component {
     render() {
         return (
             <div>
+                <Navbar/>
                 <h3>Parts List</h3>
                 <table className="table table-striped" style={{ margin: 30 }} >
                     <thead>

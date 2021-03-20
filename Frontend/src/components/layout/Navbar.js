@@ -14,8 +14,28 @@ class Navbar extends Component {
                             className="col s5 brand-logo center black-text"
                         >
                             <i className="material-icons">code</i>
-              Menu
-            </Link>
+                            Menu
+                        </Link>
+                        <Link
+                            to="/inventory_page"
+                            style={{
+                                fontFamily: "monospace"
+                            }}
+                            className="col s5 brand-logo center black-text"
+                        >
+                            <i className="material-icons">code</i>
+                            Inventory
+                        </Link>
+                        <Link
+                            to="/order"
+                            style={{
+                                fontFamily: "monospace"
+                            }}
+                            className="col s5 brand-logo center black-text"
+                        >
+                            <i className="material-icons">code</i>
+                            Order History
+                        </Link>
                     </div>
                 </nav>
             </div>
