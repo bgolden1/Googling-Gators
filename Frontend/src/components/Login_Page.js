@@ -45,18 +45,23 @@ class Login_Page extends Component {
                             </p>
                         </div>
 
-                        <form noValidate onSubmit={this.onSubmit}>
+                        <form novalidate onSubmit={this.onSubmit} class="needs-validation">
                             <div className="mb-3">
                                 <label for="emailinput" class="form-label">UFL Email</label>
                                 <input
                                     type="email"
                                     class="form-control"
-                                    aria-describedby="emailHelp"
-                                    onChange={this.onChange}
+                                    placeholder="username@ufl.edu"
+                                    onChange={this.onChange} 
                                     value={this.state.email}
                                     error={errors.email}
                                     id="email"
+                                    aria-describedby="emailfeedback"
+                                    required
                                 />
+                                <div id="emailfeedback" class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
                                 
                             </div>
 
@@ -69,7 +74,12 @@ class Login_Page extends Component {
                                     error={errors.password}
                                     id="password"
                                     type="password"
+                                    aria-describedby="passwordfeedback"
+                                    required
                                 />
+                                <div id="passwordfeedback" class="invalid-feedback">
+                                    Please enter your password.
+                                </div>
                                 
                             </div>
 

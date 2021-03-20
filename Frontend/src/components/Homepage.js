@@ -8,14 +8,14 @@ class Homepage extends Component {
   render() {
     return (
         <div>
-            <Navbar/>
-            <header className='App-header'>
+            <Navbar />
+            <header style={{ marginTop: "4rem" }} className='App-header' class="text-center">
                 <img src={logo} className='App-logo'/>
                 <h1>Welcome to the GatorLoop Inventory Management System!</h1>
             </header>
             <>
           
-          <div class="text-center">
+                <div class="text-center" style={{ marginTop: "6rem" }}>
             <Link to="/login">
             <button
                 class='btn btn-primary btn-lg'>
