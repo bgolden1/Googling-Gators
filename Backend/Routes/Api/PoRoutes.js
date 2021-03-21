@@ -8,8 +8,8 @@ const POrder = require("../../DB_Models/Orders").Model;
 let router = express.Router();
 
 router.get("/po", POController.getAll);
-router.get("/po:name", POController.getByName);
-router.get("po:id", POController.getByID);
+router.get("/po/owner:name", POController.getByName);
+router.get("/po:id", POController.getByID);
 router.post("/po", (req, res) => {
     //validate input
     const { errors, isValid } = validatePoInput(req.body);
