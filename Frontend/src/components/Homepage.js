@@ -18,13 +18,13 @@ class Homepage extends Component {
                 <div class="text-center" style={{ marginTop: "6rem" }}>
             <Link to="/login">
             <button
-                class='btn btn-primary btn-lg'>
+                class='btn btn-outline-secondary btn-lg'>
                      Login</button>{' '}
             </Link>
 
             <Link to="/register">
             <button
-                class='btn btn-primary btn-lg'>
+                class='btn btn-outline-secondary btn-lg'>
                 Register</button>{' '}
             </Link>
           </div>

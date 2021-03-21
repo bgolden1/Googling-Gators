@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  font-family: Montserrat;
+  font-family: montserrat;
 }
 
 .App-logo {
@@ -17,6 +17,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+  font-family: montserrat;
 }
 
 .App-login {
