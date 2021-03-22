@@ -12,6 +12,7 @@ import Checkout from "./components/Checkout";
 import Checkin from "./components/Checkin";
 import Order from "./components/Order";
 import PO_Info from "./components/PO_Info";
+import PO_Form from "./components/PO_Form";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/checkin:name" component={Checkin} />
                 <Route path="/order" component={Order} />
                 <Route path="/po_info:id" component={PO_Info} />
+                <Route path="/po_form" component={PO_Form} />
             </Switch>
         </Router>
     );
