@@ -90,8 +90,8 @@ export default class PO_Form extends Component {
         })
         .then(function (result) {
             console.log("Request submitted successfully");
-            this.setState({completed: true});
-        })
+        });
+        this.setState({completed: true});
     }
 
     render() {
