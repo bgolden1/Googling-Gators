@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Navbar from "./layout/Navbar";
+import Menubar from "./layout/Menubar";
 
 const Part = props => (
     <tr>
@@ -43,7 +43,7 @@ export default class PO_Info extends Component {
     render() {
         return (
             <div>
-                <Navbar/>
+                <Menubar/>
                 <h2>PO #{this.state.id}</h2>
                 <h3>Parts Requested</h3>
                 <table className="table table-striped" style={{ margin: 30 }} >

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Navbar from "./layout/Navbar";
+import Menubar from "./layout/Menubar";
 
 const PO = props => (
     <tr>
@@ -39,7 +39,7 @@ export default class Order extends Component {
     render() {
         return (
             <div>
-                <Navbar/>
+                <Menubar/>
                 <h3>POs List</h3>
                 <table className="table table-striped" style={{ margin: 30 }} >
                     <thead>
