@@ -46,6 +46,15 @@ class Menubar extends Component {
                             </Link>
                         </Nav.Link>
 
+                        <Nav.Link>
+                            <Link 
+                                to="/logout"
+                                style={{fontFamily: "montserrat"}}
+                                className="col s5 brand-logo center black-text">
+                                Log out
+                            </Link>
+                        </Nav.Link>
+
                     </Nav>
                 </div>             
             </Navbar>
