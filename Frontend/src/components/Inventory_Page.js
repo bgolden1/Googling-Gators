@@ -83,7 +83,15 @@ class Inventory_Page extends Component {
         }
         else {
             return (
-                <h3>Error: Not Logged In</h3>
+                <div>
+                    <h3>Error: Not Logged In</h3>
+                    <Link 
+                        to="/login"
+                        style={{fontFamily: "montserrat"}}
+                        className="col s5 brand-logo center black-text">
+                        Return to Login Page
+                    </Link>
+                </div>
             );
         }
         
