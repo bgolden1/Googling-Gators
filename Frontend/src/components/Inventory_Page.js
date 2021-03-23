@@ -62,7 +62,7 @@ class Inventory_Page extends Component {
             return (
                 <div>
                     <Menubar/>
-                    <h3>Parts List</h3>
+                    <h3 style={{ marginLeft: "2rem" }}>Parts List</h3>
                     <table className="table table-striped" style={{ margin: 30 }} >
                         <thead>
                             <tr>

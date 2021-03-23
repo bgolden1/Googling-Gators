@@ -109,7 +109,7 @@ export default class PO_Form extends Component {
             );
         }
         return (
-            <form onSubmit={this.onSubmit}>
+            <form style={{ marginTop: "2rem", marginLeft: "2rem" }} onSubmit={this.onSubmit}>
                 <div>
                     Company Name:
                     <input type="text" id="company_name" onChange={this.onChange}/>

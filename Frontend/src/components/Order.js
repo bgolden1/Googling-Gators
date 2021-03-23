@@ -40,7 +40,7 @@ export default class Order extends Component {
         return (
             <div>
                 <Menubar/>
-                <h3>POs List</h3>
+                <h3 style={{ marginLeft: "2rem" }}>POs List</h3>
                 <table className="table table-striped" style={{ margin: 30 }} >
                     <thead>
                         <tr>
