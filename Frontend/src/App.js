@@ -13,6 +13,7 @@ import Checkin from "./components/Checkin";
 import Order from "./components/Order";
 import PO_Info from "./components/PO_Info";
 import PO_Form from "./components/PO_Form";
+import Settings_Page from './components/Settings_Page';
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/order" component={Order} />
                 <Route path="/po_info:id" component={PO_Info} />
                 <Route path="/po_form" component={PO_Form} />
+                <Route path="/settings" component={Settings_Page} />
             </Switch>
         </Router>
     );
