@@ -22,10 +22,14 @@ class Login_Page extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        axios.post("/api/login", userData)
+        axios.post("http://localhost:8080/api/login", userData)
             .then(function(result) {
-                console.log(result);
+                global.localStorage.setItem("jwtToken", result.data.token);
+                global.location.pathname = "/order";
             })
+            .catch(function(err) {
+                console.log(err);
+            });
     };
     render() {
         const { errors } = this.state;

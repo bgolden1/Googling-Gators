@@ -25,6 +25,8 @@ class Inventory_Page extends Component {
         super(props);
         this.state = {
             parts: [],
+            name: "",
+            subteam: "",
             errors: {}
         };
     }

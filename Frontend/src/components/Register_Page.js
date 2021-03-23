@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios";
+import { Redirect } from 'react-router';
 
 
 class Register_Page extends Component {
@@ -21,13 +23,16 @@ class Register_Page extends Component {
     onSubmit = e => {
         e.preventDefault();
         const newUser = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
+            name: this.state.firstname + ' ' + this.state.lastname,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2
         };
-        console.log(newUser);
+        axios.post("http://localhost:8080/api/register", newUser).then(function(res) {
+            global.location.pathname = "/login";
+        }).catch(err => {
+            this.setState({errors: err});
+        })
     };
     render() {
         const { errors } = this.state;

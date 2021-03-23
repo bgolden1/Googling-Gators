@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Menubar from "./layout/Menubar";
 import { Redirect } from 'react-router';
+import jwt_decode from "jwt-decode";
 
 export default class PO_Form extends Component {
     constructor(props) {
@@ -17,6 +18,13 @@ export default class PO_Form extends Component {
             Json: [],
             completed: false
         };
+    }
+
+    componentDidMount() {
+        const token = global.localStorage.getItem("jwtToken");
+        const decoded = jwt_decode(token);
+        this.setState({owner: decoded.name, subteam: decoded.subteam})
+        console.log(decoded);
     }
 
     createUI(){
@@ -85,8 +93,8 @@ export default class PO_Form extends Component {
             "company": {"name": this.state.company_name, "url": this.state.company_url}, 
             "parts": this.state.parts, 
             "purpose": this.state.purpose, 
-            "owner": "Brody",
-            "subteam": "Mech"
+            "owner": this.state.owner,
+            "subteam": this.state.subteam
         })
         .then(function (result) {
             console.log("Request submitted successfully");
