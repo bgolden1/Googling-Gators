@@ -37,6 +37,15 @@ class Menubar extends Component {
                             </Link>
                         </Nav.Link>
 
+                        <Nav.Link>
+                            <Link 
+                                to="/settings"
+                                style={{fontFamily: "montserrat"}}
+                                className="col s5 brand-logo center black-text">
+                                Settings
+                            </Link>
+                        </Nav.Link>
+
                     </Nav>
                 </div>             
             </Navbar>
