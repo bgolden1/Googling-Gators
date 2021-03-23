@@ -56,7 +56,7 @@ export default class Order extends Component {
                         { this.poList() }
                     </tbody>
                 </table>
-                <Link to={"/po_form"}>Create New PO</Link>
+                <Link to={"/po_form"} style={{ marginLeft: "2rem" }}>Create New PO</Link>
             </div>
         )
     };
