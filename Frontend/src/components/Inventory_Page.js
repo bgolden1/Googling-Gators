@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from "axios"
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button'
 import Menubar from "./layout/Menubar";
+import jwt_decode from "jwt-decode";
 
 
 const Part = props => (
@@ -27,7 +27,8 @@ class Inventory_Page extends Component {
             parts: [],
             name: "",
             subteam: "",
-            errors: {}
+            errors: {},
+            logged_in: false
         };
     }
 
@@ -38,7 +39,16 @@ class Inventory_Page extends Component {
             })
             .catch(err => {
                 console.log(err);
-            })
+            });
+        try{
+            const token = global.localStorage.getItem("jwtToken");
+            const decoded = jwt_decode(token);
+            this.setState({name: decoded.name, subteam: decoded.subteam, logged_in: true});
+        }
+        catch(err) {
+            console.log(err)
+        }
+        
     }
 
     partsList() {
@@ -48,27 +58,35 @@ class Inventory_Page extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <Menubar/>
-                <h3>Parts List</h3>
-                <table className="table table-striped" style={{ margin: 30 }} >
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Quantity Available</th>
-                            <th>Total Quantity</th>
-                            <th>Last Checked Out</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.partsList() }
-                    </tbody>
-                </table>
-            </div>
-        );
+        if (this.state.logged_in) {
+            return (
+                <div>
+                    <Menubar/>
+                    <h3>Parts List</h3>
+                    <table className="table table-striped" style={{ margin: 30 }} >
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Quantity Available</th>
+                                <th>Total Quantity</th>
+                                <th>Last Checked Out</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            { this.partsList() }
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+        else {
+            return (
+                <h3>Error: Not Logged In</h3>
+            );
+        }
+        
     }
 }
 

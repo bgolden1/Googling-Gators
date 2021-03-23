@@ -17,7 +17,7 @@ class Settings_Page extends Component {
 	componentDidMount() {
         const token = global.localStorage.getItem("jwtToken");
         const decoded = jwt_decode(token);
-        this.setState({user_name: decoded.name, user_email: decoded.email})
+        this.setState({user_name: decoded.name, user_email: decoded.email});
         console.log(decoded);
 	}
 	

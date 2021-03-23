@@ -73,7 +73,8 @@ const { errors, isValid } = validateLoginInput(req.body);
           id: user.id,
           name: user.name,
           subteam: user.subteam,
-          email: user.email
+          email: user.email,
+          role: user.role
         };
 // Sign token
         jwt.sign(
