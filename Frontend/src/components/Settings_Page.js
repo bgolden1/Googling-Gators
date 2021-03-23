@@ -3,8 +3,25 @@ import axios from "axios"
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menubar from "./layout/Menubar";
+import jwt_decode from "jwt-decode";
 
 class Settings_Page extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			user_name: "",
+			user_email: ""
+		}
+	}
+
+	componentDidMount() {
+        const token = global.localStorage.getItem("jwtToken");
+        const decoded = jwt_decode(token);
+        this.setState({user_name: decoded.name, user_email: decoded.email})
+        console.log(decoded);
+	}
+	
+
     render() {
         return (  
 			<div>
@@ -16,8 +33,8 @@ class Settings_Page extends Component {
 			            <div class="card-body">
 				            <div class="account-settings">
 					            <div class="user-profile">						            
-						            <h5 class="user-name">User Name</h5> 
-						            <h6 class="user-email">user@gmail.com</h6>
+						            <h5 class="user-name">{this.state.user_name}</h5> 
+						            <h6 class="user-email">{this.state.user_email}</h6>
 					            </div>					            
 				            </div>
 			            </div>
