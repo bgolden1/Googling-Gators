@@ -25,7 +25,7 @@ class Login_Page extends Component {
         axios.post("http://localhost:8080/api/login", userData)
             .then(function(result) {
                 global.localStorage.setItem("jwtToken", result.data.token);
-                global.location.pathname = "/order";
+                global.location.pathname = "/dashboard";
             })
             .catch(function(err) {
                 console.log(err);
