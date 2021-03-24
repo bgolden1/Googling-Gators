@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import logo from './gatorlooplogo.jpg';
+import Menubar_Homepage from "./layout/Menubar_Homepage";
 
 class Homepage extends Component {
   render() {
     return (
         <div>
+            <Menubar_Homepage/>
             <header style={{ marginTop: "4rem" }} className='App-header' class="text-center">
                 <img src={logo} className='App-logo'/>
                 <h1>Welcome to the GatorLoop Inventory Management System!</h1>
