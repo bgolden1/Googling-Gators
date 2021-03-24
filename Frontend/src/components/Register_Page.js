@@ -145,7 +145,9 @@ class Register_Page extends Component {
                             </div>
 
                             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+                                <Link to ="/confirm">
                                 <button
+                                    
                                     style={{
                                         width: "150px",
                                         borderRadius: "3px",
@@ -153,10 +155,11 @@ class Register_Page extends Component {
                                         marginTop: "1rem"
                                     }}
                                     type="submit"
-                                    className="btn btn-outline-secondary"
+                                        className="btn btn-outline-secondary btn-lg"
                                 >
-                                    Sign up
+                                        Sign up
                                  </button>
+                                    </Link>
 
 
                             </div>
