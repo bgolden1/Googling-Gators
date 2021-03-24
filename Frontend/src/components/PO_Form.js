@@ -29,32 +29,86 @@ export default class PO_Form extends Component {
 
     createUI(){
         return this.state.parts.map((el, i) => 
-            <div key={i}>
-                Part #{i+1}
-                <div>
-                    Name: 
-                    <input type="text" placeholder="part name" name="name" value={this.state.parts[i].name} onChange={this.handleChange(i)} />
-                </div>
-                <div>
-                    Description: 
-                    <input type="text" placeholder="part description" name="description" value={this.state.parts[i].description} onChange={this.handleChange(i)} />
-                </div>
-                <div>
-                    URL: 
-                    <input type="text" placeholder="part url" name="url" value={this.state.parts[i].url} onChange={this.handleChange(i)} />
-                </div>
-                <div>
-                    Quantity: 
-                    <input type="text" placeholder="quantity" name="quantity" value={this.state.parts[i].quantity} onChange={this.handleChange(i)} />
-                </div>
-                <div>
-                    Cost per: 
-                    <input type="text" placeholder="cost per" name="cost_per" value={this.state.parts[i].cost_per} onChange={this.handleChange(i)} />
-                </div>
-                <div>
-                    <input type='button' value='remove' onClick={this.handleRemoveRow.bind(this, i)}/>
-                </div>
-            </div>          
+            <div style={{ marginTop: "2rem"}}>
+                <div key={i} class="p-2 bg-light border ">
+                    <h5>Part #{i + 1}</h5>
+            
+                    <form class="row g-3 needs-validation">
+
+                <div className="col-md-5">
+                    <label class="form-label">Name: </label>
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder=""
+                                name="name"
+                                value={this.state.parts[i].name}
+                                onChange={this.handleChange(i)} />
+                        </div>
+                        <div className="col-md-5">
+                            <label class="form-label">Quantity: </label>
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder=""
+                                name="quantity"
+                                value={this.state.parts[i].quantity}
+                                onChange={this.handleChange(i)}/>
+                        </div>
+                        <div className="col-md-8">
+                            <label class="form-label">Description: </label>
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder=""
+                                name="description"
+                                value={this.state.parts[i].description}
+                                onChange={this.handleChange(i)} />
+                        </div>
+                        <div className="col-md-5">
+                            <label class="form-label">URL: </label>
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder=""
+                                name="url"
+                                value={this.state.parts[i].url}
+                                onChange={this.handleChange(i)} />
+                        </div>
+                        <div className="col-md-4">
+                            <label class="form-label">Cost per part: </label>
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder=""
+                                name="cost_per"
+                                value={this.state.parts[i].cost_per}
+                                onChange={this.handleChange(i)} />
+                            </div>
+               
+
+                        <div className="row" style={{ paddingLeft: "11.250px" }}>
+                            <button
+                                style={{
+                                    width: "100px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px",
+                                    marginTop: "1rem"
+                                }}
+                                className="btn btn-outline-secondary"
+                                onClick={this.handleRemoveRow.bind(this, i)}
+                            >
+                                Remove
+                            </button>
+                            
+                     </div>
+
+                        </form>
+                    
+
+
+                </div>     
+            </div>
         )
     }
 
@@ -109,27 +163,83 @@ export default class PO_Form extends Component {
             );
         }
         return (
-            <form style={{ marginTop: "2rem", marginLeft: "2rem" }} onSubmit={this.onSubmit}>
-                <div>
-                    Company Name:
-                    <input type="text" id="company_name" onChange={this.onChange}/>
+            <div>
+                <Menubar/>
+            <div className="container" style={{ marginTop: "1rem" }}>
+             
+                <h2>Part Order Form</h2>
+            <form class="row g-3 needs-validation" style={{ marginTop: "2rem", marginLeft: "2rem" }} onSubmit={this.onSubmit}>
+                <div className="col-md-4">
+                    <label for="company_name" class="form-label">Company Name:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            id="company_name"
+                            required
+                            onChange={this.onChange} />
                 </div>
-                <div>
-                    Company URL:
-                    <input type="text" id="company_url" onChange={this.onChange}/>
+                    <div className="col-md-5">
+                        <label for="company_url" class="form-label">Company URL:</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            id="company_url"
+                            required
+                            onChange={this.onChange} />      
                 </div>
+                    <div className="col-md-8">
+                        <label for="purpose" class="form-label">Purpose: </label>
+                        <input
+                            class="form-control"
+                            id="purpose"
+                            required
+                            onChange={this.onChange} />  
+                   
+                        </div>
+
+                        
+
                 <div>
-                    Purpose: 
-                    <input type="text" id="purpose" onChange={this.onChange}/>
-                </div>
-                <div>
-                    {this.createUI()}        
-                    <input type='button' value='add more' onClick={this.handleAddRow.bind(this)}/>
-                </div>
-                <div>
-                    <input type="submit" value="Submit"/>
-                </div>
+                            {this.createUI()}   
+                            <button
+
+                                style={{
+                                    width: "150px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px",
+                                    marginTop: "1rem"
+                                }}
+                                
+                                className="btn btn-outline-secondary"
+                                onClick={this.handleAddRow.bind(this)}
+                            >
+                                Add Part
+                                 </button>
+                   
+                        </div>
+
+                        <div>
+                            
+                            <button
+
+                                style={{
+                                    width: "150px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px",
+                                    marginTop: "1rem"
+                                }}
+
+                                className="btn btn-outline-secondary"
+                                type="submit"
+                            >
+                                Submit
+                                 </button>
+
+                        </div>
+
             </form>
+                </div>
+    </div>
         )
     }
 }
