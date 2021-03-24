@@ -39,6 +39,11 @@ const PoSchema = new Schema({
     },
     subteam: {
         type: String
+    },
+    status: {
+        type: String,
+        enum: ["new", "approved", "submitted", "recieved"],
+        default: "new"
     }
 });
 

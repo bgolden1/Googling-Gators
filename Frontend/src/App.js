@@ -16,6 +16,7 @@ import PO_Info from "./components/PO_Info";
 import PO_Form from "./components/PO_Form";
 import Settings_Page from './components/Settings_Page';
 import Logout from './components/Logout';
+import UpgradeStatus from './components/UpgradeStatus';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/po_form" component={PO_Form} />
                 <Route path="/settings" component={Settings_Page} />
                 <Route path="/logout" component={Logout} />
+                <Route path="/upgradeStatus:id" component={UpgradeStatus} />
             </Switch>
         </Router>
     );

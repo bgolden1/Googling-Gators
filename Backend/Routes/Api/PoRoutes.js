@@ -36,5 +36,20 @@ router.post("/po", (req, res) => {
         .then(po => res.json(po))
         .catch(err => console.log(err));
 });
+router.post("/upgradeStatus", (req, res) => {
+    POrder.findOne({_id: req.body.id}).exec().then(PO => {
+        const options = ["new", "approved", "submitted", "recieved"];
+        for (var i = 0; i < options.length - 1; i++) {
+            if (PO.status == options[i]) {
+                PO.status = options[i + 1];
+                break;
+            }
+        }
+        PO
+            .save()
+            .then(po => res.json(po))
+            .catch(err => console.log(err));
+    });
+})
 
 module.exports = router;
