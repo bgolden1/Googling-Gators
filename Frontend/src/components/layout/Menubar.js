@@ -8,7 +8,7 @@ class Menubar extends Component {
         return (
             <Navbar variant="light" bg="light">
                 <div >
-                    <Navbar.Brand href="/">Gatorloop</Navbar.Brand>
+                    <Navbar.Brand href="/dashboard">Gatorloop</Navbar.Brand>
                     <Nav className="mr-auto">
                         <Nav.Link>
                             <Link

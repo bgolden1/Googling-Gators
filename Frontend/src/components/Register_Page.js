@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
-import { Redirect } from 'react-router';
+//import { Redirect } from 'react-router';
 
 
 class Register_Page extends Component {
@@ -155,7 +155,7 @@ class Register_Page extends Component {
                                         marginTop: "1rem"
                                     }}
                                     type="submit"
-                                        className="btn btn-outline-secondary btn-lg"
+                                        className="btn btn-outline-secondary"
                                 >
                                         Sign up
                                  </button>

@@ -131,7 +131,7 @@ class Settings_Page extends Component {
                     <h3>Error: Not Logged In</h3>
                     <Link 
                         to="/login"
-                        style={{fontFamily: "montserrat"}}
+						style={{ fontFamily: "montserrat" }}
                         className="col s5 brand-logo center black-text">
                         Return to Login Page
                     </Link>
