@@ -17,6 +17,10 @@ const Part = props => (
           <div><Link to={"/checkout" + props.part.name}>Check-out</Link></div>
           <div><Link to={"/checkin" + props.part.name}>Check-in</Link></div>
       </td>
+      {jwt_decode(global.localStorage.getItem("jwtToken")).role == "admin" && 
+      <td>
+          <div><Link to={"/remove" + props.part.name}>Remove</Link></div>
+      </td>}
     </tr>
   )
 
@@ -27,6 +31,7 @@ class Inventory_Page extends Component {
             parts: [],
             name: "",
             subteam: "",
+            role: "",
             errors: {},
             logged_in: false
         };
@@ -43,7 +48,7 @@ class Inventory_Page extends Component {
         try{
             const token = global.localStorage.getItem("jwtToken");
             const decoded = jwt_decode(token);
-            this.setState({name: decoded.name, subteam: decoded.subteam, logged_in: true});
+            this.setState({name: decoded.name, subteam: decoded.subteam, role: decoded.role, logged_in: true});
         }
         catch(err) {
             console.log(err)
@@ -72,12 +77,17 @@ class Inventory_Page extends Component {
                                 <th>Total Quantity</th>
                                 <th>Last Checked Out</th>
                                 <th>Actions</th>
+                                {this.state.role == 'admin' && <th>Admin Actions</th>}
                             </tr>
                         </thead>
                         <tbody>
                             { this.partsList() }
                         </tbody>
                     </table>
+                    {this.state.role == 'admin' && 
+                    <div style={{ marginLeft: "2rem"}}>
+                        <Link to={"/add"}>Add</Link>
+                    </div>}
                 </div>
             );
         }
