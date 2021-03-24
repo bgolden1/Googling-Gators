@@ -57,19 +57,7 @@ class Dashboard extends Component {
                                  </button>
                             </Link>
 
-                            <Link to="/po_form">
-                                <button
-                                    style={{
-                                        width: "200px",
-                                        borderRadius: "3px",
-                                        letterSpacing: "1.5px",
-                                        marginTop: "2rem"
-                                    }}
-                                    className="btn btn-outline-secondary btn-lg"
-                                >
-                                    PO Request
-                                 </button>
-                            </Link>
+                            
 
                             <Link to="/order">
                                 <button
@@ -82,6 +70,20 @@ class Dashboard extends Component {
                                     className="btn btn-outline-secondary btn-lg"
                                 >
                                     PO Dashboard
+                                 </button>
+                            </Link>
+
+                            <Link to="/po_form">
+                                <button
+                                    style={{
+                                        width: "200px",
+                                        borderRadius: "3px",
+                                        letterSpacing: "1.5px",
+                                        marginTop: "2rem"
+                                    }}
+                                    className="btn btn-outline-secondary btn-lg"
+                                >
+                                    PO Request
                                  </button>
                             </Link>
 
