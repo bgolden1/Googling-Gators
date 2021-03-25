@@ -33,7 +33,7 @@ class Dashboard extends Component {
             return (
                 <div>
                     <Menubar />
-                    <div class="text-center" style={{ marginTop: "12rem" }}>
+                    <div class="text-center" style={{ marginTop: "12rem", fontFamily:"montserrat" }}>
 
                         <h1> <b>Welcome,</b> {this.state.user_name}</h1>
                         <h3><small class="text-muted">Where do you want to go?</small></h3>
@@ -42,16 +42,14 @@ class Dashboard extends Component {
 
                             <Link to="/inventory_page">
                                 <button
-                                    
                                     style={{
-
                                         width: "250px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
-                                        marginTop: "2rem"
-                                        
+                                        marginTop: "2rem",
+                                        fontFamily: "montserrat"
                                     }}
-                                    className="btn btn-outline-secondary btn-lg"
+                                    className="btn btn-outline-secondary btn-lg mr-2"
                                 >
                                     Inventory Display
                                  </button>
@@ -65,9 +63,10 @@ class Dashboard extends Component {
                                         width: "200px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
-                                        marginTop: "2rem"
+                                        marginTop: "2rem",
+                                        fontFamily: "montserrat"
                                     }}
-                                    className="btn btn-outline-secondary btn-lg"
+                                    className="btn btn-outline-secondary btn-lg mr-2"
                                 >
                                     PO Dashboard
                                  </button>
@@ -79,9 +78,10 @@ class Dashboard extends Component {
                                         width: "200px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
-                                        marginTop: "2rem"
+                                        marginTop: "2rem",
+                                        fontFamily: "montserrat"
                                     }}
-                                    className="btn btn-outline-secondary btn-lg"
+                                    className="btn btn-outline-secondary btn-lg mr-2"
                                 >
                                     PO Request
                                  </button>
@@ -93,9 +93,10 @@ class Dashboard extends Component {
                                         width: "200px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
-                                        marginTop: "2rem"
+                                        marginTop: "2rem",
+                                        fontFamily: "montserrat"
                                     }}
-                                    className="btn btn-outline-secondary btn-lg"
+                                    className="btn btn-outline-secondary btn-lg mr-2"
                                 >
                                     Settings
                                  </button>
@@ -107,9 +108,10 @@ class Dashboard extends Component {
                                         width: "200px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
-                                        marginTop: "2rem"
+                                        marginTop: "2rem",
+                                        fontFamily: "montserrat"
                                     }}
-                                    className="btn btn-outline-secondary btn-lg"
+                                    className="btn btn-outline-secondary btn-lg mr-2"
                                 >
                                     Log Out
                                  </button>

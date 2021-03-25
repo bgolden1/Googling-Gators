@@ -9,7 +9,7 @@ class Homepage extends Component {
     return (
         <div>
             <Menubar_Homepage/>
-            <header style={{ marginTop: "4rem" }} className='App-header' class="text-center">
+            <header style={{ marginTop: "4rem", fontFamily:"montserrat"}} className='App-header' class="text-center">
                 <img src={logo} className='App-logo'/>
                 <h1>Welcome to the GatorLoop Inventory Management System!</h1>
             </header>
@@ -17,15 +17,33 @@ class Homepage extends Component {
           
                 <div class="text-center" style={{ marginTop: "6rem" }}>
             <Link to="/login">
-            <button
-                class='btn btn-outline-secondary btn-lg'>
-                     Login</button>{' '}
+                <button
+                    style={{
+                        width: "130px",
+                        borderRadius: "3px",
+                        letterSpacing: "1.5px",
+                        marginTop: "2rem",
+                        fontFamily: "montserrat"
+                    }}
+                    className="btn btn-outline-secondary btn-lg mr-2"
+                >
+                Login 
+                </button>
             </Link>
 
             <Link to="/register">
             <button
-                class='btn btn-outline-secondary btn-lg'>
-                Register</button>{' '}
+                    style={{
+                        width: "130px",
+                        borderRadius: "3px",
+                        letterSpacing: "1.5px",
+                        marginTop: "2rem",
+                        fontFamily: "montserrat"
+                    }}
+                    className="btn btn-outline-secondary btn-lg mr-2"
+                >
+                Register 
+                </button>
             </Link>
           </div>
         </>
