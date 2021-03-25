@@ -16,9 +16,17 @@ const PO = props => (
       <td>{props.po.status}</td>
       {jwt_decode(global.localStorage.getItem("jwtToken")).role == "admin" && 
             <td>
-                <Link to={"/upgradeStatus" + props.po._id}>
-                    Upgrade Status
-                </Link>
+                <div>
+                    <Link to={"/upgradeStatus" + props.po._id}>
+                        Upgrade Status
+                    </Link>
+                </div>
+                
+                <div>
+                    <Link to={"/removePO" + props.po._id}>
+                        Remove
+                    </Link>
+                </div>
             </td>
       }
     </tr>
@@ -94,7 +102,7 @@ export default class Order extends Component {
                                 <th>Total Cost</th>
                                 <th>Actions</th>
                                 <th>Status</th>
-                                {this.state.role == "admin" && <th>Upgrade</th>}
+                                {this.state.role == "admin" && <th>Admin Actions</th>}
                             </tr>
                         </thead>
                         <tbody>
