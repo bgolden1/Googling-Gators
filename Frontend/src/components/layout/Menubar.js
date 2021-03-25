@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import { Link, Router } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import logo from "./gatorlooplogo.jpg";
 
 class Menubar extends Component {
     render() {
         return (
             <Navbar variant="light" bg="light">
-                <div class="container-fluid" >
-                    <Navbar.Brand href="/dashboard">Gatorloop</Navbar.Brand>
+                <div class="container-fluid" style={{ fontFamily:"montserrat" }}>
+                    <a class="navbar-brand" href="/">
+                        <img src={logo} width="187" height="75" alt=""/>
+                    </a>
                     <Nav className="mr-auto">
                         <div style={{ marginLeft: "1rem" }}>
 
@@ -34,7 +37,7 @@ class Menubar extends Component {
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/logout">Log out</a>
+                                    <a class="nav-link" href="/logout">Log Out</a>
                                  </li>
                                     
 
