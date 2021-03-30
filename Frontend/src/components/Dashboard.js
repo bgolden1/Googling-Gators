@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menubar from "./layout/Menubar";
+import Sidebar from "./layout/Sidebar";
 import jwt_decode from "jwt-decode";
 
 class Dashboard extends Component {
@@ -33,6 +34,7 @@ class Dashboard extends Component {
             return (
                 <div>
                     <Menubar />
+                    <Sidebar />
                     <div class="text-center" style={{ marginTop: "12rem", fontFamily:"montserrat" }}>
 
                         <h1> <b>Welcome,</b> {this.state.user_name}</h1>
