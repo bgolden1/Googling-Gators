@@ -9,7 +9,7 @@ class Menubar extends Component {
         return (
             <Navbar variant="light" bg="light">
                 <div class="container-fluid" style={{ fontFamily:"montserrat" }}>
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/dashboard">
                         <img src={logo} width="187" height="75" alt=""/>
                     </a>
                     <Nav className="mr-auto">
