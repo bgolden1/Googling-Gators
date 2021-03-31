@@ -8,5 +8,6 @@ router.get("/parts:name", partsController.getByName);
 router.post("/parts/edit", partsController.changePartByID);
 router.post("/parts/checkout", partsController.checkoutPartByID);
 router.post("/parts/checkin", partsController.checkInPartByID);
+router.post("/parts/remove:name", partsController.removePart)
 
 module.exports = router;

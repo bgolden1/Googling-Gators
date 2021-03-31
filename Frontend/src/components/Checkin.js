@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from 'react-router';
+import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
 
 export default class Checkin extends Component {
     constructor(props) {
@@ -9,7 +11,11 @@ export default class Checkin extends Component {
             name: props.match.params.name,
             part: {},
             num_to_checkin: 0,
-            completed: false
+            completed: false,
+            user_name: "",
+            user_role: "",
+            user_subteam: "",
+            logged_in: false
         };
     }
 
@@ -20,7 +26,15 @@ export default class Checkin extends Component {
             })
             .catch(err => {
                 console.log(err);
-            })
+        })
+        try{
+            const token = global.localStorage.getItem("jwtToken");
+            const decoded = jwt_decode(token);
+            this.setState({user_name: decoded.name, user_subteam: decoded.subteam, user_role: decoded.role, logged_in: true});
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
     onSubmit = e => {
@@ -37,15 +51,31 @@ export default class Checkin extends Component {
     };
 
     render() {
-        if (this.state.completed) {
-            return (<Redirect to="/inventory_page"/>);
+        if (this.state.logged_in) {
+            if (this.state.completed) {
+                return (<Redirect to="/inventory_page"/>);
+            }
+            return (
+                <form onSubmit={this.onSubmit}>
+                    How many {this.state.name} would you like to check-in?
+                    <input type="text" id="num_to_checkin" onChange={this.onChange}/>
+                    <input type="submit" value="Submit"/>
+                </form>
+            )
         }
-        return (
-            <form onSubmit={this.onSubmit}>
-                How many {this.state.name} would you like to check-in?
-                <input type="text" id="num_to_checkin" onChange={this.onChange}/>
-                <input type="submit" value="Submit"/>
-            </form>
-        )
+        else {
+            return (
+                <div>
+                    <h3>Error: Not Logged In</h3>
+                    <Link 
+                        to="/login"
+                        style={{fontFamily: "montserrat"}}
+                        className="col s5 brand-logo center black-text">
+                        Return to Login Page
+                    </Link>
+                </div>
+            );
+        }
+        
     }
 }

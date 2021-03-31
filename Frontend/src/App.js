@@ -17,6 +17,7 @@ import PO_Form from "./components/PO_Form";
 import Settings_Page from './components/Settings_Page';
 import Logout from './components/Logout';
 import UpgradeStatus from './components/UpgradeStatus';
+import RemovePart from './components/RemovePart';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
                 <Route path="/settings" component={Settings_Page} />
                 <Route path="/logout" component={Logout} />
                 <Route path="/upgradeStatus:id" component={UpgradeStatus} />
+                <Route path="/removePart:name" component={RemovePart} />
             </Switch>
         </Router>
     );

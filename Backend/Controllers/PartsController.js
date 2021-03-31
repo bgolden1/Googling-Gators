@@ -89,3 +89,12 @@ exports.checkInPartByID = (req, res) => {
         res.status(500).json(net.getErrorResponse(error.INTERNAL_DATABASE_ERROR));
     });
 }
+
+exports.removePart = (req, res) => {
+    parts.removePartByName(req.params.name).then(function (pos) {
+        res.json(net.getSuccessResponse(null, pos));
+    }).catch(function (err) {
+        console.log("error getting part ", req.params.name, ": ", err);
+        res.status(500).json(net.getErrorResponse(error.INTERNAL_DATABASE_ERROR));
+    })
+}

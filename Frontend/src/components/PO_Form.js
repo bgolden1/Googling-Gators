@@ -16,15 +16,20 @@ export default class PO_Form extends Component {
             owner: "",
             subteam: "",
             Json: [],
-            completed: false
+            completed: false,
+            logged_in: false
         };
     }
 
     componentDidMount() {
-        const token = global.localStorage.getItem("jwtToken");
-        const decoded = jwt_decode(token);
-        this.setState({owner: decoded.name, subteam: decoded.subteam})
-        console.log(decoded);
+        try {
+            const token = global.localStorage.getItem("jwtToken");
+            const decoded = jwt_decode(token);
+            this.setState({owner: decoded.name, subteam: decoded.subteam, logged_in: true})
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 
     createUI(){
@@ -157,89 +162,105 @@ export default class PO_Form extends Component {
     }
 
     render() {
-        if (this.state.completed) {
+        if (this.state.logged_in) {
+            if (this.state.completed) {
+                return (
+                <Redirect to="/order"/>
+                );
+            }
             return (
-            <Redirect to="/order"/>
+                <div>
+                    <Menubar/>
+                <div className="container" style={{ marginTop: "1rem" }}>
+                 
+                    <h2>Part Order Form</h2>
+                <form class="row g-3 needs-validation" style={{ marginTop: "2rem", marginLeft: "2rem" }} onSubmit={this.onSubmit}>
+                    <div className="col-md-4">
+                        <label for="company_name" class="form-label">Company Name:</label>
+                            <input
+                                class="form-control"
+                                type="text"
+                                id="company_name"
+                                required
+                                onChange={this.onChange} />
+                    </div>
+                        <div className="col-md-5">
+                            <label for="company_url" class="form-label">Company URL:</label>
+                            <input
+                                class="form-control"
+                                type="text"
+                                id="company_url"
+                                required
+                                onChange={this.onChange} />      
+                    </div>
+                        <div className="col-md-8">
+                            <label for="purpose" class="form-label">Purpose: </label>
+                            <input
+                                class="form-control"
+                                id="purpose"
+                                required
+                                onChange={this.onChange} />  
+                       
+                            </div>
+    
+                            
+    
+                    <div>
+                                {this.createUI()}   
+                                <button
+    
+                                    style={{
+                                        width: "150px",
+                                        borderRadius: "3px",
+                                        letterSpacing: "1.5px",
+                                        marginTop: "1rem"
+                                    }}
+                                    
+                                    className="btn btn-outline-secondary"
+                                    onClick={this.handleAddRow.bind(this)}
+                                >
+                                    Add Part
+                                     </button>
+                       
+                            </div>
+    
+                            <div>
+                                
+                                <button
+    
+                                    style={{
+                                        width: "150px",
+                                        borderRadius: "3px",
+                                        letterSpacing: "1.5px",
+                                        marginTop: "1rem"
+                                    }}
+    
+                                    className="btn btn-outline-secondary"
+                                    type="submit"
+                                >
+                                    Submit
+                                     </button>
+    
+                            </div>
+    
+                </form>
+                    </div>
+        </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    <h3>Error: Not Logged In</h3>
+                    <Link 
+                        to="/login"
+                        style={{fontFamily: "montserrat"}}
+                        className="col s5 brand-logo center black-text">
+                        Return to Login Page
+                    </Link>
+                </div>
             );
         }
-        return (
-            <div>
-                <Menubar/>
-            <div className="container" style={{ marginTop: "1rem" }}>
-             
-                <h2>Part Order Form</h2>
-            <form class="row g-3 needs-validation" style={{ marginTop: "2rem", marginLeft: "2rem" }} onSubmit={this.onSubmit}>
-                <div className="col-md-4">
-                    <label for="company_name" class="form-label">Company Name:</label>
-                        <input
-                            class="form-control"
-                            type="text"
-                            id="company_name"
-                            required
-                            onChange={this.onChange} />
-                </div>
-                    <div className="col-md-5">
-                        <label for="company_url" class="form-label">Company URL:</label>
-                        <input
-                            class="form-control"
-                            type="text"
-                            id="company_url"
-                            required
-                            onChange={this.onChange} />      
-                </div>
-                    <div className="col-md-8">
-                        <label for="purpose" class="form-label">Purpose: </label>
-                        <input
-                            class="form-control"
-                            id="purpose"
-                            required
-                            onChange={this.onChange} />  
-                   
-                        </div>
-
-                        
-
-                <div>
-                            {this.createUI()}   
-                            <button
-
-                                style={{
-                                    width: "150px",
-                                    borderRadius: "3px",
-                                    letterSpacing: "1.5px",
-                                    marginTop: "1rem"
-                                }}
-                                
-                                className="btn btn-outline-secondary"
-                                onClick={this.handleAddRow.bind(this)}
-                            >
-                                Add Part
-                                 </button>
-                   
-                        </div>
-
-                        <div>
-                            
-                            <button
-
-                                style={{
-                                    width: "150px",
-                                    borderRadius: "3px",
-                                    letterSpacing: "1.5px",
-                                    marginTop: "1rem"
-                                }}
-
-                                className="btn btn-outline-secondary"
-                                type="submit"
-                            >
-                                Submit
-                                 </button>
-
-                        </div>
-
-            </form>
-                </div>
-    </div>
-        )
+        
     }
 }

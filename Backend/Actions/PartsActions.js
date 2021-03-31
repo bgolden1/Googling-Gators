@@ -15,3 +15,7 @@ exports.getPartByID = (__id__) => {
 exports.changePartByID = (id, part) => {
     return Parts.findByIdAndUpdate(id, {$set: part}, { new: true , }).exec();
 }
+
+exports.removePartByName = (__name__) => {
+    return Parts.remove({name: __name__}).exec();
+}

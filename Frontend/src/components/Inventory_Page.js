@@ -19,7 +19,7 @@ const Part = props => (
       </td>
       {jwt_decode(global.localStorage.getItem("jwtToken")).role == "admin" && 
       <td>
-          <div><Link to={"/remove" + props.part.name}>Remove</Link></div>
+          <div><Link to={"/removePart" + props.part.name}>Remove</Link></div>
       </td>}
     </tr>
   )

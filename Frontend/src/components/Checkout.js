@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from 'react-router';
+import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
 
 export default class Checkout extends Component {
     constructor(props) {
@@ -9,7 +11,11 @@ export default class Checkout extends Component {
             name: props.match.params.name,
             part: {},
             num_to_checkout: 0,
-            completed: false
+            completed: false,
+            user_name: "",
+            user_role: "",
+            user_subteam: "",
+            logged_in: false
         };
     }
 
@@ -20,7 +26,15 @@ export default class Checkout extends Component {
             })
             .catch(err => {
                 console.log(err);
-            })
+        })
+        try{
+            const token = global.localStorage.getItem("jwtToken");
+            const decoded = jwt_decode(token);
+            this.setState({user_name: decoded.name, user_subteam: decoded.subteam, user_role: decoded.role, logged_in: true});
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
     onSubmit = e => {
@@ -37,17 +51,32 @@ export default class Checkout extends Component {
     };
 
     render() {
-        if (this.state.completed) {
+        if (this.state.logged_in) {
+            if (this.state.completed) {
+                return (
+                <Redirect to="/inventory_page"/>
+                );
+            }
             return (
-            <Redirect to="/inventory_page"/>
+                <form onSubmit={this.onSubmit}>
+                    How many {this.state.name} would you like to checkout?
+                    <input type="text" id="num_to_checkout" onChange={this.onChange}/>
+                    <input type="submit" value="Submit"/>
+                </form>
+            )
+        }
+        else {
+            return (
+                <div>
+                    <h3>Error: Not Logged In</h3>
+                    <Link 
+                        to="/login"
+                        style={{fontFamily: "montserrat"}}
+                        className="col s5 brand-logo center black-text">
+                        Return to Login Page
+                    </Link>
+                </div>
             );
         }
-        return (
-            <form onSubmit={this.onSubmit}>
-                How many {this.state.name} would you like to checkout?
-                <input type="text" id="num_to_checkout" onChange={this.onChange}/>
-                <input type="submit" value="Submit"/>
-            </form>
-        )
     }
 }
