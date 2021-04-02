@@ -39,7 +39,7 @@ class Sidebar extends Component {
 							<a class="nav-link" href="/inventory_page">Inventory</a>
 						</li>
 						<li class="nav-item dropdown">
-							<a href="#" id="navbarDrop" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle">Part Order</a>
+							<a href="#" id="navbarDrop" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle">Purchase Order</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDrop">
 								<li>
 									<a class="dropdown-item" href="/order">PO Dashboard</a>
