@@ -56,11 +56,14 @@ export default class Checkin extends Component {
                 return (<Redirect to="/inventory_page"/>);
             }
             return (
-                <form onSubmit={this.onSubmit}>
+                <div style={{ marginTop: "4rem", marginLeft: "40%" }}>
                     How many {this.state.name} would you like to check-in?
-                    <input type="text" id="num_to_checkin" onChange={this.onChange}/>
-                    <input type="submit" value="Submit"/>
-                </form>
+                    <form onSubmit={this.onSubmit}>
+                        <input type="text" id="num_to_checkin" onChange={this.onChange}/>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </div>
+                
             )
         }
         else {

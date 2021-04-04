@@ -58,11 +58,13 @@ export default class Checkout extends Component {
                 );
             }
             return (
-                <form onSubmit={this.onSubmit}>
+                <div style={{ marginTop: "4rem", marginLeft: "40%" }}>
                     How many {this.state.name} would you like to checkout?
-                    <input type="text" id="num_to_checkout" onChange={this.onChange}/>
-                    <input type="submit" value="Submit"/>
-                </form>
+                    <form onSubmit={this.onSubmit}>
+                        <input type="text" id="num_to_checkout" onChange={this.onChange}/>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </div>
             )
         }
         else {

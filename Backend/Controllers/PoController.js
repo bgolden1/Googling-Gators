@@ -27,3 +27,12 @@ exports.getByID = (req, res) => {
         res.status(500).json(net.getErrorResponse(error.INTERNAL_DATABASE_ERROR));
     })
 }
+
+exports.removeByID = (req, res) => {
+    PO.removePartByID(req.params.id).then(function (pos) {
+        res.json(net.getSuccessResponse(null, pos));
+    }).catch(function (err) {
+        console.log("error getting part ", req.params.id, ": ", err);
+        res.status(500).json(net.getErrorResponse(error.INTERNAL_DATABASE_ERROR));
+    })
+}

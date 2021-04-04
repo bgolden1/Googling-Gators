@@ -98,3 +98,16 @@ exports.removePart = (req, res) => {
         res.status(500).json(net.getErrorResponse(error.INTERNAL_DATABASE_ERROR));
     })
 }
+
+exports.createNewPart = (req, res) => {
+    parts.createNewPart(
+        req.body.name,
+        req.body.description,
+        req.body.quantity
+    ).then(function (pos) {
+        res.json(net.getSuccessResponse(null, pos));
+    }).catch(function (err) {
+        console.log("error getting part ", req.params.name, ": ", err);
+        res.status(500).json(net.getErrorResponse(error.INTERNAL_DATABASE_ERROR));
+    })
+}

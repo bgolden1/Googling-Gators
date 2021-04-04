@@ -11,3 +11,7 @@ exports.getPoByName = (__name__) => {
 exports.getPOByID = (__id__) => {
     return PO.findOne({_id: __id__}).exec();
 }
+
+exports.removePartByID = (__id__) => {
+    return PO.remove({_id: __id__}).exec();
+}

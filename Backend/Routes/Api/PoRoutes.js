@@ -4,6 +4,7 @@ const express = require("express");
 const validatePoInput = require("../../Validation/Orders.js");
 // Load User model
 const POrder = require("../../DB_Models/Orders").Model;
+const Parts = require("../../Actions/PartsActions");
 
 let router = express.Router();
 
@@ -39,6 +40,11 @@ router.post("/po", (req, res) => {
 router.post("/upgradeStatus", (req, res) => {
     POrder.findOne({_id: req.body.id}).exec().then(PO => {
         const options = ["new", "approved", "submitted", "recieved"];
+        if (PO.status == "submitted") {
+            for (var i = 0; i < PO.parts.length; i++) {
+                Parts.createNewPart(PO.parts[i].name, PO.parts[i].description, PO.parts[i].quantity);
+            }
+        }
         for (var i = 0; i < options.length - 1; i++) {
             if (PO.status == options[i]) {
                 PO.status = options[i + 1];
@@ -51,5 +57,6 @@ router.post("/upgradeStatus", (req, res) => {
             .catch(err => console.log(err));
     });
 })
+router.post("/po/remove:id", POController.removeByID);
 
 module.exports = router;
