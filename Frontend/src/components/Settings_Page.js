@@ -10,7 +10,9 @@ class Settings_Page extends Component {
 		super(props);
 		this.state = {
 			user_name: "",
+			user_ufid: "",
 			user_email: "",
+			user_role: "",
 			logged_in: false
 		}
 	}
@@ -19,7 +21,7 @@ class Settings_Page extends Component {
 		try {
 			const token = global.localStorage.getItem("jwtToken");
         	const decoded = jwt_decode(token);
-        	this.setState({user_name: decoded.name, user_email: decoded.email, logged_in: true});
+        	this.setState({user_name: decoded.name, user_ufid: decoded.ufid, user_email: decoded.email, user_role: decoded.role, logged_in: true});
         	console.log(decoded);
 		}
 		catch(err) {
@@ -40,9 +42,11 @@ class Settings_Page extends Component {
 						<div class="card h-100">
 							<div class="card-body">
 								<div class="account-settings">
-									<div class="user-profile">						            
-										<h5 class="user-name">{this.state.user_name}</h5> 
-										<h6 class="user-email">{this.state.user_email}</h6>
+									<div class="user-profile">		
+										<h5 class="user-role">{this.state.user_role}</h5>				            
+										<h5 class="user-name">{this.state.user_name}</h5> 	
+										<h5 class="user-ufid">{this.state.user_ufid}</h5>						
+										<h6 class="user-email">{this.state.user_email}</h6>										
 									</div>					            
 								</div>
 							</div>
@@ -69,51 +73,21 @@ class Settings_Page extends Component {
 									</div>
 									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 										<div class="form-group">
-											<label for="phone">Phone</label>
-											<input type="text" class="form-control" id="phone" placeholder="Enter phone number"></input>
+											<label for="UFID">UFID</label>
+											<input type="text" class="form-control" id="UFID" placeholder="Enter UFID"></input>
 										</div>
 									</div>
 									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 										<div class="form-group">
-											<label for="website">Website URL</label>
-											<input type="url" class="form-control" id="website" placeholder="Website url"></input>
+											<label for="password">Password</label>
+											<input type="text" class="form-control" id="password" placeholder="Enter Password"></input>
 										</div>
 									</div>
-								</div>
+								</div>								
 								<div class="row gutters">
-									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-										<h6 class="mb-3 text-primary">Address</h6>
-									</div>
-									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-										<div class="form-group">
-											<label for="Street">Street</label>
-											<input type="name" class="form-control" id="Street" placeholder="Enter Street"></input>
-										</div>
-									</div>
-									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-										<div class="form-group">
-											<label for="ciTy">City</label>
-											<input type="name" class="form-control" id="ciTy" placeholder="Enter City"></input>
-										</div>
-									</div>
-									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-										<div class="form-group">
-											<label for="sTate">State</label>
-											<input type="text" class="form-control" id="sTate" placeholder="Enter State"></input>
-										</div>
-									</div>
-									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-										<div class="form-group">
-											<label for="zIp">Zip Code</label>
-											<input type="text" class="form-control" id="zIp" placeholder="Zip Code"></input>
-										</div>
-									</div>
-								</div>
-								<div class="row gutters">
-									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-										<div class="text-right">
-											<button type="button" id="submit" name="submit" class="btn btn-outline-primary">Cancel</button>
-											<button type="button" id="submit" name="submit" class="btn btn-outline-secondary">Update</button>
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">											
+										<div class="text-right">																					
+											<button type="button" id="submit2" name="Update" class="btn btn-primary">Update</button>
 										</div>
 									</div>
 								</div>
