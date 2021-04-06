@@ -16,7 +16,16 @@ const Schema = new mongoose.Schema({
     last_checked_out: {
         type: Date,
         default: Date.now
-    }
+    },
+    checked_out_by: [{
+        name: {
+            type: String
+        },
+        time: {
+            type: Date,
+            default: Date.now
+        }
+    }]
 });
 
 exports.Model = mongoose.model("parts", Schema);
