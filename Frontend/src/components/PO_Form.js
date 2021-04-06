@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Menubar from "./layout/Menubar";
 import { Redirect } from 'react-router';
 import jwt_decode from "jwt-decode";
+import Menubar_Homepage from "./layout/Menubar_Homepage";
 
 export default class PO_Form extends Component {
     constructor(props) {
@@ -165,99 +166,104 @@ export default class PO_Form extends Component {
         if (this.state.logged_in) {
             if (this.state.completed) {
                 return (
-                <Redirect to="/order"/>
+                    <Redirect to="/order" />
                 );
             }
             return (
                 <div>
-                    <Menubar/>
-                <div className="container" style={{ marginTop: "1rem" }}>
-                 
-                    <h2>Part Order Form</h2>
-                <form class="row g-3 needs-validation" style={{ marginTop: "2rem", marginLeft: "2rem" }} onSubmit={this.onSubmit}>
-                    <div className="col-md-4">
-                        <label for="company_name" class="form-label">Company Name:</label>
-                            <input
-                                class="form-control"
-                                type="text"
-                                id="company_name"
-                                required
-                                onChange={this.onChange} />
-                    </div>
-                        <div className="col-md-5">
-                            <label for="company_url" class="form-label">Company URL:</label>
-                            <input
-                                class="form-control"
-                                type="text"
-                                id="company_url"
-                                required
-                                onChange={this.onChange} />      
-                    </div>
-                        <div className="col-md-8">
-                            <label for="purpose" class="form-label">Purpose: </label>
-                            <input
-                                class="form-control"
-                                id="purpose"
-                                required
-                                onChange={this.onChange} />  
-                       
+                    <Menubar />
+                    <div className="container" style={{ marginTop: "1rem" }}>
+
+                        <h2>Part Order Form</h2>
+                        <form class="row g-3 needs-validation" style={{ marginTop: "2rem", marginLeft: "2rem" }} onSubmit={this.onSubmit}>
+                            <div className="col-md-4">
+                                <label for="company_name" class="form-label">Company Name:</label>
+                                <input
+                                    class="form-control"
+                                    type="text"
+                                    id="company_name"
+                                    required
+                                    onChange={this.onChange} />
                             </div>
-    
-                            
-    
-                    <div>
-                                {this.createUI()}   
+                            <div className="col-md-5">
+                                <label for="company_url" class="form-label">Company URL:</label>
+                                <input
+                                    class="form-control"
+                                    type="text"
+                                    id="company_url"
+                                    required
+                                    onChange={this.onChange} />
+                            </div>
+                            <div className="col-md-8">
+                                <label for="purpose" class="form-label">Purpose: </label>
+                                <input
+                                    class="form-control"
+                                    id="purpose"
+                                    required
+                                    onChange={this.onChange} />
+
+                            </div>
+
+
+
+                            <div>
+                                {this.createUI()}
                                 <button
-    
+
                                     style={{
                                         width: "150px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem"
                                     }}
-                                    
+
                                     className="btn btn-outline-secondary"
                                     onClick={this.handleAddRow.bind(this)}
                                 >
                                     Add Part
                                      </button>
-                       
+
                             </div>
-    
+
                             <div>
-                                
+
                                 <button
-    
+
                                     style={{
                                         width: "150px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem"
                                     }}
-    
+
                                     className="btn btn-outline-secondary"
                                     type="submit"
                                 >
                                     Submit
                                      </button>
-    
+
                             </div>
-    
-                </form>
+
+                        </form>
                     </div>
-        </div>
+                </div>
             )
         }
         else {
             return (
                 <div>
-                    <h3>Error: Not Logged In</h3>
-                    <Link 
-                        to="/login"
-                        style={{fontFamily: "montserrat"}}
-                        className="col s5 brand-logo center black-text">
-                        Return to Login Page
+                    <Menubar_Homepage />
+                    <div style={{ marginLeft: "40%", marginTop: "3%" }}>
+                        <h1>Error: Not Logged In</h1>
+                        <div style={{ marginLeft: "7%" }}>
+                            <Link
+                                to="/login"
+                                style={{ fontFamily: "montserrat" }}
+                                className="col s5 brand-logo center black-text">
+                                Return to Login Page
                     </Link>
+                        </div>
+                    </div>
                 </div>
             );
         }

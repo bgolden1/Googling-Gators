@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Menubar from "./layout/Menubar";
 import jwt_decode from "jwt-decode";
+import Menubar_Homepage from "./layout/Menubar_Homepage";
 
 const Part = props => (
     <tr>
@@ -57,9 +58,11 @@ export default class PO_Info extends Component {
         if (this.state.logged_in) {
             return (
                 <div>
-                    <Menubar/>
+                    <Menubar />
+                    <div style={{ marginLeft: "1rem"}}>
                     <h2>PO #{this.state.id}</h2>
                     <h3>Parts Requested</h3>
+                </div>
                     <table className="table table-striped" style={{ margin: 30 }} >
                         <thead>
                             <tr>
@@ -80,13 +83,18 @@ export default class PO_Info extends Component {
         else {
             return (
                 <div>
-                    <h3>Error: Not Logged In</h3>
-                    <Link 
-                        to="/login"
-                        style={{fontFamily: "montserrat"}}
-                        className="col s5 brand-logo center black-text">
-                        Return to Login Page
+                    <Menubar_Homepage />
+                    <div style={{ marginLeft: "40%", marginTop: "3%" }}>
+                        <h1>Error: Not Logged In</h1>
+                        <div style={{ marginLeft: "7%" }}>
+                            <Link
+                                to="/login"
+                                style={{ fontFamily: "montserrat" }}
+                                className="col s5 brand-logo center black-text">
+                                Return to Login Page
                     </Link>
+                        </div>
+                    </div>
                 </div>
             );
         }
