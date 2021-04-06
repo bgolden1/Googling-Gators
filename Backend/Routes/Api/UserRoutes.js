@@ -27,6 +27,7 @@ router.post("/register", (req, res) => {
         const newUser = new User({
           name: req.body.name,
           subteam: req.body.subteam,
+          ufid: req.body.ufid,
           email: req.body.email,
           password: req.body.password
         });
@@ -73,6 +74,7 @@ const { errors, isValid } = validateLoginInput(req.body);
           id: user.id,
           name: user.name,
           subteam: user.subteam,
+          ufid: user.ufid,
           email: user.email,
           role: user.role
         };

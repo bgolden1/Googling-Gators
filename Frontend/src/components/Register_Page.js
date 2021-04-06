@@ -11,6 +11,7 @@ class Register_Page extends Component {
         this.state = {
             firstname: "",
             lastname: "",
+            ufid: "",
             email: "",
             password: "",
             password2: "",
@@ -24,6 +25,7 @@ class Register_Page extends Component {
         e.preventDefault();
         const newUser = {
             name: this.state.firstname + ' ' + this.state.lastname,
+            ufid: this.state.ufid,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2
@@ -81,6 +83,22 @@ class Register_Page extends Component {
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
+                            </div>
+                            <div className="col-md-4">
+                                <label for="ufid" class="form-label">UFID</label>
+                                <input
+                                    class="form-control"                                  
+                                    onChange={this.onChange}
+                                    value={this.state.ufid}
+                                    error={errors.ufid}
+                                    id="ufid"
+                                    type="text"
+                                    required
+                                />
+                                <div class="invalid-feedback">
+                                    Please enter a valid UFID.
+                                </div>
+                                     
                             </div>
                             <div className="col-md-12">
                                 <label for="email" class="form-label">UFL Email</label>

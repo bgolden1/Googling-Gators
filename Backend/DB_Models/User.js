@@ -11,6 +11,10 @@ const UserSchema = new Schema({
     enum: ["Business", "ECE", "Mech", "unassigned"],
     default: "unassigned"
   },
+  ufid: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true
