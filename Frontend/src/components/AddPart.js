@@ -9,8 +9,9 @@ export default class Checkout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            part: {},
-            num_to_checkout: 0,
+            name: "",
+            description: "",
+            quantity: "",
             completed: false,
             user_name: "",
             user_role: "",
@@ -32,7 +33,7 @@ export default class Checkout extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        axios.post("/api/parts/add", {"name": this.state.part.name, "num_to_checkout": this.state.num_to_checkout})
+        axios.post("/api/parts/add", {"name": this.state.name, "description": this.state.description, "quantity": this.state.quantity})
         .then(function (result) {
             console.log("Request submitted successfully");
         })
@@ -52,9 +53,19 @@ export default class Checkout extends Component {
             }
             return (
                 <div style={{ marginTop: "4rem", marginLeft: "40%" }}>
-                    How many {this.state.name} would you like to checkout?
                     <form onSubmit={this.onSubmit}>
-                        <input type="text" id="num_to_checkout" onChange={this.onChange}/>
+                        <div>
+                            Part name: 
+                            <input type="text" id="name" onChange={this.onChange}/>
+                        </div>
+                        <div>
+                            Part description: 
+                            <input type="text" id="description" onChange={this.onChange}/>
+                        </div>
+                        <div>
+                            Quantity of part: 
+                            <input type="text" id="quantity" onChange={this.onChange}/>
+                        </div>
                         <input type="submit" value="Submit"/>
                     </form>
                 </div>
