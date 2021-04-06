@@ -174,7 +174,7 @@ export default class PO_Form extends Component {
                     <Menubar />
                     <div className="container" style={{ marginTop: "1rem" }}>
 
-                        <h2>Part Order Form</h2>
+                        <h2>Purchase Order Form</h2>
                         <form class="row g-3 needs-validation" style={{ marginTop: "2rem", marginLeft: "2rem" }} onSubmit={this.onSubmit}>
                             <div className="col-md-4">
                                 <label for="company_name" class="form-label">Company Name:</label>

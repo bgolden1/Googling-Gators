@@ -91,7 +91,7 @@ export default class Order extends Component {
             return (
                 <div>
                     <Menubar/>
-                    <h3 style={{ marginLeft: "2rem" }}>POs List</h3>
+                    <h3 style={{ marginLeft: "2rem" }}>Purchase Orders</h3>
                     {this.state.POs != null ? 
                     <table className="table table-striped" style={{ margin: 30 }} >
                         <thead>
@@ -110,8 +110,10 @@ export default class Order extends Component {
                             { this.poList() }
                         </tbody>
                     </table>
-                    : <body>There are currently no POs</body>}
-                    <Link to={"/po_form"} style={{ marginLeft: "2rem" }}>Create New PO</Link>
+                        : <body>There are currently no POs</body>}
+                    <div style={{ marginBottom: "30px" }}>
+                        <Link to={"/po_form"} style={{ marginLeft: "2rem", marginBottom: "1rem" }}><b>Create New PO</b></Link>
+                     </div>
                 </div>
             )
         }

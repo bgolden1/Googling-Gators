@@ -57,7 +57,8 @@ export default class Checkout extends Component {
         if (this.state.logged_in) {
             if (this.state.completed) {
                 return (
-                <Redirect to="/inventory_page"/>
+                    <Redirect to="/inventory_page" />
+                    
                 );
             }
             return (

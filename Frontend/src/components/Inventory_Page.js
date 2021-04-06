@@ -68,7 +68,7 @@ class Inventory_Page extends Component {
             return (
                 <div>
                     <Menubar />
-                    <h3 style={{ marginLeft: "2rem" }}>Parts List</h3>
+                    <h3 style={{ marginLeft: "2rem" }}>Inventory</h3>
                     <table className="table table-striped" style={{ margin: 30 }} >
                         <thead>
                             <tr>
@@ -86,8 +86,8 @@ class Inventory_Page extends Component {
                         </tbody>
                     </table>
                     {this.state.role == 'admin' &&
-                        <div style={{ marginLeft: "2rem" }}>
-                            <Link to={"/add"}>Add</Link>
+                        <div style={{ marginLeft: "2rem", marginBottom: "30px"}}>
+                            <Link to={"/add"}><b>Add</b></Link>
                         </div>}
                 </div>
             );
