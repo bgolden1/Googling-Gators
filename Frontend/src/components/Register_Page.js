@@ -12,6 +12,7 @@ class Register_Page extends Component {
             firstname: "",
             lastname: "",
             ufid: "",
+            subteam: "",
             email: "",
             password: "",
             password2: "",
@@ -26,14 +27,16 @@ class Register_Page extends Component {
         const newUser = {
             name: this.state.firstname + ' ' + this.state.lastname,
             ufid: this.state.ufid,
+            subteam: this.state.subteam,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2
         };
         axios.post("http://localhost:8080/api/register", newUser).then(function(res) {
-            global.location.pathname = "/login";
+            global.location.pathname = "/confirm";
         }).catch(err => {
-            this.setState({errors: err});
+            console.log(err.response.data);
+            this.setState({errors: err.response.data});
         })
     };
     render() {
@@ -92,6 +95,22 @@ class Register_Page extends Component {
                                     value={this.state.ufid}
                                     error={errors.ufid}
                                     id="ufid"
+                                    type="text"
+                                    required
+                                />
+                                <div class="invalid-feedback">
+                                    Please enter a valid UFID.
+                                </div>
+                                     
+                            </div>
+                            <div className="col-md-4">
+                                <label for="subteam" class="form-label">Subteam</label>
+                                <input
+                                    class="form-control"                                  
+                                    onChange={this.onChange}
+                                    value={this.state.subteam}
+                                    error={errors.subteam}
+                                    id="subteam"
                                     type="text"
                                     required
                                 />
@@ -163,9 +182,8 @@ class Register_Page extends Component {
                             </div>
 
                             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                                <Link to ="/confirm">
-                                <button
-                                    
+                                <button 
+                                    onSubmit={this.onSubmit}
                                     style={{
                                         width: "150px",
                                         borderRadius: "3px",
@@ -177,7 +195,6 @@ class Register_Page extends Component {
                                 >
                                         Sign up
                                  </button>
-                                    </Link>
 
 
                             </div>

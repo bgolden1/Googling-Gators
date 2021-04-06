@@ -19,6 +19,7 @@ import Logout from './components/Logout';
 import UpgradeStatus from './components/UpgradeStatus';
 import RemovePart from './components/RemovePart';
 import RemovePO from './components/RemovePO';
+import AddPart from './components/AddPart';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/upgradeStatus:id" component={UpgradeStatus} />
                 <Route path="/removePart:name" component={RemovePart} />
                 <Route path="/removePO:id" component={RemovePO} />
+                <Route path="/add" component={AddPart} />
             </Switch>
         </Router>
     );
