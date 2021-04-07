@@ -3,6 +3,7 @@ import axios from "axios"
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menubar from "./layout/Menubar";
+import Menubar_Homepage from "./layout/Menubar_Homepage";
 import jwt_decode from "jwt-decode";
 
 
@@ -66,8 +67,8 @@ class Inventory_Page extends Component {
         if (this.state.logged_in) {
             return (
                 <div>
-                    <Menubar/>
-                    <h3 style={{ marginLeft: "2rem" }}>Parts List</h3>
+                    <Menubar />
+                    <h3 style={{ marginLeft: "2rem" }}>Inventory</h3>
                     <table className="table table-striped" style={{ margin: 30 }} >
                         <thead>
                             <tr>
@@ -81,26 +82,31 @@ class Inventory_Page extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            { this.partsList() }
+                            {this.partsList()}
                         </tbody>
                     </table>
-                    {this.state.role == 'admin' && 
-                    <div style={{ marginLeft: "2rem"}}>
-                        <Link to={"/add"}>Add</Link>
-                    </div>}
+                    {this.state.role == 'admin' &&
+                        <div style={{ marginLeft: "2rem", marginBottom: "30px"}}>
+                            <Link to={"/add"}><b>Add</b></Link>
+                        </div>}
                 </div>
             );
         }
         else {
             return (
                 <div>
-                    <h3>Error: Not Logged In</h3>
-                    <Link 
-                        to="/login"
-                        style={{fontFamily: "montserrat"}}
-                        className="col s5 brand-logo center black-text">
-                        Return to Login Page
+                    <Menubar_Homepage />
+                    <div style={{ marginLeft: "40%", marginTop: "3%" }}>
+                        <h1>Error: Not Logged In</h1>
+                        <div style={{ marginLeft: "7%" }}>
+                            <Link
+                                to="/login"
+                                style={{ fontFamily: "montserrat" }}
+                                className="col s5 brand-logo center black-text">
+                                Return to Login Page
                     </Link>
+                        </div>
+                    </div>
                 </div>
             );
         }

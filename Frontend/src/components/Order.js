@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Menubar from "./layout/Menubar";
 import jwt_decode from "jwt-decode";
+import Menubar_Homepage from "./layout/Menubar_Homepage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PO = props => (
@@ -90,7 +91,7 @@ export default class Order extends Component {
             return (
                 <div>
                     <Menubar/>
-                    <h3 style={{ marginLeft: "2rem" }}>POs List</h3>
+                    <h3 style={{ marginLeft: "2rem" }}>Purchase Orders</h3>
                     {this.state.POs != null ? 
                     <table className="table table-striped" style={{ margin: 30 }} >
                         <thead>
@@ -109,21 +110,28 @@ export default class Order extends Component {
                             { this.poList() }
                         </tbody>
                     </table>
-                    : <body>There are currently no POs</body>}
-                    <Link to={"/po_form"} style={{ marginLeft: "2rem" }}>Create New PO</Link>
+                        : <body>There are currently no POs</body>}
+                    <div style={{ marginBottom: "30px" }}>
+                        <Link to={"/po_form"} style={{ marginLeft: "2rem", marginBottom: "1rem" }}><b>Create New PO</b></Link>
+                     </div>
                 </div>
             )
         }
         else {
             return (
                 <div>
-                    <h3>Error: Not Logged In</h3>
-                    <Link 
-                        to="/login"
-                        style={{fontFamily: "montserrat"}}
-                        className="col s5 brand-logo center black-text">
-                        Return to Login Page
+                    <Menubar_Homepage />
+                    <div style={{ marginLeft: "40%", marginTop: "3%" }}>
+                        <h1>Error: Not Logged In</h1>
+                        <div style={{ marginLeft: "7%" }}>
+                            <Link
+                                to="/login"
+                                style={{ fontFamily: "montserrat" }}
+                                className="col s5 brand-logo center black-text">
+                                Return to Login Page
                     </Link>
+                        </div>
+                    </div>
                 </div>
             );
         }

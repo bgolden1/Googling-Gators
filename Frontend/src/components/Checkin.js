@@ -3,6 +3,9 @@ import axios from "axios";
 import { Redirect } from 'react-router';
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
+import Menubar from "./layout/Menubar";
+import Menubar_Homepage from "./layout/Menubar_Homepage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Checkin extends Component {
     constructor(props) {
@@ -53,32 +56,75 @@ export default class Checkin extends Component {
     render() {
         if (this.state.logged_in) {
             if (this.state.completed) {
-                return (<Redirect to="/inventory_page"/>);
+                return (
+                    //<Redirect to="/inventory_page" />
+                    <meta http-equiv="refresh" content="0; url = /inventory_page" />
+                );
             }
             return (
-                <div style={{ marginTop: "4rem", marginLeft: "40%" }}>
-                    How many {this.state.name} would you like to check-in?
-                    <form onSubmit={this.onSubmit}>
-                        <input type="text" id="num_to_checkin" onChange={this.onChange}/>
-                        <input type="submit" value="Submit"/>
-                    </form>
+                <div>
+                    <Menubar />
+                    <div style={{ marginTop: "2rem", marginLeft: "30%" }}>
+
+                        <Link to="/inventory_page" className="btn-flat waves-effect">
+                            <i className="material-icons left">keyboard_backspace</i> Back to Home
+                     </Link>
+                        <h4>Inventory Check-in</h4>
+                        <form novalidate onSubmit={this.onSubmit} class="row g-3 needs-validation">
+                            <div style={{ marginLeft: "10%", marginTop: "rem" }} className="col-md-4">
+                                <label class="form-label">How many {this.state.name} would you like to check-in?</label>
+                                <input
+                                    class="form-control"
+                                    onChange={this.onChange}
+                                    id="num_to_checkin"
+                                    type="text"
+                                    required
+                                />
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+
+                                <div className="col s12" style={{ marginLeft: "60%" }}>
+                                    <button
+
+                                        style={{
+                                            width: "150px",
+                                            borderRadius: "3px",
+                                            letterSpacing: "1.5px",
+                                            marginTop: "1rem"
+                                        }}
+                                        type="submit"
+                                        className="btn btn-outline-secondary"
+                                    >
+                                        Submit
+                                 </button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                
             )
         }
         else {
             return (
                 <div>
-                    <h3>Error: Not Logged In</h3>
-                    <Link 
-                        to="/login"
-                        style={{fontFamily: "montserrat"}}
-                        className="col s5 brand-logo center black-text">
-                        Return to Login Page
+                    <Menubar_Homepage />
+                    <div style={{ marginLeft: "40%", marginTop: "3%" }}>
+                        <h1>Error: Not Logged In</h1>
+                        <div style={{ marginLeft: "7%" }}>
+                            <Link
+                                to="/login"
+                                style={{ fontFamily: "montserrat" }}
+                                className="col s5 brand-logo center black-text">
+                                Return to Login Page
                     </Link>
+                        </div>
+                    </div>
                 </div>
             );
+
         }
-        
     }
 }
