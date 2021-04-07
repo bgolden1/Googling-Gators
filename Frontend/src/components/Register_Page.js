@@ -103,23 +103,7 @@ class Register_Page extends Component {
                                 </div>
                                      
                             </div>
-                            <div className="col-md-4">
-                                <label for="subteam" class="form-label">Subteam</label>
-                                <input
-                                    class="form-control"                                  
-                                    onChange={this.onChange}
-                                    value={this.state.subteam}
-                                    error={errors.subteam}
-                                    id="subteam"
-                                    type="text"
-                                    required
-                                />
-                                <div class="invalid-feedback">
-                                    Please enter a valid UFID.
-                                </div>
-                                     
-                            </div>
-                            <div className="col-md-12">
+                            <div className="col-md-6">
                                 <label for="email" class="form-label">UFL Email</label>
                                 <input
                                     class="form-control"
@@ -133,6 +117,22 @@ class Register_Page extends Component {
                                 />
                                 <div class="invalid-feedback">
                                     Please enter a valid email address.
+                                </div>
+                                     
+                            </div>
+                            <div className="col-md-6">
+                                <label for="subteam" class="form-label">Subteam</label>
+                                <input
+                                    class="form-control"                                  
+                                    onChange={this.onChange}
+                                    value={this.state.subteam}
+                                    error={errors.subteam}
+                                    id="subteam"
+                                    type="text"
+                                    required
+                                />
+                                <div class="invalid-feedback">
+                                    Please enter a valid Subteam.
                                 </div>
                                      
                             </div>
