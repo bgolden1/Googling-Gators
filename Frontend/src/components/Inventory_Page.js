@@ -12,7 +12,7 @@ const Part = props => (
       <td>{props.part.description}</td>
       <td>{props.part.quantity_available}</td>
       <td>{props.part.total_quantity}</td>
-      <td>{props.part.last_checked_out}</td>
+      <td>{props.part.last_checked_out.substring(0, 10)}</td>
       <td>
           <div><Link to={"/checkout" + props.part.name}>Check-out</Link></div>
           <div><Link to={"/checkin" + props.part.name}>Check-in</Link></div>
