@@ -7,6 +7,7 @@ import Menubar from "./layout/Menubar";
 import Menubar_Homepage from "./layout/Menubar_Homepage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 export default class Checkout extends Component {
     constructor(props) {
         super(props);
@@ -46,19 +47,27 @@ export default class Checkout extends Component {
         .then(function (result) {
             console.log("Request submitted successfully");
         })
-        this.setState({completed: true});
+        this.setState({ completed: true });
+        
     }
 
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
 
+
+
     render() {
         if (this.state.logged_in) {
             if (this.state.completed) {
                 return (
-                    <Redirect to="/inventory_page" />
-                    
+
+                    // <Redirect to="/inventory_page" />
+                    // <li >
+                    <meta http-equiv="refresh" content="0; url = /inventory_page" />
+                    // </li>
+
+
                 );
             }
             return (

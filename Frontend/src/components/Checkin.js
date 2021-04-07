@@ -56,7 +56,10 @@ export default class Checkin extends Component {
     render() {
         if (this.state.logged_in) {
             if (this.state.completed) {
-                return (<Redirect to="/inventory_page" />);
+                return (
+                    //<Redirect to="/inventory_page" />
+                    <meta http-equiv="refresh" content="0; url = /inventory_page" />
+                );
             }
             return (
                 <div>
