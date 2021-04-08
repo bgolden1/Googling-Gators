@@ -3,6 +3,7 @@ import axios from "axios";
 import { Redirect } from 'react-router';
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
+import Menubar_Homepage from "./layout/Menubar_Homepage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class RemovePO extends Component {
@@ -75,13 +76,18 @@ export default class RemovePO extends Component {
         else {
             return (
                 <div>
-                    <h3>Error: Not Logged In</h3>
-                    <Link 
-                        to="/login"
-                        style={{fontFamily: "montserrat"}}
-                        className="col s5 brand-logo center black-text">
-                        Return to Login Page
+                    <Menubar_Homepage />
+                    <div style={{ marginLeft: "40%", marginTop: "3%" }}>
+                        <h1>Error: Not Logged In</h1>
+                        <div style={{ marginLeft: "7%" }}>
+                            <Link
+                                to="/login"
+                                style={{ fontFamily: "montserrat" }}
+                                className="col s5 brand-logo center black-text">
+                                Return to Login Page
                     </Link>
+                        </div>
+                    </div>
                 </div>
             );
         }

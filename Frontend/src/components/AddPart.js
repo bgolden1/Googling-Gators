@@ -3,13 +3,15 @@ import axios from "axios";
 import { Redirect } from 'react-router';
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
+import Menubar_Homepage from "./layout/Menubar_Homepage";
 
 export default class Checkout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            part: {},
-            num_to_checkout: 0,
+            name: "",
+            description: "",
+            quantity: "",
             completed: false,
             user_name: "",
             user_role: "",
@@ -31,7 +33,7 @@ export default class Checkout extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        axios.post("/api/parts/add", {"name": this.state.part.name, "num_to_checkout": this.state.num_to_checkout})
+        axios.post("/api/parts/add", {"name": this.state.name, "description": this.state.description, "quantity": this.state.quantity})
         .then(function (result) {
             console.log("Request submitted successfully");
         })
@@ -51,9 +53,19 @@ export default class Checkout extends Component {
             }
             return (
                 <div style={{ marginTop: "4rem", marginLeft: "40%" }}>
-                    How many {this.state.name} would you like to checkout?
                     <form onSubmit={this.onSubmit}>
-                        <input type="text" id="num_to_checkout" onChange={this.onChange}/>
+                        <div>
+                            Part name: 
+                            <input type="text" id="name" onChange={this.onChange}/>
+                        </div>
+                        <div>
+                            Part description: 
+                            <input type="text" id="description" onChange={this.onChange}/>
+                        </div>
+                        <div>
+                            Quantity of part: 
+                            <input type="text" id="quantity" onChange={this.onChange}/>
+                        </div>
                         <input type="submit" value="Submit"/>
                     </form>
                 </div>
@@ -62,13 +74,18 @@ export default class Checkout extends Component {
         else {
             return (
                 <div>
-                    <h3>Error: Not Logged In</h3>
-                    <Link 
-                        to="/login"
-                        style={{fontFamily: "montserrat"}}
-                        className="col s5 brand-logo center black-text">
-                        Return to Login Page
+                    <Menubar_Homepage />
+                    <div style={{ marginLeft: "40%", marginTop: "3%" }}>
+                        <h1>Error: Not Logged In</h1>
+                        <div style={{ marginLeft: "7%" }}>
+                            <Link
+                                to="/login"
+                                style={{ fontFamily: "montserrat" }}
+                                className="col s5 brand-logo center black-text">
+                                Return to Login Page
                     </Link>
+                        </div>
+                    </div>
                 </div>
             );
         }

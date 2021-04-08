@@ -11,6 +11,8 @@ class Register_Page extends Component {
         this.state = {
             firstname: "",
             lastname: "",
+            ufid: "",
+            subteam: "",
             email: "",
             password: "",
             password2: "",
@@ -24,14 +26,17 @@ class Register_Page extends Component {
         e.preventDefault();
         const newUser = {
             name: this.state.firstname + ' ' + this.state.lastname,
+            ufid: this.state.ufid,
+            subteam: this.state.subteam,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2
         };
         axios.post("http://localhost:8080/api/register", newUser).then(function(res) {
-            global.location.pathname = "/login";
+            global.location.pathname = "/confirm";
         }).catch(err => {
-            this.setState({errors: err});
+            console.log(err.response.data);
+            this.setState({errors: err.response.data});
         })
     };
     render() {
@@ -82,7 +87,23 @@ class Register_Page extends Component {
                                     Looks good!
                                 </div>
                             </div>
-                            <div className="col-md-12">
+                            <div className="col-md-4">
+                                <label for="ufid" class="form-label">UFID</label>
+                                <input
+                                    class="form-control"                                  
+                                    onChange={this.onChange}
+                                    value={this.state.ufid}
+                                    error={errors.ufid}
+                                    id="ufid"
+                                    type="text"
+                                    required
+                                />
+                                <div class="invalid-feedback">
+                                    Please enter a valid UFID.
+                                </div>
+                                     
+                            </div>
+                            <div className="col-md-6">
                                 <label for="email" class="form-label">UFL Email</label>
                                 <input
                                     class="form-control"
@@ -96,6 +117,22 @@ class Register_Page extends Component {
                                 />
                                 <div class="invalid-feedback">
                                     Please enter a valid email address.
+                                </div>
+                                     
+                            </div>
+                            <div className="col-md-6">
+                                <label for="subteam" class="form-label">Subteam</label>
+                                <input
+                                    class="form-control"                                  
+                                    onChange={this.onChange}
+                                    value={this.state.subteam}
+                                    error={errors.subteam}
+                                    id="subteam"
+                                    type="text"
+                                    required
+                                />
+                                <div class="invalid-feedback">
+                                    Please enter a valid Subteam.
                                 </div>
                                      
                             </div>
@@ -145,9 +182,8 @@ class Register_Page extends Component {
                             </div>
 
                             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                                <Link to ="/confirm">
-                                <button
-                                    
+                                <button 
+                                    onSubmit={this.onSubmit}
                                     style={{
                                         width: "150px",
                                         borderRadius: "3px",
@@ -159,7 +195,6 @@ class Register_Page extends Component {
                                 >
                                         Sign up
                                  </button>
-                                    </Link>
 
 
                             </div>

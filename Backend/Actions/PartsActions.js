@@ -23,8 +23,8 @@ exports.removePartByName = (__name__) => {
 exports.createNewPart = (__name__, __description__, __quantity__) => {
     return this.getPartByName(__name__).then(part => {
         if (part) {
-            part.total_quantity += __quantity__;
-            part.quantity_available += __quantity__;
+            part.total_quantity += Number(__quantity__);
+            part.quantity_available += Number(__quantity__);
             return part.save();
         }
         else {

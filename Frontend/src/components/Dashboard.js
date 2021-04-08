@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Menubar from "./layout/Menubar";
 import Sidebar from "./layout/Sidebar";
 import jwt_decode from "jwt-decode";
+import Menubar_Homepage from "./layout/Menubar_Homepage";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Dashboard extends Component {
                 <div>
                     <Menubar />
                     <Sidebar />
-                    <div class="text-center" style={{ marginTop: "12rem", fontFamily:"montserrat" }}>
+                    <div class="text-center" style={{ marginTop: "12rem", fontFamily: "montserrat" }}>
 
                         <h1> <b>Welcome,</b> {this.state.user_name}</h1>
                         <h3><small class="text-muted">Where do you want to go?</small></h3>
@@ -57,7 +58,7 @@ class Dashboard extends Component {
                                  </button>
                             </Link>
 
-                            
+
 
                             <Link to="/order">
                                 <button
@@ -129,13 +130,18 @@ class Dashboard extends Component {
         else {
             return (
                 <div>
-                    <h3>Error: Not Logged In</h3>
-                    <Link
-                        to="/login"
-                        style={{ fontFamily: "montserrat" }}
-                        className="col s5 brand-logo center black-text">
-                        Return to Login Page
+                    <Menubar_Homepage />
+                    <div style={{ marginLeft: "40%", marginTop: "3%" }}>
+                        <h1>Error: Not Logged In</h1>
+                        <div style={{ marginLeft: "7%" }}>
+                            <Link
+                                to="/login"
+                                style={{ fontFamily: "montserrat" }}
+                                className="col s5 brand-logo center black-text">
+                                Return to Login Page
                     </Link>
+                        </div>
+                    </div>
                 </div>
             );
         }
