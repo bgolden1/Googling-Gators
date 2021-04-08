@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import logo from './gatorlooplogo.jpg';
+import logo from './gatorlooplogo.png';
 import Menubar_Homepage from "./layout/Menubar_Homepage";
 
 class Homepage extends Component {

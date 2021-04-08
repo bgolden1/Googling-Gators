@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, Router } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import logo from "./gatorlooplogo.jpg";
+import logo from "./gatorlooplogo.png";
 
 class Menubar_Homepage extends Component {
     render() {
