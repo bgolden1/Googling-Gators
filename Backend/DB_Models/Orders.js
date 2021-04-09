@@ -42,7 +42,7 @@ const PoSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ["new", "approved", "submitted", "recieved"],
+        enum: ["new", "approved", "submitted", "received"],
         default: "new"
     }
 });

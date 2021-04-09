@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+import emailjs from 'emailjs-com';
 //import { Redirect } from 'react-router';
 
 
@@ -19,6 +20,16 @@ class Register_Page extends Component {
             errors: {}
         };
     }
+    sendEmail = e => {
+        e.preventDefault();
+    
+        emailjs.send('gatorloopims', 'template_fgsvvcr', e.target)
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      }
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };

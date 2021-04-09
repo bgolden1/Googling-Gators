@@ -39,7 +39,7 @@ router.post("/po", (req, res) => {
 });
 router.post("/upgradeStatus", (req, res) => {
     POrder.findOne({_id: req.body.id}).exec().then(PO => {
-        const options = ["new", "approved", "submitted", "recieved"];
+        const options = ["new", "approved", "submitted", "received"];
         if (PO.status == "submitted") {
             for (var i = 0; i < PO.parts.length; i++) {
                 Parts.createNewPart(PO.parts[i].name, PO.parts[i].description, PO.parts[i].quantity);
