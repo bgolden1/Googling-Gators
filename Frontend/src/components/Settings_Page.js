@@ -14,6 +14,7 @@ class Settings_Page extends Component {
 			user_ufid: "",
 			user_email: "",
 			user_role: "",
+			user_subteam: "",
 			logged_in: false
 		}
 	}
@@ -22,7 +23,7 @@ class Settings_Page extends Component {
 		try {
 			const token = global.localStorage.getItem("jwtToken");
         	const decoded = jwt_decode(token);
-        	this.setState({user_name: decoded.name, user_ufid: decoded.ufid, user_email: decoded.email, user_role: decoded.role, logged_in: true});
+        	this.setState({user_name: decoded.name, user_ufid: decoded.ufid, user_email: decoded.email, user_role: decoded.role, user_subteam: decoded.subteam, logged_in: true});
         	console.log(decoded);
 		}
 		catch(err) {
@@ -46,7 +47,9 @@ class Settings_Page extends Component {
 											<div class="user-profile">
 												<h5 class="user-role">{this.state.user_role}</h5>
 												<h5 class="user-name">{this.state.user_name}</h5>
-												<h5 class="user-ufid">{this.state.user_ufid}</h5>
+												<h6 class="user-subteam">{this.state.user_subteam}</h6>
+												<h5 
+												class="user-ufid">{this.state.user_ufid}</h5>
 												<h6 class="user-email">{this.state.user_email}</h6>
 											</div>
 										</div>
@@ -69,13 +72,19 @@ class Settings_Page extends Component {
 											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 												<div class="form-group">
 													<label for="eMail">Email</label>
-													<input type="email" class="form-control" id="eMail" placeholder="Enter email ID"></input>
+													<input type="email" class="form-control" id="eMail" placeholder="Enter UFL email address"></input>
 												</div>
 											</div>
 											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 												<div class="form-group">
 													<label for="UFID">UFID</label>
 													<input type="text" class="form-control" id="UFID" placeholder="Enter UFID"></input>
+												</div>
+											</div>
+											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+												<div class="form-group">
+													<label for="subteam">Subteam</label>
+													<input type="text" class="form-control" id="subteam" placeholder="Enter subteam"></input>
 												</div>
 											</div>
 											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -88,7 +97,7 @@ class Settings_Page extends Component {
 										<div class="row gutters">
 											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 												<div class="text-right">
-													<button type="button" id="submit2" name="Update" class="btn btn-primary">Update</button>
+													<ul><a href="Update.js"><button type="button" class="btn btn-primary">Update</button></a></ul>												
 												</div>
 											</div>
 										</div>
