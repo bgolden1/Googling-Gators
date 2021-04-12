@@ -7,7 +7,8 @@
 		"key": "please change me"
 	},
 	"gmail": {
-		"clientID": "",
-		"apiKey": ""
-	}
+		"user": "gatorloopims@gmail.com",
+		"password": "Gloop2021"
+	},
+	"admin_email": "brodygolden7@gmail.com"
 }

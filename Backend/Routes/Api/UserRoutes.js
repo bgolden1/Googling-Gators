@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("../../Config/config.json");
 salt = config.auth.key;
+const email = require("../../Config/Email");
+const admin_email = require("../../Config/config.json").admin_email;
 
 const userController = require("../../Controllers/UserController.js");
 // Load input validation
@@ -48,6 +50,11 @@ router.post("/register", (req, res) => {
               .catch(err => console.log(err));
           });
         });
+        email.sendEmail(admin_email, `New user verification for ${newUser.name}`, `<p>Hello Gatorloop Admin,</p>
+        <p style="padding: 12px; font-style: italic;">Please verify that ${newUser.name} is a member of this club.</p>
+        <p style="padding: 12px; font-style: italic;">Click <a href="https://gatorloop-ims.herokuapp.com/login" target="_blank" rel="noopener">here</a> to login and upgrade this user to "member" status.</p>
+        <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; font-style: italic;">Best,</p>
+        <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; font-style: italic;">Gatorloop IMS</p>`)
       }
     });
   });

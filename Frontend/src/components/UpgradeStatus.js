@@ -8,21 +8,24 @@ export default class UpgradeStatus extends Component {
         this.state = {
             id: props.match.params.id,
             user_name: "",
+            user_email: "",
             user_role: "",
             user_subteam: "",
             logged_in: false
         }
     }
     componentDidMount() {
+        var email = "";
         try{
             const token = global.localStorage.getItem("jwtToken");
             const decoded = jwt_decode(token);
-            this.setState({user_name: decoded.name, user_subteam: decoded.subteam, user_role: decoded.role, logged_in: true});
+            email = decoded.email;
+            this.setState({user_name: decoded.name, user_email: decoded.email, user_subteam: decoded.subteam, user_role: decoded.role, logged_in: true});
         }
         catch(err) {
             console.log(err)
         }
-        axios.post("/api/upgradeStatus", {"id": this.state.id}).then(res => {
+        axios.post("/api/upgradeStatus", {"id": this.state.id, "email": email}).then(res => {
             console.log(res);
             global.location.pathname = "/order";
         })

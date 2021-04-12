@@ -5,6 +5,9 @@ const validatePoInput = require("../../Validation/Orders.js");
 // Load User model
 const POrder = require("../../DB_Models/Orders").Model;
 const Parts = require("../../Actions/PartsActions");
+const email = require("../../Config/Email");
+const admin_email = require("../../Config/config.json").admin_email;
+const User = require("../../DB_Models/User.js");
 
 let router = express.Router();
 
@@ -36,6 +39,13 @@ router.post("/po", (req, res) => {
         .save()
         .then(po => res.json(po))
         .catch(err => console.log(err));
+    email.sendEmail(admin_email, `New PO created for ${newPo.subteam}`, `<p>Hello Gatorloop Admin,</p>
+    <p style="padding: 12px; font-style: italic;">Please approve and/or submit this PO.</p>
+    <p style="padding: 12px; font-style: italic;">Click&nbsp;<a href="https://gatorloop-ims.herokuapp.com/login" target="_blank" rel="noopener">here</a>&nbsp;to login and see this PO.</p>
+    <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; font-style: italic;">Best,</p>
+    <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; font-style: italic;">Gatorloop IMS</p>
+    <p>&nbsp;</p>`)
+    
 });
 router.post("/upgradeStatus", (req, res) => {
     POrder.findOne({_id: req.body.id}).exec().then(PO => {
@@ -55,6 +65,13 @@ router.post("/upgradeStatus", (req, res) => {
             .save()
             .then(po => res.json(po))
             .catch(err => console.log(err));
+        
+        email.sendEmail(req.body.email, `Status of PO has changed`, `<p>Hello ${PO.owner},</p>
+        <p style="padding: 12px; font-style: italic;">This PO has been changed to ${PO.status}</p>
+        <p style="padding: 12px; font-style: italic;">Click&nbsp;<a href="https://gatorloop-ims.herokuapp.com/login" target="_blank" rel="noopener">here</a> to login and see this PO.</p>
+        <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; font-style: italic;">Best,</p>
+        <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; font-style: italic;">Gatorloop IMS</p>
+        <p>&nbsp;</p>`)
     });
 })
 router.post("/po/remove:id", POController.removeByID);
