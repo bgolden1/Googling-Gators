@@ -5,5 +5,9 @@
 	},
 	"auth": {
 		"key": "please change me"
+	},
+	"gmail": {
+		"clientID": "",
+		"apiKey": ""
 	}
 }

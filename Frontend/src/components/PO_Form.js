@@ -5,6 +5,9 @@ import Menubar from "./layout/Menubar";
 import { Redirect } from 'react-router';
 import jwt_decode from "jwt-decode";
 import Menubar_Homepage from "./layout/Menubar_Homepage";
+import emailjs from 'emailjs-com';
+import{ init } from 'emailjs-com';
+init("user_zmOOOlJuXTpKRSHIetPh6");
 
 export default class PO_Form extends Component {
     constructor(props) {
@@ -162,9 +165,19 @@ export default class PO_Form extends Component {
         this.setState({completed: true});
     }
 
+    sendEmail = e => {
+        emailjs.send('gatorloopims', 'template_egb0qsc', e)
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          })
+      }
+
     render() {
         if (this.state.logged_in) {
             if (this.state.completed) {
+                this.sendEmail({subteam: this.state.subteam, admin_email: "brodygolden7@gmail.com"})
                 return (
                     <Redirect to="/order" />
                 );

@@ -5,14 +5,16 @@ const jwt = require("jsonwebtoken");
 const config = require("../../Config/config.json");
 salt = config.auth.key;
 
-const UserController = require("../../Controllers/UserController.js");
+const userController = require("../../Controllers/UserController.js");
 // Load input validation
 const validateRegisterInput = require("../../Validation/Register.js");
 const validateLoginInput = require("../../Validation/Login.js");
 // Load User model
 const User = require("../../DB_Models/User");
-const UserActions = require("../../Actions/UserActions");
 
+router.get("/users", userController.getAll);
+router.get("/users:email", userController.getByEmail);
+router.post("/user/remove:email", userController.removeUser);
 
 // @route POST api/register
 // @desc Register user

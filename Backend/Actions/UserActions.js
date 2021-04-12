@@ -12,6 +12,10 @@ exports.getUserByID = (__id__) => {
     return User.findById(__id__).exec();
 }
 
+exports.getUserByRole = (__role__) => {
+    return User.find({role: __role__}).exec();
+}
+
 exports.changeUserByID = (id, user) => {
     return User.findByIdAndUpdate(id, {$set: user}, { new: true , }).exec();
 }

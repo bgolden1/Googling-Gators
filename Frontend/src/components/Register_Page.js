@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import emailjs from 'emailjs-com';
+import{ init } from 'emailjs-com';
+init("user_zmOOOlJuXTpKRSHIetPh6");
 //import { Redirect } from 'react-router';
 
 
@@ -21,14 +23,12 @@ class Register_Page extends Component {
         };
     }
     sendEmail = e => {
-        e.preventDefault();
-    
-        emailjs.send('gatorloopims', 'template_fgsvvcr', e.target)
+        emailjs.send('gatorloopims', 'template_fgsvvcr', e)
           .then((result) => {
               console.log(result.text);
           }, (error) => {
               console.log(error.text);
-          });
+          })
       }
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
@@ -49,6 +49,7 @@ class Register_Page extends Component {
             console.log(err.response.data);
             this.setState({errors: err.response.data});
         })
+        this.sendEmail({about_name: this.state.firstname + ' ' + this.state.lastname, admin_email: "brodygolden7@gmail.com"})
     };
     render() {
         const { errors } = this.state;
