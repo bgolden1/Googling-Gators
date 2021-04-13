@@ -1,8 +1,8 @@
-const parts = require("../Actions/UserActions.js");
+const users = require("../Actions/UserActions.js");
 const net = require("../Utils/Net");
 
 exports.getAll = (req, res) => {
-    parts.getAllUsers().then(function (pos) {
+    users.getAllUsers().then(function (pos) {
         res.json(net.getSuccessResponse(null, pos));
     }).catch(function (err) {
         console.log("error getting all users: ", err);
@@ -11,7 +11,7 @@ exports.getAll = (req, res) => {
 };
 
 exports.getByEmail = (req, res) => {
-    parts.getUserByEmail(req.params.email).then(function (pos) {
+    users.getUserByEmail(req.params.email).then(function (pos) {
         res.json(net.getSuccessResponse(null, pos));
     }).catch(function (err) {
         console.log("error getting user ", req.params.name, ": ", err);
@@ -37,7 +37,7 @@ exports.changeUserByID = (req, res) => {
 }
 
 exports.removeUser = (req, res) => {
-    parts.removeUserByEmail(req.params.email).then(function (pos) {
+    users.removeUserByEmail(req.params.email).then(function (pos) {
         res.json(net.getSuccessResponse(null, pos));
     }).catch(function (err) {
         console.log("error getting user ", req.params.name, ": ", err);
@@ -46,7 +46,7 @@ exports.removeUser = (req, res) => {
 }
 
 exports.createNewUser = (req, res) => {
-    user.createNewUser(
+    users.createNewUser(
         req.body.subteam,
         req.body.role,
         req.body.name,

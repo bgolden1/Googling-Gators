@@ -17,6 +17,45 @@ const User = require("../../DB_Models/User");
 router.get("/users", userController.getAll);
 router.get("/users:email", userController.getByEmail);
 router.post("/user/remove:email", userController.removeUser);
+router.post("/promote", (req, res) => {
+  User.findOne({email: req.body.email}).then(user => {
+    const options = ["user", "member", "admin"]
+    for (var i = 0; i < options.length - 1; i++) {
+      if (user.role == options[i]) {
+          user.role = options[i + 1];
+          break;
+      }
+    }
+
+    user
+    .save()
+    .then(user => res.json(user))
+    .catch(err => console.log(err));
+  })
+  .catch(err => {
+    res.json(err);
+  })
+});
+
+router.post("/demote", (req, res) => {
+  User.findOne({email: req.body.email}).then(user => {
+    const options = ["user", "member", "admin"]
+    for (var i = 1; i < options.length; i++) {
+      if (user.role == options[i]) {
+          user.role = options[i - 1];
+          break;
+      }
+    }
+
+    user
+    .save()
+    .then(user => res.json(user))
+    .catch(err => console.log(err));
+  })
+  .catch(err => {
+    res.json(err);
+  })
+});
 
 // @route POST api/register
 // @desc Register user
