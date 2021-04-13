@@ -48,12 +48,6 @@ function App() {
         </Router>
     );
 
-  /*return (
-    <div className="App">
-      <Homepage> </Homepage>
-      </div>
-  );
-  */
 }
 
 export default App

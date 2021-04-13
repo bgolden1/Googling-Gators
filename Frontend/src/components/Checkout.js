@@ -73,15 +73,16 @@ export default class Checkout extends Component {
             return (
                 <div>
                     <Menubar />
-                    <div style={{ marginTop: "2rem", marginLeft: "30%" }}>
+                    <div style={{ marginTop: "2rem", marginLeft: "40%" }}>
                         
                      <Link to="/inventory_page" className="btn-flat waves-effect">
-                            <i className="material-icons left">keyboard_backspace</i> Back to Home
+                            <i className="material-icons left">keyboard_backspace</i> Back to Inventory
                      </Link>
-                        <h4>Inventory Checkout</h4>
+                        <div style={{ marginTop: "1rem" }}>
+                        <h2>Inventory Checkout</h2>
                      <form novalidate onSubmit={this.onSubmit} class="row g-3 needs-validation">
-                            <div style={{ marginLeft: "10%", marginTop: "rem" }} className="col-md-4">
-                                <label class="form-label">How many {this.state.name} would you like to checkout?</label>
+                            <div style={{  }} className="col-md-4">
+                                <label class="form-label">How many <b>{this.state.name}</b> would you like to checkout?</label>
                                 <input
                                     class="form-control"
                                     onChange={this.onChange}
@@ -112,7 +113,8 @@ export default class Checkout extends Component {
                                 </div>
                             </div>
                      </form>
-                    </div>
+                        </div>
+                        </div>
                     </div>
             )
         }

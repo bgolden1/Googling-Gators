@@ -4,24 +4,28 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import logo from "./gatorlooplogo.png";
 
+
+
 class Menubar extends Component {
     render() {
         return (
             <Navbar variant="light" bg="light">
-                <div class="container-fluid" style={{ fontFamily:"montserrat" }}>
+                <div class="container-fluid" style={{ fontFamily:"montserrat"}}>
                     <a class="navbar-brand" href="/dashboard">
-                        <img src={logo} width="187" height="75" alt=""/>
+                        <img src={logo} width="187" height="75" alt="gatorloop logo"/>
                     </a>
                     <Nav className="mr-auto">
-                        <div style={{ marginLeft: "1rem" }}>
+                        <div style={{ marginLeft: "1rem", marginTop: "1rem"}} >
 
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <ul role="tablist" class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
+                                    <a class="nav-link" id="dashboard-tab" href="/dashboard" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</a>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/inventory_page">Inventory</a>
+                                    <a class="nav-link " id="inventory-tab"  href="/inventory_page" role="tab" aria-controls="inventory" aria-selected="false">Inventory</a>
                                 </li>
+
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Purchase Order
@@ -32,17 +36,19 @@ class Menubar extends Component {
                                         
                                     </ul>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/settings">Settings</a>
+                                    <a class="nav-link " id="settings-tab" href="/settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/logout">Log Out</a>
+                                    <a class="nav-link " id="logout-tab" href="/logout" role="tab" aria-controls="logout" aria-selected="false">Log Out</a>
                                  </li>
                                     
 
 
                             </ul>
+                           
                         </div>
                     </Nav>
                 </div>

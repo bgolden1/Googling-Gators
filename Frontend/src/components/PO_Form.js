@@ -212,6 +212,7 @@ export default class PO_Form extends Component {
 
                                     style={{
                                         width: "150px",
+                                        height: "40px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem"
@@ -231,9 +232,11 @@ export default class PO_Form extends Component {
 
                                     style={{
                                         width: "150px",
+                                        height: "40px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
-                                        marginTop: "1rem"
+                                        marginTop: "1rem",
+                                        marginBottom: "2rem"
                                     }}
 
                                     className="btn btn-outline-secondary"
@@ -244,6 +247,7 @@ export default class PO_Form extends Component {
 
                             </div>
 
+                            
                         </form>
                     </div>
                 </div>
