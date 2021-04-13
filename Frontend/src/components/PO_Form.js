@@ -36,7 +36,7 @@ export default class PO_Form extends Component {
 
     createUI(){
         return this.state.parts.map((el, i) => 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem", fontFamily: "montserrat"}}>
                 <div key={i} class="p-2 bg-light border ">
                     <h5>Part #{i + 1}</h5>
             
@@ -97,10 +97,11 @@ export default class PO_Form extends Component {
                         <div className="row" style={{ paddingLeft: "11.250px" }}>
                             <button
                                 style={{
-                                    width: "100px",
                                     borderRadius: "3px",
                                     letterSpacing: "1.5px",
-                                    marginTop: "1rem"
+                                    marginTop: "1.85rem",
+                                    marginLeft: "4rem",
+                                    height: "40px"
                                 }}
                                 className="btn btn-outline-secondary"
                                 onClick={this.handleRemoveRow.bind(this, i)}
@@ -172,12 +173,12 @@ export default class PO_Form extends Component {
                 );
             }
             return (
-                <div>
+                <div style={{ fontFamily: "montserrat" }}>
                     <Menubar />
                     <div className="container" style={{ marginTop: "1rem" }}>
 
-                        <h2>Purchase Order Form</h2>
-                        <form class="row g-3 needs-validation" style={{ marginTop: "2rem", marginLeft: "2rem" }} onSubmit={this.onSubmit}>
+                        <h2><strong>Purchase Order Form</strong></h2>
+                        <form class="row g-3 needs-validation" style={{ marginTop: "2rem" }} onSubmit={this.onSubmit}>
                             <div className="col-md-4">
                                 <label for="company_name" class="form-label">Company Name:</label>
                                 <input
@@ -207,14 +208,12 @@ export default class PO_Form extends Component {
                             </div>
 
 
-
-                            <div>
+                            <div style={{ marginLeft: "1rem" }}>
                                 {this.createUI()}
                                 <button
 
                                     style={{
-                                        width: "150px",
-                                        height: "40px",
+                                        width: "125px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem"
@@ -225,20 +224,16 @@ export default class PO_Form extends Component {
                                 >
                                     Add Part
                                      </button>
-
                             </div>
 
                             <div>
-
                                 <button
-
                                     style={{
-                                        width: "150px",
-                                        height: "40px",
+                                        width: "125px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem",
-                                        marginBottom: "2rem"
+                                        marginLeft: "1rem"
                                     }}
 
                                     className="btn btn-outline-secondary"

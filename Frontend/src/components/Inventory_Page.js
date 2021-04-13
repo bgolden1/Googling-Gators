@@ -66,9 +66,9 @@ class Inventory_Page extends Component {
     render() {
         if (this.state.logged_in) {
             return (
-                <div>
+                <div style={{ fontFamily: "montserrat" }}>
                     <Menubar />
-                    <h3 style={{ marginLeft: "2rem" }}>Inventory</h3>
+                    <h3 style={{ marginTop: "2rem", marginLeft: "2rem" }}><strong>Inventory</strong></h3>
                     <table className="table table-striped" style={{ margin: 30 }} >
                         <thead>
                             <tr>
@@ -87,7 +87,7 @@ class Inventory_Page extends Component {
                     </table>
                     {this.state.role == 'admin' &&
                         <div style={{ marginLeft: "2rem", marginBottom: "30px"}}>
-                            <Link to={"/add"}><b>Add</b></Link>
+                            <Link to={"/add"}><button className="btn btn-outline-secondary">Add</button></Link>
                         </div>}
                 </div>
             );

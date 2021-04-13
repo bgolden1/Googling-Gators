@@ -90,9 +90,9 @@ export default class Order extends Component {
     render() {
         if (this.state.logged_in) {
             return (
-                <div>
+                <div style={{ fontFamily: "montserrat" }}>
                     <Menubar/>
-                    <h3 style={{ marginLeft: "2rem" }}>Purchase Orders</h3>
+                    <h3 style={{ marginTop: "2rem", marginLeft: "2rem" }}><strong>Purchase Orders</strong></h3>
                     {this.state.POs != null ? 
                     <table className="table table-striped" style={{ margin: 30 }} >
                         <thead>
@@ -113,7 +113,9 @@ export default class Order extends Component {
                     </table>
                         : <body>There are currently no POs</body>}
                     <div style={{ marginBottom: "30px" }}>
-                        <Link to={"/po_form"} style={{ marginLeft: "2rem", marginBottom: "1rem" }}><b>Create New PO</b></Link>
+                        <Link to={"/po_form"} style={{ marginLeft: "2rem", marginBottom: "1rem" }}>
+                            <button className="btn btn-outline-secondary">Create New PO</button>
+                        </Link>
                      </div>
                 </div>
             )

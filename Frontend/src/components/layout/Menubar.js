@@ -72,11 +72,8 @@ class Menubar extends Component {
                                 <li class="nav-item">
                                     <a class="nav-link " id="logout-tab" href="/logout" role="tab" aria-controls="logout" aria-selected="false">Log Out</a>
                                  </li>
-                                    
-
-
                             </ul>
-                           
+                                
                         </div>
                     </Nav>
                 </div>

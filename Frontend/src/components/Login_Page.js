@@ -35,14 +35,15 @@ class Login_Page extends Component {
         const { errors } = this.state;
         return (
             <div className="container">
-                <div style={{ marginTop: "4rem" }} className="row">
+                <div style={{ marginTop: "4rem", fontFamily: "montserrat" }} className="row">
                     <div className="col s8 offset-s2">
                         <Link to="/" className="btn-flat waves-effect">
-                            <i className="material-icons left">keyboard_backspace</i> Back to Home
+                            <i className="material-icons left">chevron_left</i>
+                            Back to Home
                         </Link>
 
-                        <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                            <h4>Welcome, Gatorloop Members</h4>
+                        <div className="col s12" style={{ paddingLeft: "0px", paddingTop: "1rem" }}>
+                            <h4><strong>Welcome, Gatorloop Members</strong></h4>
                             <p className="grey-text text-darken-1">
                                 Don't have an account? <Link to="/register">Register</Link>
                             </p>

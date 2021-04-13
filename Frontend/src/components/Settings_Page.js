@@ -38,30 +38,31 @@ class Settings_Page extends Component {
 			return (
 				<div>
 					<Menubar />
-					<div class="container">
+					<div class="container" style={{ fontFamily: "montserrat" }}>
 						<div class="row gutters">
-							<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+							<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12" 
+								style={{ marginTop: "1rem", marginBottom: "1rem" }}>
 								<div class="card h-100">
 									<div class="card-body">
 										<div class="account-settings">
 											<div class="user-profile">
-												<h5 class="user-role">{this.state.user_role}</h5>
-												<h5 class="user-name">{this.state.user_name}</h5>
-												<h6 class="user-subteam">{this.state.user_subteam}</h6>
-												<h5 
-												class="user-ufid">{this.state.user_ufid}</h5>
-												<h6 class="user-email">{this.state.user_email}</h6>
+												<h5 class="user-name"><strong>{this.state.user_name}</strong></h5>
+												<h6 class="user-role">Role: {this.state.user_role}</h6>
+												<h6 class="user-subteam">Subteam: {this.state.user_subteam}</h6>
+												<h6 class="user-ufid">UFID: {this.state.user_ufid}</h6>
+												<h6 class="user-email">Email: {this.state.user_email}</h6>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+
 							<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 								<div class="card h-100">
 									<div class="card-body">
 										<div class="row gutters">
 											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-												<h6 class="mb-3 text-primary">Account Details</h6>
+												<h6 class="mb-3"><p><u>Account Details</u></p></h6>
 											</div>
 											<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 												<div class="form-group">
@@ -96,8 +97,8 @@ class Settings_Page extends Component {
 										</div>
 										<div class="row gutters">
 											<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-												<div class="text-right">
-													<ul><a href="Update.js"><button type="button" class="btn btn-primary">Update</button></a></ul>												
+												<div class="text-right"  style={{ marginBottom: "-15px" }}>
+													<ul><a href="Update.js"><button class="btn btn-outline-secondary">Update</button></a></ul>												
 												</div>
 											</div>
 										</div>
