@@ -10,8 +10,8 @@ exports.getAll = (req, res) => {
     });
 };
 
-exports.getByName = (req, res) => {
-    PO.getPoByName(req.params.name).then(function (pos) {
+exports.getByEmail = (req, res) => {
+    PO.getPoByEmail(req.params.email).then(function (pos) {
         res.json(net.getSuccessResponse(null, pos));
     }).catch(function (err) {
         console.log("error getting part ", req.params.name, ": ", err);

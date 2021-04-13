@@ -41,6 +41,7 @@ export default class Order extends Component {
             POs: [],
             err: [],
             name: "",
+            email: "",
             role: "",
             subteam: "",
             logged_in: false
@@ -49,7 +50,7 @@ export default class Order extends Component {
     componentDidMount() {
         try {
             const user = jwt_decode(global.localStorage.getItem("jwtToken"));
-            this.setState({name: user.name, role: user.role, subteam: user.subteam, logged_in: true});
+            this.setState({name: user.name, email: user.email, role: user.role, subteam: user.subteam, logged_in: true});
             if (user.role == "admin") {
                 axios.get("/api/po")
                 .then(response => {
@@ -60,7 +61,7 @@ export default class Order extends Component {
                 })
             }
             else {
-                axios.get("/api/po/owner" + user.name)
+                axios.get("/api/po/owner" + user.email)
                 .then(response => {
                     this.setState({POs: response.data.data});
                 })
