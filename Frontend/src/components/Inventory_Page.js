@@ -68,27 +68,51 @@ class Inventory_Page extends Component {
             return (
                 <div style={{ fontFamily: "montserrat" }}>
                     <Menubar />
-                    <h3 style={{ marginTop: "2rem", marginLeft: "2rem" }}><strong>Inventory</strong></h3>
-                    <table className="table table-striped" style={{ margin: 30 }} >
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Quantity Available</th>
-                                <th>Total Quantity</th>
-                                <th>Last Checked Out</th>
-                                <th>Actions</th>
-                                {this.state.role == 'admin' && <th>Admin Actions</th>}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.partsList()}
-                        </tbody>
-                    </table>
-                    {this.state.role == 'admin' &&
-                        <div style={{ marginLeft: "2rem", marginBottom: "30px"}}>
-                            <Link to={"/add"}><button className="btn btn-outline-secondary">Add</button></Link>
-                        </div>}
+
+                    <div>
+                        <div id="inv-search-bar">
+                            <h3 style={{ float: "left", marginTop: "2rem", marginLeft: "2rem" }}><strong>Inventory</strong></h3>
+                            <span style={{ float: "right" }}>
+                                <div class="bg-none pl-5 pr-5" style={{ paddingTop: "2rem" }}>
+                                    <form action="">
+                                        <div class="input-group mb-4 border rounded-pill" style={{ height: "40px", width: "400px" }}>
+                                            <input type="search" placeholder="What are you searching for?" aria-describedby="searchbutt" 
+                                             class="form-control bg-none border-0" style={{ borderColor: "none", boxShadow: "none", fontSize: "15px" }}></input>
+                                            <div class="input-group-append border-0">
+                                                <button id="searchbutt" type="button" class="btn btn-link text-secondary" style={{ borderColor: "none", boxShadow: "none" }}>
+                                                    <i class="material-icons">search</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </span>
+                        </div>
+
+                        <table className="table table-striped" >
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Quantity Available</th>
+                                    <th>Total Quantity</th>
+                                    <th>Last Checked Out</th>
+                                    <th>Actions</th>
+                                    {this.state.role == 'admin' && <th>Admin Actions</th>}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.partsList()}
+                            </tbody>
+                        </table>
+
+                        {this.state.role == 'admin' &&
+                            <div style={{ marginLeft: "2rem", marginBottom: "30px"}}>
+                                <Link to={"/add"}><button className="btn btn-outline-secondary">Add</button></Link>
+                            </div>}
+
+                    </div>
+
                 </div>
             );
         }
