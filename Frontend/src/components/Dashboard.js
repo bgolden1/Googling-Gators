@@ -35,7 +35,6 @@ class Dashboard extends Component {
             return (
                 <div>
                     <Menubar />
-                    <Sidebar />
                     <div class="text-center" style={{ marginTop: "12rem", fontFamily: "montserrat" }}>
 
                         <h1> <b>Welcome,</b> {this.state.user_name}</h1>
