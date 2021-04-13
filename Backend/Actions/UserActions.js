@@ -1,4 +1,4 @@
-const User = require("../DB_Models/User.js").Model;
+const User = require("../DB_Models/User.js");
 
 exports.getAllUsers = () => {
     return User.find({}).exec();

@@ -12,7 +12,7 @@ const User = require("../../DB_Models/User.js");
 let router = express.Router();
 
 router.get("/po", POController.getAll);
-router.get("/po/owner:name", POController.getByName);
+router.get("/po/owner:email", POController.getByEmail);
 router.get("/po:id", POController.getByID);
 router.post("/po", (req, res) => {
     //validate input
@@ -32,6 +32,7 @@ router.post("/po", (req, res) => {
         purpose: req.body.purpose,
         total_cost: cost,
         owner: req.body.owner,
+        owner_email: req.body.owner_email,
         subteam: req.body.subteam
     });
     //save it and set response
@@ -66,7 +67,7 @@ router.post("/upgradeStatus", (req, res) => {
             .then(po => res.json(po))
             .catch(err => console.log(err));
         
-        email.sendEmail(req.body.email, `Status of PO has changed`, `<p>Hello ${PO.owner},</p>
+        email.sendEmail(PO.owner_email, `Status of PO has changed`, `<p>Hello ${PO.owner},</p>
         <p style="padding: 12px; font-style: italic;">This PO has been changed to ${PO.status}</p>
         <p style="padding: 12px; font-style: italic;">Click&nbsp;<a href="https://gatorloop-ims.herokuapp.com/login" target="_blank" rel="noopener">here</a> to login and see this PO.</p>
         <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; font-style: italic;">Best,</p>

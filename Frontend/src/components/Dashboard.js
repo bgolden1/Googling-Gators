@@ -12,6 +12,7 @@ class Dashboard extends Component {
         this.state = {
             user_name: "",
             user_email: "",
+            user_role: "",
             logged_in: false
         }
     }
@@ -20,7 +21,7 @@ class Dashboard extends Component {
         try {
             const token = global.localStorage.getItem("jwtToken");
             const decoded = jwt_decode(token);
-            this.setState({ user_name: decoded.name, user_email: decoded.email, logged_in: true });
+            this.setState({ user_name: decoded.name, user_email: decoded.email, user_role: decoded.role, logged_in: true });
             console.log(decoded);
         }
         catch (err) {
@@ -35,6 +36,7 @@ class Dashboard extends Component {
             return (
                 <div>
                     <Menubar />
+
                     <div class="text-center" style={{ marginTop: "12rem", fontFamily: "montserrat" }}>
 
                         <h1> <b>Welcome,</b> {this.state.user_name}</h1>
@@ -88,6 +90,21 @@ class Dashboard extends Component {
                                     PO Request
                                  </button>
                             </Link>
+
+                            {this.state.user_role == 'admin' && <Link to="/users">
+                                <button
+                                    style={{
+                                        width: "200px",
+                                        borderRadius: "3px",
+                                        letterSpacing: "1.5px",
+                                        marginTop: "2rem",
+                                        fontFamily: "montserrat"
+                                    }}
+                                    className="btn btn-outline-secondary btn-lg mr-2"
+                                >
+                                    Manage Users
+                                 </button>
+                            </Link>}
 
                             <Link to="/settings">
                                 <button

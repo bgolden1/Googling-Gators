@@ -4,8 +4,8 @@ exports.getAllPO = () => {
     return PO.find({}).exec();
 }
 
-exports.getPoByName = (__name__) => {
-    return PO.find({owner: __name__}).exec();
+exports.getPoByEmail = (__email__) => {
+    return PO.find({owner_email: __email__}).exec();
 }
 
 exports.getPOByID = (__id__) => {

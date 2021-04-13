@@ -15,6 +15,7 @@ export default class PO_Form extends Component {
             parts: [{}],
             purpose: "",
             owner: "",
+            owner_email: "",
             subteam: "",
             Json: [],
             completed: false,
@@ -26,7 +27,7 @@ export default class PO_Form extends Component {
         try {
             const token = global.localStorage.getItem("jwtToken");
             const decoded = jwt_decode(token);
-            this.setState({owner: decoded.name, subteam: decoded.subteam, logged_in: true})
+            this.setState({owner: decoded.name, owner_email: decoded.email, subteam: decoded.subteam, logged_in: true})
         }
         catch (err) {
             console.log(err);
@@ -154,6 +155,7 @@ export default class PO_Form extends Component {
             "parts": this.state.parts, 
             "purpose": this.state.purpose, 
             "owner": this.state.owner,
+            "owner_email": this.state.owner_email,
             "subteam": this.state.subteam
         })
         .then(function (result) {
@@ -212,6 +214,7 @@ export default class PO_Form extends Component {
 
                                     style={{
                                         width: "150px",
+                                        height: "40px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem"
@@ -231,9 +234,11 @@ export default class PO_Form extends Component {
 
                                     style={{
                                         width: "150px",
+                                        height: "40px",
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
-                                        marginTop: "1rem"
+                                        marginTop: "1rem",
+                                        marginBottom: "2rem"
                                     }}
 
                                     className="btn btn-outline-secondary"
@@ -244,6 +249,7 @@ export default class PO_Form extends Component {
 
                             </div>
 
+                            
                         </form>
                     </div>
                 </div>

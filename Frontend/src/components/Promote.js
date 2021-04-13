@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-export default class UpgradeStatus extends Component {
+export default class Promote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: props.match.params.id,
+            email: props.match.params.email,
             user_name: "",
             user_email: "",
             user_role: "",
@@ -23,9 +23,9 @@ export default class UpgradeStatus extends Component {
         catch(err) {
             console.log(err)
         }
-        axios.post("/api/upgradeStatus", {"id": this.state.id}).then(res => {
+        axios.post("/api/promote", {"email": this.state.email}).then(res => {
             console.log(res);
-            global.location.pathname = "/order";
+            global.location.pathname = "/users";
         })
     }
 

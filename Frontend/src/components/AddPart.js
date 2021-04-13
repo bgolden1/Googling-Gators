@@ -4,6 +4,7 @@ import { Redirect } from 'react-router';
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
 import Menubar_Homepage from "./layout/Menubar_Homepage";
+import Menubar from "./layout/Menubar";
 
 export default class Checkout extends Component {
     constructor(props) {
@@ -48,26 +49,82 @@ export default class Checkout extends Component {
         if (this.state.logged_in) {
             if (this.state.completed) {
                 return (
-                <Redirect to="/inventory_page"/>
+                    <meta http-equiv="refresh" content="0; url = /inventory_page" />
+                    //<Redirect to="/inventory_page"/>
                 );
             }
             return (
-                <div style={{ marginTop: "4rem", marginLeft: "40%" }}>
-                    <form onSubmit={this.onSubmit}>
-                        <div>
-                            Part name: 
-                            <input type="text" id="name" onChange={this.onChange}/>
-                        </div>
-                        <div>
-                            Part description: 
-                            <input type="text" id="description" onChange={this.onChange}/>
-                        </div>
-                        <div>
-                            Quantity of part: 
-                            <input type="text" id="quantity" onChange={this.onChange}/>
-                        </div>
-                        <input type="submit" value="Submit"/>
-                    </form>
+                <div>
+                <Menubar/>
+                    <div style={{ marginTop: "2rem", marginLeft: "25%" }}>
+
+                        <Link to="/inventory_page" className="btn-flat waves-effect">
+                            <i className="material-icons left">keyboard_backspace</i> Back to Inventory
+                        </Link>
+                        <div style={{marginTop:"1rem"}}>
+                        <h2>Add a New Part</h2>
+
+                            <form novalidate onSubmit={this.onSubmit} class="needs-validation">
+                                <div class="row mb-3 ">
+
+                             <div class="col-sm-4">
+                                <label class="form-label">Part Name: </label>
+                                <input
+                                    class="form-control"
+                                    onChange={this.onChange}
+                                    id="name"
+                                    type="text"
+                                    required
+                                />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                            <div class="col-md-8">
+                                <label class="form-label">Part Description: </label>
+                                <input
+                                    class="form-control"
+                                    onChange={this.onChange}
+                                    id="description"
+                                    type="text"
+                                    required
+                                />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                            <div class="col-1">
+                                <label class="form-label">Quantity: </label>
+                                <input
+                                    class="form-control"
+                                    onChange={this.onChange}
+                                    id="quantity"
+                                    type="text"
+                                    required
+                                />
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                            <div className="col 12" >
+                                    <button
+
+                                        style={{
+                                            width: "150px",
+                                            borderRadius: "3px",
+                                            letterSpacing: "1.5px",
+                                            marginTop: "1rem"
+                                        }}
+                                        type="submit"
+                                        className="btn btn-outline-secondary"
+                                    >
+                                        Submit
+                                 </button>
+
+                            </div>
+                            </div>
+                        </form>
+                    
+                </div>
+                </div>
                 </div>
             )
         }

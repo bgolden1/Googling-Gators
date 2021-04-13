@@ -20,6 +20,9 @@ import UpgradeStatus from './components/UpgradeStatus';
 import RemovePart from './components/RemovePart';
 import RemovePO from './components/RemovePO';
 import AddPart from './components/AddPart';
+import Manage_Users from './components/Manage_Users';
+import Promote from './components/Promote';
+import Demote from './components/Demote';
 
 
 function App() {
@@ -44,16 +47,13 @@ function App() {
                 <Route path="/removePart:name" component={RemovePart} />
                 <Route path="/removePO:id" component={RemovePO} />
                 <Route path="/add" component={AddPart} />
+                <Route path="/users" component={Manage_Users} />
+                <Route path="/promote:email" component={Promote} />
+                <Route path="/demote:email" component={Demote} />
             </Switch>
         </Router>
     );
 
-  /*return (
-    <div className="App">
-      <Homepage> </Homepage>
-      </div>
-  );
-  */
 }
 
 export default App
