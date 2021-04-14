@@ -57,7 +57,8 @@ class Settings_Page extends Component {
 								</div>
 							</div>
 
-							<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+							<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12"
+								style={{ marginTop: "1rem" }}>
 								<div class="card h-100">
 									<div class="card-body">
 										<div class="row gutters">
