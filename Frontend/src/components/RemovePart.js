@@ -49,33 +49,40 @@ export default class RemovePart extends Component {
             return (
                 <div>
                     <Menubar/>
-                <div style={{ marginTop: "4rem", marginLeft: "35%" }}>
-                    <h3>Are you sure you want to remove {this.state.name}?</h3>
-                    <button 
-                            style={{
-                        marginLeft: "7em",
-                        width: "150px",
-                        borderRadius: "3px",
-                        letterSpacing: "1.5px"
-                        }}
-                    className="btn btn-outline-secondary"
-                    type="submit"
-                    onClick={this.onSubmitYes}>
-                        Yes
-                    </button>
-                    <button 
-                    style={{
-                        width: "150px",
-                        borderRadius: "3px",
-                        letterSpacing: "1.5px"
-                        }}
-                    className="btn btn-outline-secondary"
-                    type="submit"
-                    onClick={this.onSubmitNo}>
-                        No
-                    </button>
+                    <div style={{ marginTop: "4rem", marginLeft: "33%", fontFamily: "montserrat" }}>
+                        <h3 style={{ letterSpacing: "1.5px" }}>
+                            <strong>Are you sure you want to remove {this.state.name}?</strong>
+                        </h3>
+                        <div style={{ marginLeft: "12rem", marginTop: "3rem" }}>
+                            <button 
+                                style={{
+                                    width: "100px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px"
+                                }}
+                                className="btn btn-outline-secondary"
+                                type="submit"
+                                onClick={this.onSubmitYes}
+                            >
+                                Yes
+                            </button>
+
+                            <button 
+                                style={{
+                                    marginLeft: "5rem",
+                                    width: "100px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px"
+                                    }}
+                                className="btn btn-outline-secondary"
+                                type="submit"
+                                onClick={this.onSubmitNo}
+                            >
+                                No
+                            </button>
+                        </div>
                     </div>
-                    </div>
+                </div>
             )
         }
         else {
