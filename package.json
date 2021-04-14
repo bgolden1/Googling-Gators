@@ -4,6 +4,11 @@
     "author": {
         "name": "Brody Golden"
     },
+    "engines": {
+        "npm": "7.5.3",
+        "node": "12.13.0"
+    },
+    
     "scripts": {
         "start": "node Backend/server.js",
         "client-install": "npm install --prefix Frontend",
