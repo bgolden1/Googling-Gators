@@ -3,6 +3,7 @@ import axios from "axios";
 import { Redirect } from 'react-router';
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
+import Menubar from "./layout/Menubar";
 import Menubar_Homepage from "./layout/Menubar_Homepage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -46,30 +47,41 @@ export default class RemovePO extends Component {
     render() {
         if (this.state.logged_in) {
             return (
-                <div style={{ marginTop: "4rem", marginLeft: "5rem" }}>
-                    <h3>Are you sure you want to remove {this.state.id}?</h3>
-                    <button 
-                    style={{
-                        width: "150px",
-                        borderRadius: "3px",
-                        letterSpacing: "1.5px"
-                        }}
-                    className="btn btn-outline-secondary"
-                    type="submit"
-                    onClick={this.onSubmitYes}>
-                        Yes
-                    </button>
-                    <button 
-                    style={{
-                        width: "150px",
-                        borderRadius: "3px",
-                        letterSpacing: "1.5px"
-                        }}
-                    className="btn btn-outline-secondary"
-                    type="submit"
-                    onClick={this.onSubmitNo}>
-                        No
-                    </button>
+                <div>
+                    <Menubar/>
+                    <div style={{ marginTop: "4rem", marginLeft: "25%", fontFamily: "montserrat" }}>
+                        <h3 style={{ letterSpacing: "1.5px" }}>
+                            <strong>Are you sure you want to remove {this.state.id}?</strong>
+                        </h3>
+                        <div style={{ marginLeft: "18rem", marginTop: "3rem" }}>
+                            <button 
+                                style={{
+                                    width: "100px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px"
+                                }}
+                                className="btn btn-outline-secondary"
+                                type="submit"
+                                onClick={this.onSubmitYes}
+                            >
+                                Yes
+                            </button>
+
+                            <button 
+                                style={{
+                                    marginLeft: "10rem",
+                                    width: "100px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px"
+                                    }}
+                                className="btn btn-outline-secondary"
+                                type="submit"
+                                onClick={this.onSubmitNo}
+                            >
+                                No
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )
         }
