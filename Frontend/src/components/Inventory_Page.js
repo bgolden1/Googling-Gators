@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import axios from "axios"
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menubar from "./layout/Menubar";
 import Menubar_Homepage from "./layout/Menubar_Homepage";
+import Searchbar from "./Searchbar";
 import jwt_decode from "jwt-decode";
 
 
@@ -23,7 +25,7 @@ const Part = props => (
           <div><Link to={"/removePart" + props.part.name}>Remove</Link></div>
       </td>}
     </tr>
-  )
+)
 
 class Inventory_Page extends Component {
     constructor(props) {
@@ -63,56 +65,57 @@ class Inventory_Page extends Component {
         })
     }
 
+    filterParts(parts, query) {
+        if (!query) {
+            return parts;
+        }
+
+        return parts.filter((part) => {
+            const partName = this.state.name.toLowerCase();
+            return partName.includes(query);
+        });
+    }
+
+    searchFunc() {
+        const { search } = window.location;
+        const query = new URLSearchParams(search).get("s");
+        const partsList = this.partsList();
+        const filteredParts = this.filterParts(partsList, query);
+
+        return (
+            <div>
+                <table className="table table-striped" style={{ margin:30 }}>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Quantity Available</th>
+                            <th>Total Quantity</th>
+                            <th>Last Checked Out</th>
+                            <th>Actions</th>
+                            {this.state.role == 'admin' && <th>Admin Actions</th>}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredParts}
+                    </tbody>
+                </table>
+
+                {this.state.role == 'admin' &&
+                    <div style={{ marginLeft: "2rem", marginBottom: "30px"}}>
+                        <Link to={"/add"}><button className="btn btn-outline-secondary">Add</button></Link>
+                    </div>}
+            </div>
+        )
+    }
+
     render() {
         if (this.state.logged_in) {
             return (
                 <div style={{ fontFamily: "montserrat" }}>
                     <Menubar />
-
-                    <div>
-                        <div id="inv-search-bar">
-                            <h3 style={{ float: "left", marginTop: "2rem", marginLeft: "2rem" }}><strong>Inventory</strong></h3>
-                            <span style={{ float: "right" }}>
-                                <div class="bg-none pl-5 pr-5" style={{ paddingTop: "2rem" }}>
-                                    <form action="">
-                                        <div class="input-group mb-4 border rounded-pill" style={{ height: "40px", width: "400px" }}>
-                                            <input type="search" placeholder="What are you searching for?" aria-describedby="searchbutt" 
-                                             class="form-control bg-none border-0" style={{ borderColor: "none", boxShadow: "none", fontSize: "15px" }}></input>
-                                            <div class="input-group-append border-0">
-                                                <button id="searchbutt" type="button" class="btn btn-link text-secondary" style={{ borderColor: "none", boxShadow: "none" }}>
-                                                    <i class="material-icons">search</i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </span>
-                        </div>
-
-                        <table className="table table-striped" style={{ margin: 30 }} >
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Quantity Available</th>
-                                    <th>Total Quantity</th>
-                                    <th>Last Checked Out</th>
-                                    <th>Actions</th>
-                                    {this.state.role == 'admin' && <th>Admin Actions</th>}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.partsList()}
-                            </tbody>
-                        </table>
-
-                        {this.state.role == 'admin' &&
-                            <div style={{ marginLeft: "2rem", marginBottom: "30px"}}>
-                                <Link to={"/add"}><button className="btn btn-outline-secondary">Add</button></Link>
-                            </div>}
-
-                    </div>
-
+                    <Searchbar />
+                    {this.searchFunc()}
                 </div>
             );
         }
@@ -133,9 +136,8 @@ class Inventory_Page extends Component {
                     </div>
                 </div>
             );
-        }
-        
+        }  
     }
-}
+};
 
 export default Inventory_Page;
