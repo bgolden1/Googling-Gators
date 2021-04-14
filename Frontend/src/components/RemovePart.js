@@ -4,6 +4,7 @@ import { Redirect } from 'react-router';
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
 import Menubar_Homepage from "./layout/Menubar_Homepage";
+import Menubar from "./layout/Menubar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class RemovePart extends Component {
@@ -46,10 +47,13 @@ export default class RemovePart extends Component {
     render() {
         if (this.state.logged_in) {
             return (
-                <div style={{ marginTop: "4rem", marginLeft: "5rem" }}>
+                <div>
+                    <Menubar/>
+                <div style={{ marginTop: "4rem", marginLeft: "35%" }}>
                     <h3>Are you sure you want to remove {this.state.name}?</h3>
                     <button 
-                    style={{
+                            style={{
+                        marginLeft: "7em",
                         width: "150px",
                         borderRadius: "3px",
                         letterSpacing: "1.5px"
@@ -70,7 +74,8 @@ export default class RemovePart extends Component {
                     onClick={this.onSubmitNo}>
                         No
                     </button>
-                </div>
+                    </div>
+                    </div>
             )
         }
         else {

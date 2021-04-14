@@ -89,7 +89,7 @@ class Inventory_Page extends Component {
                             </span>
                         </div>
 
-                        <table className="table table-striped" >
+                        <table className="table table-striped" style={{ margin: 30 }} >
                             <thead>
                                 <tr>
                                     <th>Name</th>

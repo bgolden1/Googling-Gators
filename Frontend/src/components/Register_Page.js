@@ -55,8 +55,8 @@ class Register_Page extends Component {
                             </p>
                         </div>
 
-                        <form novalidate onSubmit={this.onSubmit} class="row g-3 needs-validation">
-
+                        <form novalidate onSubmit={this.onSubmit} class="needs-validation">
+                            <div class= "row g-3 ">
                             <div className="col-md-4">
                                 <label for="first_name" class="form-label">First Name</label>
                                 <input
@@ -86,8 +86,10 @@ class Register_Page extends Component {
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
+                                </div>
                             </div>
-                            <div className="col-md-4">
+                            <div class="row g-3" style={{ marginTop:"10px" }}>
+                            <div className="col-md-3">
                                 <label for="ufid" class="form-label">UFID</label>
                                 <input
                                     class="form-control"                                  
@@ -102,8 +104,10 @@ class Register_Page extends Component {
                                     Please enter a valid UFID.
                                 </div>
                                      
+                                </div>
                             </div>
-                            <div className="col-md-6">
+                            <div class="row g-3 ">
+                                <div className="col-md-8" style={{ marginTop: "10px" }}>
                                 <label for="email" class="form-label">UFL Email</label>
                                 <input
                                     class="form-control"
@@ -119,8 +123,10 @@ class Register_Page extends Component {
                                     Please enter a valid email address.
                                 </div>
                                      
+                                </div>
                             </div>
-                            <div className="col-md-6">
+                            <div class="row g-3 ">
+                                <div className="col-md-5" style={{ marginTop: "10px" }}>
                                 <label for="subteam" class="form-label">Subteam</label>
                                 <input
                                     class="form-control"                                  
@@ -135,8 +141,10 @@ class Register_Page extends Component {
                                     Please enter a valid Subteam.
                                 </div>
                                      
+                                </div>
                             </div>
-                            <div className="col-md-6">
+                            <div class="row g-3 " style={{ marginTop: "10px" }}>
+                                <div className="col-md-6" >
                                 <label for="password" class="form-label">Password</label>
                                 <input
                                     class="form-control"
@@ -167,8 +175,10 @@ class Register_Page extends Component {
                                     Passwords do not match.
                                 </div>
                                 
-                            </div>
+                                </div>
+                               </div>
 
+                            <div class="row g-3" style={{ marginTop: "10px" }}>
                             <div class="col-12">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required/>
@@ -179,8 +189,10 @@ class Register_Page extends Component {
                                             You must agree before submitting.
                                         </div>
                                 </div>
-                            </div>
+                                </div>
+                                </div>
 
+                            <div class="row g-3" style={{ marginTop: "10px" }}>
                             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                                 <button 
                                     onSubmit={this.onSubmit}
@@ -197,7 +209,8 @@ class Register_Page extends Component {
                                  </button>
 
 
-                            </div>
+                                </div>
+                                </div>
                         </form>
                     </div>
                 </div>
