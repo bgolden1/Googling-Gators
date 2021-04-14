@@ -39,7 +39,7 @@ app.use(session({
 app.use(passport.initialize());
 
 // Passport config
-require("./Config/passport")(passport);
+require("./Config/Passport")(passport);
 
 app.use("/api", apiRoutes);
 

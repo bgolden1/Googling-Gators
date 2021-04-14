@@ -10,7 +10,7 @@
     },
     
     "scripts": {
-        "start": "node Backend/server.js",
+        "start": "concurrently \"npm run server\" \"npm run client\"",
         "client-install": "npm install --prefix Frontend",
         "server": "nodemon server.js",
         "client": "npm start --prefix Frontend",
