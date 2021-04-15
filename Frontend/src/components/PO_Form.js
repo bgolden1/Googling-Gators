@@ -40,7 +40,7 @@ export default class PO_Form extends Component {
                 <div key={i} class="p-2 bg-light border ">
                     <h5>Part #{i + 1}</h5>
             
-                    <form class="row g-3 needs-validation">
+                  <form class="row g-3 needs-validation">
 
                 <div className="col-md-5">
                     <label class="form-label">Name: </label>
@@ -233,7 +233,8 @@ export default class PO_Form extends Component {
                                         borderRadius: "3px",
                                         letterSpacing: "1.5px",
                                         marginTop: "1rem",
-                                        marginLeft: "1rem"
+                                        marginLeft: "1rem",
+                                        marginBottom: "2rem"
                                     }}
 
                                     className="btn btn-outline-secondary"
