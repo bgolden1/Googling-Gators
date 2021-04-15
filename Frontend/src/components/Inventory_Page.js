@@ -70,7 +70,7 @@ class Inventory_Page extends Component {
         var parts = this.state.parts;
         var searched_parts = [];
         for (var i = 0; i < parts.length; i += 1) {
-            if (parts[i].name == query) {
+            if (parts[i].name.includes(query)) {
                 searched_parts.push(parts[i])
             }
         }
