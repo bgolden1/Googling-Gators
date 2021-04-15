@@ -1,6 +1,8 @@
 import { Component } from "react";
 
 class Searchbar extends Component {
+	
+
 	render() {
 		return (
 			<div>
@@ -14,8 +16,8 @@ class Searchbar extends Component {
 			                <div class="input-group mb-4 border rounded-pill" style={{ height: "40px", width: "400px" }}>
 			                    <input 
 			                    	type="text" 
-			                    	placeholder="What are you searching for?" 
-			                    	name="s" 
+			                    	placeholder="   What are you searching for?" 
+									name="s" 
 			                    	aria-describedby="searchbutt" 
 			                    	class="form-control bg-none border-0" 
 			                    	style={{ borderColor: "none", boxShadow: "none", fontSize: "15px" }}

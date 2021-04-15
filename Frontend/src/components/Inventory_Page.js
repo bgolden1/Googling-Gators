@@ -37,9 +37,11 @@ class Inventory_Page extends Component {
             subteam: "",
             role: "",
             errors: {},
-            logged_in: false
+            logged_in: false,
         };
     }
+
+    
 
     componentDidMount() {
         axios.get("/api/parts")
@@ -70,7 +72,7 @@ class Inventory_Page extends Component {
         var parts = this.state.parts;
         var searched_parts = [];
         for (var i = 0; i < parts.length; i += 1) {
-            if (parts[i].name.includes(query)) {
+            if (parts[i].name.toLowerCase().includes(query.toLowerCase())) {
                 searched_parts.push(parts[i])
             }
         }
