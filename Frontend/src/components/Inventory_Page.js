@@ -66,22 +66,27 @@ class Inventory_Page extends Component {
         })
     }
 
-    filterParts(parts, query) {
-        if (!parts.includes(query)) {
-            return parts;
+    partsSearch(query) {
+        var parts = this.state.parts;
+        var searched_parts = [];
+        for (var i = 0; i < parts.length; i += 1) {
+            if (parts[i].name == query) {
+                searched_parts.push(parts[i])
+            }
         }
-
-        return parts.filter((part) => {
-            //const partName = part.name.toLowerCase();
-            return parts.includes(query);
+        return searched_parts.map(function(currentPart, i) {
+            return <Part part={currentPart} key={i} />;
         });
     }
 
     searchFunc() {
         const { search } = window.location;
         const query = new URLSearchParams(search).get("s");
-        const partsList = this.partsList();
-        const filteredParts = this.filterParts(partsList, query);
+        var filteredParts = this.partsList();
+        if (query != null && query != "") {
+            filteredParts = this.partsSearch(query);
+        }
+        
 
         return (
             <div>
