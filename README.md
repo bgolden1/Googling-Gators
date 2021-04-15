@@ -3,6 +3,12 @@
 
 Description:
 Inventory Management System developed for Gatorloop. 
+Major Features:
+- Register Page: Users must create their own account to be able to login to the Inventory Management System. UF id and ufl email are necesaary to create an account. 
+- Login Page: In order to login, users need their ufl email and password they created in the register page.
+- Inventory Display: displays all available inventory. Administrators can check-in/out the quantity available of each item.
+- PO Dashboard: Display all current PO the user has done.
+- PO Form: allows user to submit a purchase order of one or several items.
 
 Requirements: 
 Node.js v14.15.5
