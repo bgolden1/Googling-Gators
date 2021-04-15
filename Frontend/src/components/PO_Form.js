@@ -38,7 +38,7 @@ export default class PO_Form extends Component {
         return this.state.parts.map((el, i) => 
             <div style={{ marginTop: "2rem", fontFamily: "montserrat"}}>
                 <div key={i} class="p-2 bg-light border ">
-                    <h5>Part #{i + 1}</h5>
+                    <h5><p><u>Part #{i + 1}</u></p></h5>
             
                   <form class="row g-3 needs-validation">
 
@@ -177,7 +177,7 @@ export default class PO_Form extends Component {
                     <Menubar />
                     <div className="container" style={{ marginTop: "1rem" }}>
 
-                        <h2><strong>Purchase Order Form</strong></h2>
+                        <h1><strong>Purchase Order Form</strong></h1>
                         <form class="row g-3 needs-validation" style={{ marginTop: "2rem" }} onSubmit={this.onSubmit}>
                             <div className="col-md-4">
                                 <label for="company_name" class="form-label">Company Name:</label>

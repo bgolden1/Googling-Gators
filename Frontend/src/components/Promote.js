@@ -31,7 +31,6 @@ export default class Promote extends Component {
 
     render() {
         return(
-            <h3>Loading...</h3>
-        )
+            <h3 class="text-center" style={{ marginTop: "10rem", fontFamily: "montserrat" }}>Loading...</h3>        )
     }
 }

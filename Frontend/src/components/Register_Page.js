@@ -46,7 +46,7 @@ class Register_Page extends Component {
                 <div style={{ marginTop: "4rem", fontFamily: "montserrat"}} className="row">
                     <div className="col s8 offset-s2">
                         <Link to="/" className="btn-link waves-effect">
-                            <i className="material-icons">chevron_left</i> Back to Home
+                            <i className="material-icons" style={{ verticalAlign: "-6px" }}>chevron_left</i> Back to Home
                         </Link>
                         <div className="col s12" style={{ paddingLeft: "0", paddingTop: "1rem" }}>
                             <h4><strong>Register below</strong></h4>

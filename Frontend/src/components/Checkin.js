@@ -64,14 +64,14 @@ export default class Checkin extends Component {
             return (
                 <div>
                     <Menubar />
-                    <div style={{ marginTop: "2rem", marginLeft: "40%" }}>
+                    <div style={{ marginTop: "2rem", marginLeft: "40%", fontFamily: "montserrat" }}>
                         <Link to="/inventory_page" className="btn-flat waves-effect">
-                            <i className="material-icons left">keyboard_backspace</i> Back to Inventory
-                     </Link>
+                            <i className="material-icons left" style={{ verticalAlign: "-6px" }}>chevron_left</i> Back to Inventory
+                        </Link>
                         <div style={{ marginTop: "1rem" }}>
-                        <h2>Inventory Check-in</h2>
+                        <h2><strong>Inventory Check-in</strong></h2>
                         <form novalidate onSubmit={this.onSubmit} class="row g-3 needs-validation">
-                            <div style={{ }} className="col-md-4">
+                            <div style={{ }} className="col-md-5">
                                 <label class="form-label">How many <b>{this.state.name}</b> would you like to check-in?</label>
                                 <input
                                     class="form-control"
@@ -85,11 +85,11 @@ export default class Checkin extends Component {
                                 </div>
 
 
-                                <div className="col s12" style={{ marginLeft: "60%" }}>
+                                <div className="col s12" style={{ marginLeft: "75%" }}>
                                     <button
 
                                         style={{
-                                            width: "150px",
+                                            width: "100px",
                                             borderRadius: "3px",
                                             letterSpacing: "1.5px",
                                             marginTop: "1rem"

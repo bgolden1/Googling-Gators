@@ -59,7 +59,7 @@ export default class Checkout extends Component {
                     <div style={{ marginTop: "2rem", marginLeft: "25%", fontFamily: "montserrat" }}>
 
                         <Link to="/inventory_page" className="btn-flat waves-effect">
-                            <i className="material-icons left">chevron_left</i> Back to Inventory
+                            <i className="material-icons left" style={{ verticalAlign: "-6px" }}>chevron_left</i> Back to Inventory
                         </Link>
 
                         <div style={{marginTop:"1rem"}}>

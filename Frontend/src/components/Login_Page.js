@@ -38,7 +38,7 @@ class Login_Page extends Component {
                 <div style={{ marginTop: "4rem", fontFamily: "montserrat" }} className="row">
                     <div className="col s8 offset-s2">
                         <Link to="/" className="btn-flat waves-effect">
-                            <i className="material-icons left">chevron_left</i>
+                            <i className="material-icons left" style={{ verticalAlign: "-6px" }}>chevron_left</i>
                             Back to Home
                         </Link>
 

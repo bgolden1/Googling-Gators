@@ -38,7 +38,8 @@ class Settings_Page extends Component {
 			return (
 				<div>
 					<Menubar />
-					<div class="container" style={{ fontFamily: "montserrat" }}>
+					<div class="container" style={{ marginTop: "1rem", fontFamily: "montserrat" }}>
+						<h1 style={{ letterSpacing: "1.5px" }}><strong>Settings</strong></h1>
 						<div class="row gutters">
 							<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12" 
 								style={{ marginTop: "1rem", marginBottom: "1rem" }}>

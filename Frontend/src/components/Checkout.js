@@ -61,27 +61,24 @@ export default class Checkout extends Component {
         if (this.state.logged_in) {
             if (this.state.completed) {
                 return (
-
                     // <Redirect to="/inventory_page" />
                     // <li >
                     <meta http-equiv="refresh" content="0; url = /inventory_page" />
                     // </li>
-
-
                 );
             }
             return (
                 <div>
                     <Menubar />
-                    <div style={{ marginTop: "2rem", marginLeft: "40%" }}>
+                    <div style={{ marginTop: "2rem", marginLeft: "40%", fontFamily: "montserrat" }}>
                         
                      <Link to="/inventory_page" className="btn-flat waves-effect">
-                            <i className="material-icons left">keyboard_backspace</i> Back to Inventory
+                            <i className="material-icons left" style={{ verticalAlign: "-6px" }}>chevron_left</i> Back to Inventory
                      </Link>
                         <div style={{ marginTop: "1rem" }}>
-                        <h2>Inventory Checkout</h2>
+                        <h2><strong>Inventory Checkout</strong></h2>
                      <form novalidate onSubmit={this.onSubmit} class="row g-3 needs-validation">
-                            <div style={{  }} className="col-md-4">
+                            <div style={{  }} className="col-md-5">
                                 <label class="form-label">How many <b>{this.state.name}</b> would you like to checkout?</label>
                                 <input
                                     class="form-control"
@@ -95,11 +92,11 @@ export default class Checkout extends Component {
                                 </div>
                             
 
-                            <div className="col s12" style={{ marginLeft: "60%"}}>
+                            <div className="col s12" style={{ marginLeft: "75%"}}>
                                     <button
 
                                         style={{
-                                            width: "150px",
+                                            width: "100px",
                                             borderRadius: "3px",
                                             letterSpacing: "1.5px",
                                             marginTop: "1rem"
