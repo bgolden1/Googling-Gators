@@ -3,6 +3,7 @@
 
 Description:
 Inventory Management System developed for Gatorloop. 
+
 Major Features:
 - Register Page: Users must create their own account to be able to login to the Inventory Management System. UF id and ufl email are necesaary to create an account. 
 - Login Page: In order to login, users need their ufl email and password they created in the register page.
