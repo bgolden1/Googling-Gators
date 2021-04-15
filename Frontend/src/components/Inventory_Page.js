@@ -17,8 +17,8 @@ const Part = props => (
       <td>{props.part.total_quantity}</td>
       <td>{props.part.last_checked_out.substring(0, 10)}</td>
       <td>
-          <div><Link to={"/checkout" + props.part.name}>Check-out</Link></div>
           <div><Link to={"/checkin" + props.part.name}>Check-in</Link></div>
+          <div><Link to={"/checkout" + props.part.name}>Check-out</Link></div>
       </td>
       {jwt_decode(global.localStorage.getItem("jwtToken")).role == "admin" && 
       <td>
@@ -32,6 +32,7 @@ class Inventory_Page extends Component {
         super(props);
         this.state = {
             parts: [],
+            partName: props.match.params.name,
             name: "",
             subteam: "",
             role: "",
@@ -66,13 +67,13 @@ class Inventory_Page extends Component {
     }
 
     filterParts(parts, query) {
-        if (!query) {
+        if (!parts.includes(query)) {
             return parts;
         }
 
         return parts.filter((part) => {
-            const partName = this.state.name.toLowerCase();
-            return partName.includes(query);
+            //const partName = part.name.toLowerCase();
+            return parts.includes(query);
         });
     }
 
@@ -84,8 +85,10 @@ class Inventory_Page extends Component {
 
         return (
             <div>
-                <table className="table table-striped" style={{ margin:30 }}>
-                    <thead>
+                <table className="table table-bordered col-md-10" 
+                    style={{ margin: "10rem", marginTop: "7rem", marginBottom: "1rem" }}
+                >
+                    <thead class="thead-light">
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
@@ -102,7 +105,7 @@ class Inventory_Page extends Component {
                 </table>
 
                 {this.state.role == 'admin' &&
-                    <div style={{ marginLeft: "2rem", marginBottom: "30px"}}>
+                    <div style={{ marginLeft: "10rem", marginBottom: "1rem"}}>
                         <Link to={"/add"}><button className="btn btn-outline-secondary">Add</button></Link>
                     </div>}
             </div>

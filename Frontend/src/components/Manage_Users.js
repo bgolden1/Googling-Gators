@@ -64,11 +64,15 @@ class Manage_Users extends Component {
     render() {
         if (this.state.is_admin) {
             return (
-                <div>
+                <div style={{ fontFamily: "montserrat" }}>
                     <Menubar />
-                    <h3 style={{ marginLeft: "2rem" }}>Users</h3>
-                    <table className="table table-striped" style={{ margin: 30 }} >
-                        <thead>
+                    <h1 style={{ float: "left", marginLeft: "5rem", marginTop: "2rem" }}>
+                        <strong>Users</strong>
+                    </h1>
+                    <table className="table table-bordered col-md-10" 
+                        style={{ margin: "10rem", marginTop: "7rem", marginBottom: "1rem" }} 
+                    >
+                        <thead class="thead-light">
                             <tr>
                                 <th>Name</th>
                                 <th>Subteam</th>

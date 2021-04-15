@@ -57,14 +57,16 @@ export default class PO_Info extends Component {
     render() {
         if (this.state.logged_in) {
             return (
-                <div>
+                <div style={{ fontFamily: "montserrat" }}>
                     <Menubar />
-                    <div style={{ marginLeft: "1rem"}}>
-                    <h2>PO #{this.state.id}</h2>
-                    <h3>Parts Requested</h3>
-                </div>
-                    <table className="table table-striped" style={{ margin: 30 }} >
-                        <thead>
+                    <div style={{ marginLeft: "5rem" }}>
+                        <h1 style={{ marginTop: "2rem" }}><strong>PO #{this.state.id}</strong></h1>
+                        <h3>Parts Requested:</h3>
+                    </div>
+                    <table className="table table-bordered col-md-10" 
+                        style={{ margin: "10rem", marginTop: "3rem", marginBottom: "1rem" }} 
+                    >
+                        <thead class="thead-light">
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>

@@ -92,10 +92,14 @@ export default class Order extends Component {
             return (
                 <div style={{ fontFamily: "montserrat" }}>
                     <Menubar/>
-                    <h3 style={{ marginTop: "2rem", marginLeft: "2rem" }}><strong>Purchase Orders</strong></h3>
+                    <h1 style={{ float: "left", marginTop: "2rem", marginLeft: "5rem" }}>
+                        <strong>Purchase Orders</strong>
+                    </h1>
                     {this.state.POs != null ? 
-                    <table className="table table-striped" style={{ margin: 30 }} >
-                        <thead>
+                    <table className="table table-bordered col-md-10" 
+                        style={{ margin: "10rem", marginTop: "7rem", marginBottom: "1rem" }}
+                    >
+                        <thead class="thead-light">
                             <tr>
                                 <th>Company Name</th>
                                 <th>Company URL</th>
@@ -113,7 +117,7 @@ export default class Order extends Component {
                     </table>
                         : <body>There are currently no POs</body>}
                     <div style={{ marginBottom: "30px" }}>
-                        <Link to={"/po_form"} style={{ marginLeft: "2rem", marginBottom: "1rem" }}>
+                        <Link to={"/po_form"} style={{ marginLeft: "10rem", marginBottom: "1rem" }}>
                             <button className="btn btn-outline-secondary">Create New PO</button>
                         </Link>
                      </div>
