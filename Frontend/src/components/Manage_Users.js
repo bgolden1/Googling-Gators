@@ -35,7 +35,7 @@ class Manage_Users extends Component {
     }
 
     componentDidMount() {
-        axios.get("/api/users")
+        axios.get("https://gatorloop-ims.herokuapp.com/api/users")
             .then(response => {
                 this.setState({users: response.data.data});
             })

@@ -34,7 +34,7 @@ export default class Checkout extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        axios.post("/api/parts/add", {"name": this.state.name, "description": this.state.description, "quantity": this.state.quantity})
+        axios.post("https://gatorloop-ims.herokuapp.com/api/parts/add", {"name": this.state.name, "description": this.state.description, "quantity": this.state.quantity})
         .then(function (result) {
             console.log("Request submitted successfully");
         })

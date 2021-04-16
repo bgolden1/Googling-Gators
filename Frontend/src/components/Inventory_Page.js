@@ -44,7 +44,7 @@ class Inventory_Page extends Component {
     
 
     componentDidMount() {
-        axios.get("/api/parts")
+        axios.get("https://gatorloop-ims.herokuapp.com/api/parts")
             .then(response => {
                 this.setState({parts: response.data.data});
             })

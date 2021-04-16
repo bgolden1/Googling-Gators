@@ -23,7 +23,7 @@ export default class Checkin extends Component {
     }
 
     componentDidMount() {
-        axios.get("/api/parts" + this.state.name)
+        axios.get("https://gatorloop-ims.herokuapp.com/api/parts" + this.state.name)
             .then(response => {
                 this.setState({part: response.data.data});
             })
@@ -42,7 +42,7 @@ export default class Checkin extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        axios.post("/api/parts/checkin", {"_id": this.state.part._id, "num_to_checkin": this.state.num_to_checkin})
+        axios.post("https://gatorloop-ims.herokuapp.com/api/parts/checkin", {"_id": this.state.part._id, "num_to_checkin": this.state.num_to_checkin})
         .then(function (result) {
             console.warn("Request submitted successfully");
         })

@@ -31,7 +31,7 @@ export default class PO_Info extends Component {
     }
 
     componentDidMount() {
-        axios.get("/api/po" + this.state.id)
+        axios.get("https://gatorloop-ims.herokuapp.com/api/po" + this.state.id)
             .then(response => {
                 this.setState({PO: response.data.data, parts: response.data.data.parts});
             })

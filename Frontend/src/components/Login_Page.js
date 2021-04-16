@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Redirect } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -10,7 +11,8 @@ class Login_Page extends Component {
         this.state = {
             email: "",
             password: "",
-            errors: {}
+            errors: {},
+            logged_in: false
         };
     }
     onChange = e => {
@@ -22,16 +24,21 @@ class Login_Page extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        axios.post("http://localhost:8080/api/login", userData)
-            .then(function(result) {
+        axios.post("https://gatorloop-ims.herokuapp.com/api/login", userData)
+            .then(result => {
                 global.localStorage.setItem("jwtToken", result.data.token);
-                global.location.pathname = "/dashboard";
+                this.setState({logged_in: true})  
             })
             .catch(function(err) {
                 console.log(err);
             });
     };
     render() {
+        if (this.state.logged_in) {
+            return (
+                <Redirect to="/dashboard"/>
+            )
+        }
         const { errors } = this.state;
         return (
             <div className="container">

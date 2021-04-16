@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
-//import { Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 
 
 class Register_Page extends Component {
@@ -16,7 +16,8 @@ class Register_Page extends Component {
             email: "",
             password: "",
             password2: "",
-            errors: {}
+            errors: {},
+            completed: false
         };
     }
     onChange = e => {
@@ -32,14 +33,19 @@ class Register_Page extends Component {
             password: this.state.password,
             password2: this.state.password2
         };
-        axios.post("http://localhost:8080/api/register", newUser).then(function(res) {
-            global.location.pathname = "/confirm";
+        axios.post("https://gatorloop-ims.herokuapp.com/api/register", newUser).then(res => {
+            this.setState({completed: true})
         }).catch(err => {
             console.log(err.response.data);
             this.setState({errors: err.response.data});
         })
     };
     render() {
+        if (this.state.completed) {
+            return (
+                <Redirect to="/confirm"/>
+            )
+        }
         const { errors } = this.state;
         return (
             <div className="container">

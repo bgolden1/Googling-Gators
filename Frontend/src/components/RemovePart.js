@@ -31,7 +31,7 @@ export default class RemovePart extends Component {
     }
 
     onSubmitYes = e => {
-        axios.post("/api/parts/remove" + this.state.name)
+        axios.post("https://gatorloop-ims.herokuapp.com/api/parts/remove" + this.state.name)
             .then(function(res) {
                 global.location.pathname = "/inventory_page";
             })

@@ -31,7 +31,7 @@ export default class RemovePO extends Component {
     }
 
     onSubmitYes = e => {
-        axios.post("/api/po/remove" + this.state.id)
+        axios.post("https://gatorloop-ims.herokuapp.com/api/po/remove" + this.state.id)
             .then(function(res) {
                 global.location.pathname = "/order";
             })

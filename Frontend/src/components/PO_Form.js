@@ -151,7 +151,7 @@ export default class PO_Form extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        axios.post("/api/po", {
+        axios.post("https://gatorloop-ims.herokuapp.com/api/po", {
             "company": {"name": this.state.company_name, "url": this.state.company_url}, 
             "parts": this.state.parts, 
             "purpose": this.state.purpose, 

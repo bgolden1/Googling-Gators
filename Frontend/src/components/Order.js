@@ -52,7 +52,7 @@ export default class Order extends Component {
             const user = jwt_decode(global.localStorage.getItem("jwtToken"));
             this.setState({name: user.name, email: user.email, role: user.role, subteam: user.subteam, logged_in: true});
             if (user.role == "admin") {
-                axios.get("/api/po")
+                axios.get("https://gatorloop-ims.herokuapp.com/api/po")
                 .then(response => {
                     this.setState({POs: response.data.data});
                 })
@@ -61,7 +61,7 @@ export default class Order extends Component {
                 })
             }
             else {
-                axios.get("/api/po/owner" + user.email)
+                axios.get("https://gatorloop-ims.herokuapp.com/api/po/owner" + user.email)
                 .then(response => {
                     this.setState({POs: response.data.data});
                 })
@@ -77,7 +77,7 @@ export default class Order extends Component {
     }
 
     upgradeStatus(id) {
-        axios.post("/api/upgradeStatus", {id: id}).then(res => {
+        axios.post("https://gatorloop-ims.herokuapp.com/api/upgradeStatus", {id: id}).then(res => {
             console.log(res);
         })
     }

@@ -23,7 +23,7 @@ export default class Demote extends Component {
         catch(err) {
             console.log(err)
         }
-        axios.post("/api/demote", {"email": this.state.email}).then(res => {
+        axios.post("https://gatorloop-ims.herokuapp.com/api/demote", {"email": this.state.email}).then(res => {
             console.log(res);
             global.location.pathname = "/users";
         })

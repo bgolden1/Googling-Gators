@@ -23,7 +23,7 @@ export default class UpgradeStatus extends Component {
         catch(err) {
             console.log(err)
         }
-        axios.post("/api/upgradeStatus", {"id": this.state.id}).then(res => {
+        axios.post("https://gatorloop-ims.herokuapp.com/api/upgradeStatus", {"id": this.state.id}).then(res => {
             console.log(res);
             global.location.pathname = "/order";
         })

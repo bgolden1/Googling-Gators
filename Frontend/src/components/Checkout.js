@@ -24,7 +24,7 @@ export default class Checkout extends Component {
     }
 
     componentDidMount() {
-        axios.get("/api/parts" + this.state.name)
+        axios.get("https://gatorloop-ims.herokuapp.com/api/parts" + this.state.name)
             .then(response => {
                 this.setState({part: response.data.data});
             })
@@ -43,7 +43,7 @@ export default class Checkout extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        axios.post("/api/parts/checkout", {"_id": this.state.part._id, "num_to_checkout": this.state.num_to_checkout})
+        axios.post("https://gatorloop-ims.herokuapp.com/api/parts/checkout", {"_id": this.state.part._id, "num_to_checkout": this.state.num_to_checkout})
         .then(function (result) {
             console.log("Request submitted successfully");
         })
