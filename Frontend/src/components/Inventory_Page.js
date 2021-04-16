@@ -38,9 +38,15 @@ class Inventory_Page extends Component {
             role: "",
             errors: {},
             logged_in: false,
+            searchValue: '',
+            filteredParts: []
         };
     }
 
+    callBack=(dataFromChild)=> {
+        this.setState({ searchValue: dataFromChild });
+        console.log(this.state.searchValue);
+    }
     
 
     componentDidMount() {
@@ -62,6 +68,8 @@ class Inventory_Page extends Component {
         
     }
 
+    
+
     partsList() {
         return this.state.parts.map(function(currentPart, i) {
             return <Part part={currentPart} key={i} />;
@@ -71,52 +79,31 @@ class Inventory_Page extends Component {
     partsSearch(query) {
         var parts = this.state.parts;
         var searched_parts = [];
+        /*
         for (var i = 0; i < parts.length; i += 1) {
             if (parts[i].name.toLowerCase().includes(query.toLowerCase())) {
                 searched_parts.push(parts[i])
             }
         }
+        */
+        searched_parts = this.state.parts.filter(part=>part.toLowerCase().includes(this.state.searchValue.toLowerCase()))
         return searched_parts.map(function(currentPart, i) {
             return <Part part={currentPart} key={i} />;
         });
     }
 
     searchFunc() {
+        /*
         const { search } = window.location;
         const query = new URLSearchParams(search).get("s");
         var filteredParts = this.partsList();
+        */
+        const query = this.searchValue;
+        this.state.filteredParts = this.partsList();
         if (query != null && query != "") {
-            filteredParts = this.partsSearch(query);
+            this.state.filteredParts = this.partsSearch(query);
         }
         
-
-        return (
-            <div>
-                <table className="table table-bordered col-md-10" 
-                    style={{ margin: "10rem", marginTop: "7rem", marginBottom: "1rem" }}
-                >
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Quantity Available</th>
-                            <th>Total Quantity</th>
-                            <th>Last Checked Out</th>
-                            <th>Actions</th>
-                            {this.state.role == 'admin' && <th>Admin Actions</th>}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredParts}
-                    </tbody>
-                </table>
-
-                {this.state.role == 'admin' &&
-                    <div style={{ marginLeft: "10rem", marginBottom: "1rem"}}>
-                        <Link to={"/add"}><button className="btn btn-outline-secondary">Add</button></Link>
-                    </div>}
-            </div>
-        )
     }
 
     render() {
@@ -124,8 +111,34 @@ class Inventory_Page extends Component {
             return (
                 <div style={{ fontFamily: "montserrat" }}>
                     <Menubar />
-                    <Searchbar />
+                    
+                    <Searchbar callbackFromParent={this.callBack} />
                     {this.searchFunc()}
+                    <div>
+                        <table className="table table-bordered col-md-10"
+                            style={{ margin: "10rem", marginTop: "7rem", marginBottom: "1rem" }}
+                        >
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Quantity Available</th>
+                                    <th>Total Quantity</th>
+                                    <th>Last Checked Out</th>
+                                    <th>Actions</th>
+                                    {this.state.role == 'admin' && <th>Admin Actions</th>}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.filteredParts}
+                            </tbody>
+                        </table>
+
+                        {this.state.role == 'admin' &&
+                            <div style={{ marginLeft: "10rem", marginBottom: "1rem" }}>
+                                <Link to={"/add"}><button className="btn btn-outline-secondary">Add</button></Link>
+                            </div>}
+                    </div>
                 </div>
             );
         }

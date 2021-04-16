@@ -1,7 +1,15 @@
 import { Component } from "react";
 
 class Searchbar extends Component {
-	
+	state = {searchValue:""}
+
+	filterOnChange = (event) => {
+		this.setState({ searchValue: event.target.value });
+		this.props.callbackFromParent(this.state.searchValue)
+		console.log(this.state.searchValue);
+		event.preventDefault();
+	}
+
 
 	render() {
 		return (
@@ -18,10 +26,13 @@ class Searchbar extends Component {
 			                    	type="text" 
 			                    	placeholder="   What are you searching for?" 
 									name="s" 
+									id="searchinput"
+									onChange={this.filterOnChange}
 			                    	aria-describedby="searchbutt" 
 			                    	class="form-control bg-none border-0" 
 			                    	style={{ borderColor: "none", boxShadow: "none", fontSize: "15px" }}
-			                    />
+								/>
+								
 			                    <div class="input-group-append border-0">
 			                        <button 
 			                        	id="searchbutt" 
