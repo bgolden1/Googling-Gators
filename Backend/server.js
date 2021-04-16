@@ -14,8 +14,8 @@ var cors = require('cors')
 let app = express();
 app.use(cors())
 
-app.listen(config.port, "localhost", () => {
-    console.log(`Now listening on port ${config.port}`);
+app.listen(process.env.PORT, "localhost", () => {
+    console.log(`Now listening on port ${process.env.PORT}`);
 });
 
 database.connect();
