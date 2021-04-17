@@ -1,8 +1,5 @@
 {
 	"port": 8080,
-	"database": {
-		"url": "mongodb+srv://glAdmin:M70Aq1RsQl99KPmM@cluster0.xbffp.mongodb.net/inventory?retryWrites=true&w=majority"
-	},
 	"auth": {
 		"key": "please change me"
 	},

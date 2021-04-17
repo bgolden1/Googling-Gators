@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const config = require(path.join(__dirname,  "../Config/config.json"));
 
-url = config.database.url
+url = `mongodb+srv://glAdmin:${process.env.DB_PASS}@cluster0.xbffp.mongodb.net/inventory?retryWrites=true&w=majority`
 
 // Events
 mongoose.connection.on("connected", function() {
