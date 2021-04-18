@@ -65,7 +65,7 @@ class Inventory_Page extends Component {
     partsList() {
         return this.state.parts.map(function(currentPart, i) {
             return <Part part={currentPart} key={i} />;
-        })
+        }).reverse()
     }
 
     partsSearch(query) {
@@ -78,7 +78,7 @@ class Inventory_Page extends Component {
         }
         return searched_parts.map(function(currentPart, i) {
             return <Part part={currentPart} key={i} />;
-        });
+        }).reverse();
     }
 
     searchFunc() {
