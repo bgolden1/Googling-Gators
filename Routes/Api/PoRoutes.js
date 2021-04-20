@@ -7,7 +7,7 @@ const validatePoInput = require(path.join(__dirname,  "../../Validation/Orders.j
 const POrder = require(path.join(__dirname,  "../../DB_Models/Orders")).Model;
 const Parts = require(path.join(__dirname,  "../../Actions/PartsActions"));
 const email = require(path.join(__dirname,  "../../Config/Email"));
-const admin_email = require(path.join(__dirname,  "../../Config/config.json")).admin_email;
+const admin_email = process.env.ADMIN_EMAIL;
 const User = require(path.join(__dirname,  "../../DB_Models/User.js"));
 
 let router = express.Router();

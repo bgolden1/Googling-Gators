@@ -6,7 +6,6 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const passport = require("passport");
 
-const config = require(path.join(__dirname,  "./Config/config.json"));
 const database = require(path.join(__dirname,  "./Database/Database.js"));
 const apiRoutes = require(path.join(__dirname,  "./Routes/ApiRoutes.js"));
 var cors = require('cors')

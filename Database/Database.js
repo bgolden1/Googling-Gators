@@ -1,8 +1,6 @@
 const path = require("path");
 const mongoose = require("mongoose");
 
-const config = require(path.join(__dirname,  "../Config/config.json"));
-
 url = `mongodb+srv://glAdmin:${process.env.DB_PASS}@cluster0.xbffp.mongodb.net/inventory?retryWrites=true&w=majority`
 
 // Events
