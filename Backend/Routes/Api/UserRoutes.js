@@ -4,11 +4,58 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("../../Config/config.json");
 salt = config.auth.key;
+const email = require("../../Config/Email");
+const admin_email = require("../../Config/config.json").admin_email;
+
+const userController = require("../../Controllers/UserController.js");
 // Load input validation
 const validateRegisterInput = require("../../Validation/Register.js");
 const validateLoginInput = require("../../Validation/Login.js");
 // Load User model
 const User = require("../../DB_Models/User");
+
+router.get("/users", userController.getAll);
+router.get("/users:email", userController.getByEmail);
+router.post("/user/remove:email", userController.removeUser);
+router.post("/promote", (req, res) => {
+  User.findOne({email: req.body.email}).then(user => {
+    const options = ["user", "member", "admin"]
+    for (var i = 0; i < options.length - 1; i++) {
+      if (user.role == options[i]) {
+          user.role = options[i + 1];
+          break;
+      }
+    }
+
+    user
+    .save()
+    .then(user => res.json(user))
+    .catch(err => console.log(err));
+  })
+  .catch(err => {
+    res.json(err);
+  })
+});
+
+router.post("/demote", (req, res) => {
+  User.findOne({email: req.body.email}).then(user => {
+    const options = ["user", "member", "admin"]
+    for (var i = 1; i < options.length; i++) {
+      if (user.role == options[i]) {
+          user.role = options[i - 1];
+          break;
+      }
+    }
+
+    user
+    .save()
+    .then(user => res.json(user))
+    .catch(err => console.log(err));
+  })
+  .catch(err => {
+    res.json(err);
+  })
+});
 
 // @route POST api/register
 // @desc Register user
@@ -27,6 +74,7 @@ router.post("/register", (req, res) => {
         const newUser = new User({
           name: req.body.name,
           subteam: req.body.subteam,
+          ufid: req.body.ufid,
           email: req.body.email,
           password: req.body.password
         });
@@ -41,6 +89,11 @@ router.post("/register", (req, res) => {
               .catch(err => console.log(err));
           });
         });
+        email.sendEmail(admin_email, `New user verification for ${newUser.name}`, `<p>Hello Gatorloop Admin,</p>
+        <p style="padding: 12px;">Please verify that ${newUser.name} is a member of this club.</p>
+        <p style="padding: 12px; font-style: italic;">Click <a href="https://gatorloop-ims.herokuapp.com/login" target="_blank" rel="noopener">here</a> to login and upgrade this user to "member" status.</p>
+        <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; ">Best,</p>
+        <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; ">Gatorloop IMS</p>`)
       }
     });
   });
@@ -71,7 +124,11 @@ const { errors, isValid } = validateLoginInput(req.body);
         // Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name
+          name: user.name,
+          subteam: user.subteam,
+          ufid: user.ufid,
+          email: user.email,
+          role: user.role
         };
 // Sign token
         jwt.sign(

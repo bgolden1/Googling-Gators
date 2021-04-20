@@ -36,6 +36,17 @@ const PoSchema = new Schema({
     },
     owner: {
         type: String
+    },
+    owner_email: {
+        type: String
+    },
+    subteam: {
+        type: String
+    },
+    status: {
+        type: String,
+        enum: ["new", "approved", "submitted", "received"],
+        default: "new"
     }
 });
 

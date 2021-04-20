@@ -4,6 +4,14 @@ exports.getAllPO = () => {
     return PO.find({}).exec();
 }
 
-exports.getPoByName = (__name__) => {
-    return PO.findOne({owner: __name__}).exec();
+exports.getPoByEmail = (__email__) => {
+    return PO.find({owner_email: __email__}).exec();
+}
+
+exports.getPOByID = (__id__) => {
+    return PO.findOne({_id: __id__}).exec();
+}
+
+exports.removePartByID = (__id__) => {
+    return PO.remove({_id: __id__}).exec();
 }

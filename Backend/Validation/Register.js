@@ -1,21 +1,37 @@
 const Validator = require("validator");
 const isEmpty = require("is-empty");
+const { default: validator } = require("validator");
 module.exports = function validateRegisterInput(data) {
   let errors = {};
 // Convert empty fields to an empty string so we can use validator functions
   data.name = !isEmpty(data.name) ? data.name : "";
   data.email = !isEmpty(data.email) ? data.email : "";
+  data.subteam = !isEmpty(data.subteam) ? data.subteam : "";
+  data.ufid = !isEmpty(data.ufid) ? data.ufid : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 // Name checks
   if (Validator.isEmpty(data.name)) {
     errors.name = "Name field is required";
   }
+//UFID checks
+  if (Validator.isEmpty(data.ufid)) {
+    errors.ufid = "UFID field is required";
+  }
+  else if (!Validator.isLength(data.ufid, { min: 8, max: 8 })) {
+    errors.ufid = "UFID must have 8 characters";
+  }
+// Subteam checks
+  if (Validator.isEmpty(data.subteam)) {
+    errors.subteam = "Subteam field is required"
+  }
 // Email checks
   if (Validator.isEmpty(data.email)) {
     errors.email = "Email field is required";
   } else if (!Validator.isEmail(data.email)) {
     errors.email = "Email is invalid";
+  } else if (!Validator.equals(data.email.substring(data.email.length - 7), "ufl.edu")) {
+    errors.email = "Email must be a ufl";
   }
 // Password checks
   if (Validator.isEmpty(data.password)) {

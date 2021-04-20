@@ -10,11 +10,29 @@ exports.getAll = (req, res) => {
     });
 };
 
-exports.getByName = (req, res) => {
-    PO.getPoByName(req.params.name).then(function (pos) {
+exports.getByEmail = (req, res) => {
+    PO.getPoByEmail(req.params.email).then(function (pos) {
         res.json(net.getSuccessResponse(null, pos));
     }).catch(function (err) {
         console.log("error getting part ", req.params.name, ": ", err);
+        res.status(500).json(net.getErrorResponse(error.INTERNAL_DATABASE_ERROR));
+    })
+}
+
+exports.getByID = (req, res) => {
+    PO.getPOByID(req.params.id).then(function (pos) {
+        res.json(net.getSuccessResponse(null, pos));
+    }).catch(function (err) {
+        console.log("error getting part ", req.params.id, ": ", err);
+        res.status(500).json(net.getErrorResponse(error.INTERNAL_DATABASE_ERROR));
+    })
+}
+
+exports.removeByID = (req, res) => {
+    PO.removePartByID(req.params.id).then(function (pos) {
+        res.json(net.getSuccessResponse(null, pos));
+    }).catch(function (err) {
+        console.log("error getting part ", req.params.id, ": ", err);
         res.status(500).json(net.getErrorResponse(error.INTERNAL_DATABASE_ERROR));
     })
 }

@@ -8,10 +8,11 @@ const passport = require("passport");
 const config = require("./Config/config.json");
 const database = require("./Database/Database.js");
 const apiRoutes = require("./Routes/ApiRoutes.js");
-
+var cors = require('cors')
 
 //main express app
 let app = express();
+app.use(cors())
 
 app.listen(config.port, "localhost", () => {
     console.log(`Now listening on port ${config.port}`);
@@ -36,10 +37,9 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
-app.use(passport.session());
 
 // Passport config
-require("./Config/passport")(passport);
+require("./Config/Passport.js")(passport);
 
 app.use("/api", apiRoutes);
 

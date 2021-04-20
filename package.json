@@ -4,32 +4,58 @@
     "author": {
         "name": "Brody Golden"
     },
-  "scripts": {
-    "start": "node Backend/server.js",
-    "client-install": "npm install --prefix Frontend",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix Frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "engines": {
+        "npm": "7.5.3",
+        "node": "12.13.0"
+    },
+    
+    "scripts": {
+        "start": "node Backend/server.js",
+        "client-install": "npm install --prefix Frontend",
+        "server": "nodemon server.js",
+        "client": "npm start --prefix Frontend",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
     "main": "Backend/server.js",
     "dependencies": {
         "@sendgrid/mail": "^6.5.5",
+        "axios": "^0.21.1",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
+        "bootstrap": "^4.6.0",
         "connect-ensure-login": "^0.1.1",
         "connect-flash": "^0.1.1",
         "connect-mongo": "^3.2.0",
+        "cors": "^2.8.5",
         "exceljs": "^3.10.0",
         "express": "^4.17.1",
         "express-session": "^1.17.1",
         "is-empty": "^1.2.0",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.10.9",
+        "nodemailer": "6.5.0",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",
         "passport-local-mongoose": "^5.0.1",
+        "react": "^17.0.1",
+        "react-bootstrap-validation": "^0.1.11",
+        "react-dom": "^17.0.1",
+        "react-router-dom": "^5.2.0",
         "validator": "^13.5.2"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.18.0",
+        "@typescript-eslint/parser": "^4.18.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.22.0",
+        "eslint-config-react-app": "^6.0.0",
+        "eslint-plugin-flowtype": "^5.4.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-react": "^7.22.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "web-vitals": "^1.1.1"
     }
 }

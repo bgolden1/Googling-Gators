@@ -1,6 +1,9 @@
-.App {
-  text-align: center;
+@font-face {
   font-family: Montserrat;
+  src: url(Montserrat-Light.otf);
+}
+
+.App {
 }
 
 .App-logo {
@@ -17,6 +20,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+  font-family: montserrat;
 }
 
 .App-login {

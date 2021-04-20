@@ -8,6 +8,7 @@ module.exports = function validatePOInput(data) {
     data.company.url = !isEmpty(data.company.url) ? data.company.url: "";
     data.purpose = !isEmpty(data.purpose) ? data.purpose : "";
     data.owner = !isEmpty(data.owner) ? data.owner : "";
+    data.subteam = !isEmpty(data.subteam) ? data.subteam : "";
 
   // Company checks
     if (Validator.isEmpty(data.company.name)) {
@@ -22,9 +23,14 @@ module.exports = function validatePOInput(data) {
     errors.purpose= "Purpose field is required";
   }
 
-    //Price check
+    //Owner check
 if (Validator.isEmpty(data.owner)) {
   errors.owner = "Owner field is required";
+}
+
+    //Subteam check
+if (Validator.isEmpty(data.subteam)) {
+  errors.subteam = "Subteam field is required";
 }
 
   return {
