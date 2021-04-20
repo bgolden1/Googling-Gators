@@ -43,7 +43,7 @@ router.post("/po", (req, res) => {
         .catch(err => console.log(err));
     email.sendEmail(admin_email, `New PO created for ${newPo.subteam}`, `<p>Hello Gatorloop Admin,</p>
     <p style="padding: 12px; ">Please approve and/or submit this PO.</p>
-    <p style="padding: 12px; font-style: italic;">Click&nbsp;<a href="https://gatorloop-ims.herokuapp.com/login" target="_blank" rel="noopener">here</a>&nbsp;to login and see this PO.</p>
+    <p style="padding: 12px; font-style: italic;">Click&nbsp;<a href="https://gatorloop-ims.herokuapp.com/order" target="_blank" rel="noopener">here</a>&nbsp;to login and see this PO.</p>
     <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px;">Best,</p>
     <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px;">Gatorloop IMS</p>
     <p>&nbsp;</p>`)
@@ -70,7 +70,7 @@ router.post("/upgradeStatus", (req, res) => {
         
         email.sendEmail(PO.owner_email, `Status of PO has changed`, `<p>Hello ${PO.owner},</p>
         <p style="padding: 12px; ">This PO has been changed to ${PO.status}</p>
-        <p style="padding: 12px; font-style: italic;">Click&nbsp;<a href="https://gatorloop-ims.herokuapp.com/login" target="_blank" rel="noopener">here</a> to login and see this PO.</p>
+        <p style="padding: 12px; font-style: italic;">Click&nbsp;<a href="https://gatorloop-ims.herokuapp.com/order" target="_blank" rel="noopener">here</a> to login and see this PO.</p>
         <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; ">Best,</p>
         <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; ">Gatorloop IMS</p>
         <p>&nbsp;</p>`)

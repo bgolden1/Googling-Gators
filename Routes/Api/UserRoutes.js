@@ -3,10 +3,9 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require(path.join(__dirname,  "../../Config/config.json"));
-salt = config.auth.key;
+salt = process.env.SALT;
 const email = require(path.join(__dirname,  "../../Config/Email"));
-const admin_email = require(path.join(__dirname,  "../../Config/config.json")).admin_email;
+const admin_email = process.env.ADMIN_EMAIL;
 
 const userController = require(path.join(__dirname,  "../../Controllers/UserController.js"));
 // Load input validation
@@ -92,7 +91,7 @@ router.post("/register", (req, res) => {
         });
         email.sendEmail(admin_email, `New user verification for ${newUser.name}`, `<p>Hello Gatorloop Admin,</p>
         <p style="padding: 12px;">Please verify that ${newUser.name} is a member of this club.</p>
-        <p style="padding: 12px; font-style: italic;">Click <a href="https://gatorloop-ims.herokuapp.com/login" target="_blank" rel="noopener">here</a> to login and upgrade this user to "member" status.</p>
+        <p style="padding: 12px; font-style: italic;">Click <a href="https://gatorloop-ims.herokuapp.com/users" target="_blank" rel="noopener">here</a> to login and upgrade this user to "member" status.</p>
         <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; ">Best,</p>
         <p style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; ">Gatorloop IMS</p>`)
       }
