@@ -20,7 +20,7 @@ router.post("/user/remove:email", userController.removeUser);
 router.post("/promote:token", (req, res) => {
   const admin = jwt.decode(req.params.token);
   console.log(admin);
-  res.json(admin);
+  res.json(req.params.token);
   if (admin.role != "admin") {
     res.json("error: not an admin")
     return;
