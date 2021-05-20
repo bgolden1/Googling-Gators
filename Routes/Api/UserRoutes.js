@@ -18,7 +18,7 @@ router.get("/users", userController.getAll);
 router.get("/users:email", userController.getByEmail);
 router.post("/user/remove:email", userController.removeUser);
 router.post("/promote:token", (req, res) => {
-  admin = jwt.decode(req.params.token);
+  const admin = jwt.decode(req.params.token);
   console.log(admin);
   res.json(admin);
   if (admin.role != "admin") {
