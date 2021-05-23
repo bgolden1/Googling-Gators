@@ -18,7 +18,9 @@ export default class UpgradeStatus extends Component {
         try{
             const token = global.localStorage.getItem("jwtToken");
             const decoded = jwt_decode(token);
-            this.setState({user_name: decoded.name, user_email: decoded.email, user_subteam: decoded.subteam, user_role: decoded.role, logged_in: true});
+            if (decoded.role == "admin") {
+                this.setState({user_name: decoded.name, user_subteam: decoded.subteam, user_role: decoded.role, logged_in: true});
+            }
         }
         catch(err) {
             console.log(err)
