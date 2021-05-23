@@ -60,7 +60,7 @@ export default class Order extends Component {
                     console.log(err);
                 })
             }
-            else {
+            else if (user.role == "member") {
                 axios.get("https://gatorloop-ims.herokuapp.com/api/po/owner" + user.email)
                 .then(response => {
                     this.setState({POs: response.data.data});
@@ -129,7 +129,7 @@ export default class Order extends Component {
                 <div>
                     <Menubar_Homepage />
                     <div style={{ marginLeft: "40%", marginTop: "3%" }}>
-                        <h1>Error: Not Logged In</h1>
+                        <h1>Error: Not Logged In With Appropriate Permissions</h1>
                         <div style={{ marginLeft: "7%" }}>
                             <Link
                                 to="/login"

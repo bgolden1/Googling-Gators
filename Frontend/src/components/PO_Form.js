@@ -27,7 +27,9 @@ export default class PO_Form extends Component {
         try {
             const token = global.localStorage.getItem("jwtToken");
             const decoded = jwt_decode(token);
-            this.setState({owner: decoded.name, owner_email: decoded.email, subteam: decoded.subteam, logged_in: true})
+            if (decoded.role == "admin" || decoded.role == "member") {
+                this.setState({owner: decoded.name, owner_email: decoded.email, subteam: decoded.subteam, logged_in: true})
+            }
         }
         catch (err) {
             console.log(err);
@@ -256,7 +258,7 @@ export default class PO_Form extends Component {
                 <div>
                     <Menubar_Homepage />
                     <div style={{ marginLeft: "40%", marginTop: "3%" }}>
-                        <h1>Error: Not Logged In</h1>
+                        <h1>Error: Not Logged In With Appropriate Permissions</h1>
                         <div style={{ marginLeft: "7%" }}>
                             <Link
                                 to="/login"
