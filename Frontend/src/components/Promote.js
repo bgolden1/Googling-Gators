@@ -23,7 +23,7 @@ export default class Promote extends Component {
         catch(err) {
             console.log(err)
         }
-        axios.post("https://gatorloop-ims.herokuapp.com/api/promote" + global.localStorage.getItem("jwtToken"), {"email": this.state.email}).then(res => {
+        axios.post("https://gatorloop-ims.herokuapp.com/api/promote", {"email": this.state.email}).then(res => {
             console.log(res);
             global.location.pathname = "/users";
         })

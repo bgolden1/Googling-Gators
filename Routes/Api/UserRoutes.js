@@ -17,14 +17,7 @@ const User = require(path.join(__dirname,  "../../DB_Models/User"));
 router.get("/users", userController.getAll);
 router.get("/users:email", userController.getByEmail);
 router.post("/user/remove:email", userController.removeUser);
-router.post("/promote:token", (req, res) => {
-  const admin = jwt.decode(req.params.token);
-  console.log(admin);
-  res.json(req.params.token);
-  if (admin.role != "admin") {
-    res.json("error: not an admin")
-    return;
-  }
+router.post("/promote", (req, res) => {
   User.findOne({email: req.body.email}).then(user => {
     const options = ["user", "member", "admin"]
     for (var i = 0; i < options.length - 1; i++) {
