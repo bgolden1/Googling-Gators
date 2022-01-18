@@ -223,6 +223,7 @@ export default class PO_Form extends Component {
 
                                     className="btn btn-outline-secondary"
                                     onClick={this.handleAddRow.bind(this)}
+                                    onSubmit={this.handleAddRow.bind(this)}
                                 >
                                     Add Part
                                      </button>
