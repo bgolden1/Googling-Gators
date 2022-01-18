@@ -36,7 +36,7 @@ class Register_Page extends Component {
         axios.post("https://gatorloop-ims.herokuapp.com/api/register", newUser).then(res => {
             this.setState({completed: true})
         }).catch(err => {
-            console.log(err.response.data);
+            alert(String(err.response.data));
             this.setState({errors: err.response.data});
         })
     };
